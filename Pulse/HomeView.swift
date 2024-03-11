@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct home: View {
+struct HomeView: View {
     var body: some View {
         ZStack {
             Color(UIColor.systemGray5)
@@ -39,5 +39,5 @@ struct home: View {
 }
 
 #Preview {
-    home()
+    HomeView()
 }
