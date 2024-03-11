@@ -60,9 +60,6 @@ struct TagButton: View {
 
 struct AllTagButtons: View {
     var body: some View {
-        HStack {
-            Text("Tags: ")
-                .padding(.horizontal, 5)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     TagButton(tag: "#communityhealth")
@@ -73,15 +70,13 @@ struct AllTagButtons: View {
                     TagButton(tag: "#noisepullution")
                     TagButton(tag: "#pothole")
                     TagButton(tag: "#publicspaces")
-                    TagButton(tag: "#publictransportation")
                     TagButton(tag: "#safety")
                     TagButton(tag: "#education")
-                    TagButton(tag: "#shootings")
-                    TagButton(tag: "#traffic")
+                    TagButton(tag: "#shooting")
                     TagButton(tag: "#transportation")
                 }
+                .padding(.horizontal, 10)
             }
-        }
     }
 }
 

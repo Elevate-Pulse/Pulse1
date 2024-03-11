@@ -119,9 +119,9 @@
 			children = (
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
-				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
-				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
 				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
+				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
+				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
 				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
 				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
 				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
