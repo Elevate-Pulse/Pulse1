@@ -1,0 +1,45 @@
+
+#Pull Request Solver by Devin Grischow
+
+#To Add this code to your project, selecting the PROJECT, press add new file to create a file at the ROOT,
+#Then make a EMPTY file, and name it the .gitignore
+
+
+#This bit of code/rules is designed to help SOLVE the pull/merges/ pull requests and saying there is conflicting files, 99% of the time it comes from this file saying something that there is conflict in side.
+#This is due to small changes like function renaming, file names, groups, etc.
+
+
+
+
+#common issues come from merging files both users have but werent included, all the files that can cause the most issues are here.
+
+#Commonly its the users files (like breakpoints, bookmarks, etc) Cause the Most Bugs
+
+
+#BEST PRACTICE FOR SWITCHING BRANCHES:
+
+
+#Never Stach Crucial Changes, or try to avoid caching in general. If Possible Commit At progress and always save. Avoid merging
+
+
+
+## Xcode Patch
+
+xcuserdata/
+#Ignores the users data settings thats not needed: ex bookmarks, breakpoints, etc
+
+
+
+
+/*.gcno
+#Ignores gcno Files from directory, gnco files goverate gcov coverage files, which are results from tests
+#ignore these tests in the gitUploads.
+
+
+
+# Ignore Mac DS_Store files
+.DS_Store
+**/.DS_Store
+
+#PREVENT THE UPLOAD OF ANY .DS files!
+#DS files are nothing but indexing files FOR THE MACOSX, AKA a easy way to break the github, so no matter what done let these get uploaded.
