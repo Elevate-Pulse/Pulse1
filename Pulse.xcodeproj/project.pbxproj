@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3F5ADE442B9FBFA300E3FD44 /* .gitignore */; };
+		3F5ADE472B9FC1D300E3FD44 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */; };
+		3F5ADE492B9FC1F400E3FD44 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */; };
+		3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */; };
+		3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */; };
 		3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A12B96A0F300DBF789 /* HomeView.swift */; };
 		3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A22B96A0F300DBF789 /* structs_postBox.swift */; };
 		3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */; };
@@ -42,6 +46,10 @@
 
 /* Begin PBXFileReference section */
 		3F5ADE442B9FBFA300E3FD44 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
+		3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
+		3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperResponseView.swift; sourceTree = "<group>"; };
+		3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperQuestionnaireView.swift; sourceTree = "<group>"; };
 		3F6382A12B96A0F300DBF789 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		3F6382A22B96A0F300DBF789 /* structs_postBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_postBox.swift; sourceTree = "<group>"; };
 		3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_postInteractions.swift; sourceTree = "<group>"; };
@@ -111,8 +119,12 @@
 			children = (
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
+				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
 				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
 				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
+				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
+				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
+				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
 				3F6382A42B96A0F400DBF789 /* structs_buttons.swift */,
 				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
 				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
@@ -279,11 +291,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5ADE492B9FC1F400E3FD44 /* CreatePostView.swift in Sources */,
 				3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */,
 				3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */,
+				3F5ADE472B9FC1D300E3FD44 /* CommentsView.swift in Sources */,
 				3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */,
+				3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */,
 				B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */,
 				3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */,
+				3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */,
 				3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
 				3F6382AC2B96A0F400DBF789 /* LoginView.swift in Sources */,

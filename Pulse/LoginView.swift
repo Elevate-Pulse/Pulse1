@@ -31,8 +31,8 @@ struct LoginView: View {
                                         .font(.system(size: 24))
                                 }
                 }
-                TextField_Base(typeOfText: "Email", text: $username)
-                SecureField_Base(text: $password)
+                TextField_Base(typeOfText: "Email", text: $username) //find in structs_textFields
+                SecureField_Base(text: $password) //find in structs_textFields
                 Button(action: {
                                 print("Logged in")
                             }) {
