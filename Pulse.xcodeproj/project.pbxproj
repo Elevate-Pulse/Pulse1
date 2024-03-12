@@ -98,40 +98,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3F74860E2B9FE85E008C7377 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
-				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		3F74860F2B9FE875008C7377 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B231E5912B9689B0006B1C4A /* ContentView.swift */,
-				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
-				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
-				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
-				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
-				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
-				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		3F7486102B9FE893008C7377 /* Structs */ = {
-			isa = PBXGroup;
-			children = (
-				3F6382A42B96A0F400DBF789 /* structs_buttons.swift */,
-				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
-				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
-				3F6382A52B96A0F400DBF789 /* structs_textFields.swift */,
-			);
-			path = Structs;
-			sourceTree = "<group>";
-		};
 		B231E5832B9689B0006B1C4A = {
 			isa = PBXGroup;
 			children = (
@@ -157,11 +123,21 @@
 			isa = PBXGroup;
 			children = (
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
+				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
+				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
 				3FD342192B9FD13700796269 /* Info.plist */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
-				3F74860E2B9FE85E008C7377 /* Fonts */,
-				3F74860F2B9FE875008C7377 /* Views */,
-				3F7486102B9FE893008C7377 /* Structs */,
+				B231E5912B9689B0006B1C4A /* ContentView.swift */,
+				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
+				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
+				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
+				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
+				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
+				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
+				3F6382A42B96A0F400DBF789 /* structs_buttons.swift */,
+				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
+				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
+				3F6382A52B96A0F400DBF789 /* structs_textFields.swift */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
 			);
 			path = Pulse;
