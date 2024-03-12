@@ -122,7 +122,6 @@
 		B231E58E2B9689B0006B1C4A /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
-				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
 				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
 				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
 				3FD342192B9FD13700796269 /* Info.plist */,
@@ -138,6 +137,7 @@
 				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
 				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
 				3F6382A52B96A0F400DBF789 /* structs_textFields.swift */,
+				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
 			);
 			path = Pulse;
