@@ -125,7 +125,7 @@ struct ImportFileButton: View {
                             print("poll tapped")
                         }) {
                             VStack {
-                                Image(systemName: "chart.bar")
+                                Image(systemName: "chart.bar.fill")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 30, height: 30)
