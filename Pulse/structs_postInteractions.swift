@@ -1,4 +1,11 @@
 //  structs_postInteractions.swift
+/*
+ structs included:
+-InteractButtons: comments, sent, bookmark buttons combined
+-CommentButton: how many ppl commented on this post
+-SentButton: how many ppl used this post to write email
+-BookmarkButton: how many ppl bookmarked the post
+ */
 
 import SwiftUI
 
@@ -30,7 +37,9 @@ struct CommentButton: View {
         }) {
             HStack {
                 Image(systemName: "message")
+                    .imageScale(.large)
                 Text(String(commentCount))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
         }
     }
@@ -44,7 +53,9 @@ struct SentButton: View {
         }) {
             HStack {
                 Image(systemName: "paperplane")
+                    .imageScale(.large)
                 Text(String(sentCount))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
         }
     }
@@ -58,7 +69,9 @@ struct BookmarkButton: View {
         }) {
             HStack {
                 Image(systemName: "bookmark")
+                    .imageScale(.large)
                 Text(String(bookmarkCount))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
         }
     }
