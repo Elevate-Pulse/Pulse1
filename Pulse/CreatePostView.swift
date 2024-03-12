@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CreatePostView: View {
     @State private var subjectText: String = ""
-
+    @State private var bodyText: String = ""
     var body: some View {
         ZStack {
             Color(UIColor.systemGray5)
@@ -17,42 +17,38 @@ struct CreatePostView: View {
                     }
                     .padding()
                     Text("Create a post")
-                        .font(.system(size: 25))
+                        .font(.custom("Poppins-Medium", size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                 }
-                
                 TypeInSubject(subjectText: $subjectText) //find in structs_textFields
-                
-                VStack(spacing: 10) {
+                    .padding(.vertical, -10)
+                VStack(spacing: 0) {
                     Text("Tags")
-                        .font(.system(size: 25))
+                        .font(.custom("Poppins-Medium", size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 10)
                     AllTagButtons() //find in structs_buttons
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
                 }
                 
-                HStack(spacing: 0) {
-                    Text("Please describe in details the issue you want to resolve")
-                        .foregroundColor(Color(UIColor.darkGray))
-
+                VStack(spacing: 5) {
                     Button(action: {
                         print("Info button tapped")
                     }) {
                         Image(systemName: "info.circle")
                             .foregroundColor(Color(UIColor.darkGray))
                     }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.horizontal, 10)
+QuestionTextfield(height: 200, question: "Please describe in details the issue you want to resolve", text: $bodyText)
                 }
-                
-                
-                
 
                 Spacer()
                 HStack {
                     Text("min 1000 chars")
-                        .font(.system(size: 15))
+                        .font(.custom("Poppins-Medium", size: 14))
                         .foregroundColor(Color(UIColor.darkGray))
                         .padding(.leading, 10)
                     Spacer()
@@ -69,6 +65,7 @@ struct CreatePostView: View {
                         .overlay(
                             Text("Post")
                                 .foregroundColor(Color.white)
+                                .font(.custom("Poppins-Medium", size: 16))
                         )
                 }
             }

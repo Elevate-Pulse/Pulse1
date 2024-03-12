@@ -19,7 +19,7 @@ struct PulseHelperResponseView: View {
                 }
                 .padding()
                 Text("Pulse Helper")
-                    .font(.system(size: 25))
+                    .font(.custom("Poppins-Medium", size: 24))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
             }
@@ -27,14 +27,14 @@ struct PulseHelperResponseView: View {
             VStack(spacing: -25) {
                 Text("Result")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.system(size: 21))
+                    .font(.custom("Poppins-Medium", size: 21))
                     .padding()
                     .foregroundColor(Color.black)
                 Text("hi")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .foregroundColor(Color(UIColor.darkGray))
-                    .font(.system(size: CGFloat(18)))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
             Spacer()
             ImportFileButton()

@@ -21,14 +21,14 @@ struct LoginView: View {
                                 }) {
                                     Text("Login")
                                         .foregroundColor(Color.black)
-                                        .font(.system(size: 24))
+                                        .font(.custom("Poppins-Medium", size: 24))
                                 }
                     Button(action: {
                                     print("Sign up tapped")
                                 }) {
                                     Text("Sign up")
                                         .foregroundColor(Color.black)
-                                        .font(.system(size: 24))
+                                        .font(.custom("Poppins-Medium", size: 24))
                                 }
                 }
                 TextField_Base(typeOfText: "Email", text: $username) //find in structs_textFields
@@ -38,7 +38,7 @@ struct LoginView: View {
                             }) {
                                 Text("Login")
                                     .foregroundColor(Color.white)
-                                    .font(.system(size: 21))
+                                    .font(.custom("Poppins-Medium", size: 21))
                                     .padding()
                                     .frame(width: 160, height: 50)
                                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.darkGray)))
@@ -50,7 +50,7 @@ struct LoginView: View {
                             }) {
                                 Text("Skip")
                                     .foregroundColor(Color.black)
-                                    .font(.system(size: 21))
+                                    .font(.custom("Poppins-Medium", size: 21))
                             }
             }
             .padding()

@@ -18,6 +18,7 @@ struct TextField_Base: View {
             .padding()
             .background(RoundedRectangle(cornerRadius: 10).stroke((Color(UIColor.darkGray))))
             .frame(width: 300, height: 50)
+            .font(.custom("Poppins-Medium", size: 16))
     }
 }
 
@@ -29,6 +30,7 @@ struct SecureField_Base: View {
             .padding()
             .background(RoundedRectangle(cornerRadius: 10).stroke((Color(UIColor.darkGray))))
             .frame(width: 300, height: 50)
+            .font(.custom("Poppins-Medium", size: 16))
     }
 }
 
@@ -42,13 +44,15 @@ struct TypeInSubject: View {
             
             TextField("Type in subject", text: $subjectText)
                 .padding(.horizontal, 10)
+                .font(.custom("Poppins-Medium", size: 16))
         }
         .foregroundColor(Color(UIColor.darkGray))
         .padding([.horizontal, .vertical], 10)
     }
 }
 
-struct PulseHelperQuestion: View {
+struct QuestionTextfield: View {
+    let height: CGFloat
     let question: String
     @Binding var text: String
     
@@ -59,15 +63,17 @@ struct PulseHelperQuestion: View {
                 .padding(.horizontal)
                 .padding(.vertical, -2)
                 .foregroundColor(Color(UIColor.darkGray))
+                .font(.custom("Poppins-Medium", size: 16))
             ZStack(alignment: .topLeading) {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(UIColor.darkGray), lineWidth: 2)
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 75)
+                    .frame(width: UIScreen.main.bounds.width - 20, height: height)
                     .foregroundColor(Color(UIColor.darkGray))
                 TextField("", text: $text)
                     .padding([.horizontal, .vertical], 10)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(Color(UIColor.darkGray))
+                    .font(.custom("Poppins-Medium", size: 16))
             }
             .padding([.horizontal, .vertical], 10)
         }
@@ -85,7 +91,7 @@ struct structs_textFields_Previews: PreviewProvider {
         Divider()
         TypeInSubject(subjectText: $text)
             Divider()
-            PulseHelperQuestion(question: "What happened?", text: $text)
+            QuestionTextfield(height: 75, question: "What happened?", text: $text)
         }
     }
 }

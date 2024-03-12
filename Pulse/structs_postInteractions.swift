@@ -39,7 +39,7 @@ struct CommentButton: View {
                 Image(systemName: "message")
                     .imageScale(.large)
                 Text(String(commentCount))
-                    .font(.system(size: 18))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
         }
     }
@@ -55,7 +55,7 @@ struct SentButton: View {
                 Image(systemName: "paperplane")
                     .imageScale(.large)
                 Text(String(sentCount))
-                    .font(.system(size: 18))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
         }
     }
@@ -71,7 +71,7 @@ struct BookmarkButton: View {
                 Image(systemName: "bookmark")
                     .imageScale(.large)
                 Text(String(bookmarkCount))
-                    .font(.system(size: 18))
+                    .font(.custom("Poppins-Medium", size: 18))
             }
         }
     }

@@ -22,7 +22,7 @@ struct PfpName: View {
                     .foregroundColor(Color.black)
                 Text(name)
                     .foregroundColor(Color.black)
-                    .font(.system(size: CGFloat(fontSize)))
+                    .font(.custom("Poppins-Medium", size: fontSize))
             }
         }
     }
@@ -44,7 +44,7 @@ struct PostBox_Main: View {
                 HStack {
                     Spacer()
                     Text(date)
-                        .font(.system(size: 15))
+                        .font(.custom("Poppins-Medium", size: 15))
                         .foregroundColor(Color(UIColor.darkGray))
                         .padding(.trailing, 10)
                 }
@@ -55,7 +55,7 @@ struct PostBox_Main: View {
                 .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .font(.system(size: 18))
+                .font(.custom("Poppins-Medium", size: 18))
 
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -77,7 +77,7 @@ struct PostBox_Main: View {
                 }
             }
             AIButton()
-                .padding(.leading, UIScreen.main.bounds.width - 175)
+                .padding(.leading, UIScreen.main.bounds.width - 190)
             InteractButtons(commentCount: commentCount, sentCount: sentCount, bookmarkCount: bookmarkCount)
             Divider()
         }
@@ -102,6 +102,7 @@ struct PostBox_Trending: View {
                     PfpName(name: name, fontSize: fontSize)
                         .padding(.vertical, 6)
                     Text(bodyText)
+                        .font(.custom("Poppins-Medium", size: 16))
                         .padding([.vertical, .horizontal], 8)
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
@@ -125,7 +126,7 @@ struct aComment: View {
                 HStack {
                     Spacer()
                     Text(date)
-                        .font(.system(size: 15))
+                        .font(.custom("Poppins-Medium", size: 15))
                         .foregroundColor(Color(UIColor.darkGray))
                         .padding(.trailing, 10)
                 }
@@ -136,10 +137,12 @@ struct aComment: View {
                 .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
+                .font(.custom("Poppins-Medium", size: 16))
             Button(action: {
                 print("Replies tapped on")
             }) {
                 Text("\(numReplies) \(numReplies == 1 ? "reply" : "replies")")
+                    .font(.custom("Poppins-Medium", size: 16))
                     .foregroundColor(Color(UIColor.darkGray))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)

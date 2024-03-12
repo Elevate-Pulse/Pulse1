@@ -18,6 +18,8 @@
 		3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A42B96A0F400DBF789 /* structs_buttons.swift */; };
 		3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A52B96A0F400DBF789 /* structs_textFields.swift */; };
 		3F6382AC2B96A0F400DBF789 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A62B96A0F400DBF789 /* LoginView.swift */; };
+		3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD342152B9FD12600796269 /* Poppins-Medium.ttf */; };
+		3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */; };
 		B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E58F2B9689B0006B1C4A /* PulseApp.swift */; };
 		B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5912B9689B0006B1C4A /* ContentView.swift */; };
 		B231E5942B9689B1006B1C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B231E5932B9689B1006B1C4A /* Assets.xcassets */; };
@@ -56,6 +58,9 @@
 		3F6382A42B96A0F400DBF789 /* structs_buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_buttons.swift; sourceTree = "<group>"; };
 		3F6382A52B96A0F400DBF789 /* structs_textFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_textFields.swift; sourceTree = "<group>"; };
 		3F6382A62B96A0F400DBF789 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3FD342152B9FD12600796269 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		3FD342192B9FD13700796269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		B231E58C2B9689B0006B1C4A /* Pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B231E58F2B9689B0006B1C4A /* PulseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseApp.swift; sourceTree = "<group>"; };
 		B231E5912B9689B0006B1C4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,6 +122,9 @@
 		B231E58E2B9689B0006B1C4A /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
+				3FD342192B9FD13700796269 /* Info.plist */,
+				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
+				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
 				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
@@ -265,6 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B231E5972B9689B1006B1C4A /* Preview Assets.xcassets in Resources */,
+				3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */,
+				3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */,
 				3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */,
 				B231E5942B9689B1006B1C4A /* Assets.xcassets in Resources */,
 			);
@@ -468,6 +478,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Pulse/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pulse/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -496,6 +507,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Pulse/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Pulse/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

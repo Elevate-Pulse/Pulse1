@@ -18,7 +18,7 @@ struct AIButton: View {
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 50).stroke(Color(UIColor.darkGray), lineWidth: 2)
-                    .frame(width: 160, height: 40)
+                    .frame(width: 175, height: 40)
                     //.padding(.leading, 215)
                     .layoutPriority(1)
                 HStack {
@@ -27,6 +27,7 @@ struct AIButton: View {
                         .foregroundColor(Color.black)
                     Text("Pulse Assistant")
                         .foregroundColor(Color(UIColor.darkGray))
+                        .font(.custom("Poppins-Medium", size: 16))
                 }
             }
             
@@ -53,6 +54,7 @@ struct TagButton: View {
                         .cornerRadius(50)
                 )
                 .foregroundColor(isSelected ? Color.white : Color(UIColor.darkGray))
+                .font(.custom("Poppins-Medium", size: 16))
         }
         .animation(.default, value: isSelected)
     }
@@ -89,6 +91,7 @@ struct ImportFileButton: View {
                 VStack {
                     Text("What do you want to add?")
                         .foregroundColor(Color(UIColor.darkGray))
+                        .font(.custom("Poppins-Medium", size: 16))
                     HStack(spacing: 50) {
                         Button(action: {
                             print("link tapped")
@@ -101,6 +104,7 @@ struct ImportFileButton: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                 Text("Link")
                                     .foregroundColor(Color(UIColor.darkGray))
+                                    .font(.custom("Poppins-Medium", size: 16))
                             }
                         }
                         Button(action: {
@@ -114,6 +118,7 @@ struct ImportFileButton: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                 Text("Media")
                                     .foregroundColor(Color(UIColor.darkGray))
+                                    .font(.custom("Poppins-Medium", size: 16))
                             }
                         }
                         Button(action: {
@@ -127,6 +132,7 @@ struct ImportFileButton: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                 Text("Poll")
                                     .foregroundColor(Color(UIColor.darkGray))
+                                    .font(.custom("Poppins-Medium", size: 16))
                             }
                         }
                     }
@@ -177,6 +183,7 @@ struct GenerateButton: View {
                 .overlay(
                     Text("Generate")
                         .foregroundColor(Color.white)
+                        .font(.custom("Poppins-Medium", size: 16))
                 )
         }
     }
