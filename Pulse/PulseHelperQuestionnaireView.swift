@@ -1,9 +1,4 @@
-//
 //  PulseHelperView.swift
-//  Pulse
-//
-//  Created by student on 3/10/24.
-//
 
 import SwiftUI
 
@@ -36,11 +31,11 @@ struct PulseHelperQuestionnaireView: View {
             }
             .padding(.vertical, 10)
             VStack(spacing: 1) {
-                QuestionTextfield(height: 75, question: "What happened?", text: $whatHappened) //find in structs_textFields
-                QuestionTextfield(height: 75, question: "When did this happen?", text: $whenHappened) //find in structs_textFields
+                QuestionTextfield(height: 75, question: "What happened?", text: $whatHappened) //find in CreatePostStructs
+                QuestionTextfield(height: 75, question: "When did this happen?", text: $whenHappened) //find in CreatePostStructs
                 QuestionTextfield(height: 75, question: "Where did this happen?", text: $whereHappened) //find in structs_textFields
-                QuestionTextfield(height: 75, question: "How did this affect you?", text: $consequence) //find in structs_textFields
-                StylePickerButton() //find in structs_buttons
+                QuestionTextfield(height: 75, question: "How did this affect you?", text: $consequence) //find in CreatePostStructs
+                StylePickerButton()
             }
         }
 

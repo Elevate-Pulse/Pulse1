@@ -53,9 +53,9 @@ struct ProfileView: View {
                         .padding(.horizontal, 10)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 5) {
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //find in structs_postBox
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //find in structs_postBox
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //find in structs_postBox
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //implemented in HomeView
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //implemented in HomeView
                         }
                     }
                     .padding(.horizontal, 15)
@@ -65,9 +65,9 @@ struct ProfileView: View {
                         .padding(.horizontal, 10)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 5) {
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //find in structs_postBox
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //find in structs_postBox
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //find in structs_postBox
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //implemented in HomeView
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //implemented in HomeView
                         }
                     }
                     .padding(.horizontal, 15)
@@ -77,9 +77,9 @@ struct ProfileView: View {
                         .padding(.horizontal, 10)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 5) {
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //find in structs_postBox
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //find in structs_postBox
-                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //find in structs_postBox
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //implemented in HomeView
+                            PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //implemented in HomeView
                         }
                     }
                     .padding(.horizontal, 15)

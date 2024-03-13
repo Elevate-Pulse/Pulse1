@@ -31,8 +31,8 @@ struct LoginView: View {
                                         .font(.custom("Poppins-Light", size: 24))
                                 }
                 }
-                TextField_Base(typeOfText: "Email", text: $username) //find in structs_textFields
-                SecureField_Base(text: $password) //find in structs_textFields
+                TextField_Base(typeOfText: "Email", text: $username)
+                SecureField_Base(typeOfText: "Password", text: $password)
                 Button(action: {
                                 print("Logged in")
                             }) {
@@ -42,9 +42,7 @@ struct LoginView: View {
                                     .padding()
                                     .frame(width: 160, height: 50)
                                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.darkGray)))
-                                
                             }
-                
                 Button(action: {
                                 print("Skipped")
                             }) {

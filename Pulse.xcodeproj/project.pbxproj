@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F2EC2E82BA10B44001DC1F5 /* classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2E72BA10B44001DC1F5 /* classes.swift */; };
+		3F2EC2E82BA10B44001DC1F5 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2E72BA10B44001DC1F5 /* Classes.swift */; };
 		3F2EC2EA2BA12CCA001DC1F5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2E92BA12CCA001DC1F5 /* ProfileView.swift */; };
 		3F2EC2EC2BA134E3001DC1F5 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2EB2BA134E3001DC1F5 /* SignupView.swift */; };
 		3F2EC2F02BA1359D001DC1F5 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F2EC2EF2BA1359D001DC1F5 /* Poppins-Light.ttf */; };
@@ -18,11 +18,15 @@
 		3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */; };
 		3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */; };
 		3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A12B96A0F300DBF789 /* HomeView.swift */; };
-		3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A22B96A0F300DBF789 /* structs_postBox.swift */; };
-		3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */; };
-		3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A42B96A0F400DBF789 /* structs_buttons.swift */; };
-		3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A52B96A0F400DBF789 /* structs_textFields.swift */; };
 		3F6382AC2B96A0F400DBF789 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A62B96A0F400DBF789 /* LoginView.swift */; };
+		3FA9FB032BA140E5008A2C43 /* LoginStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9FB022BA140E5008A2C43 /* LoginStructs.swift */; };
+		3FA9FB052BA141A5008A2C43 /* HomeStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9FB042BA141A5008A2C43 /* HomeStructs.swift */; };
+		3FA9FB072BA1429C008A2C43 /* CommentsStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9FB062BA1429C008A2C43 /* CommentsStructs.swift */; };
+		3FA9FB092BA14304008A2C43 /* CreatePostStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA9FB082BA14304008A2C43 /* CreatePostStructs.swift */; };
+		3FC3529B2BA1457A0067D369 /* EditProfileStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC3529A2BA1457A0067D369 /* EditProfileStructs.swift */; };
+		3FC3529D2BA146070067D369 /* PulseHelperQuestionnaireStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC3529C2BA146070067D369 /* PulseHelperQuestionnaireStructs.swift */; };
+		3FC3529F2BA146D10067D369 /* PulseHelperResponseStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC3529E2BA146D10067D369 /* PulseHelperResponseStructs.swift */; };
+		3FC352A12BA147B70067D369 /* ProfileStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC352A02BA147B70067D369 /* ProfileStructs.swift */; };
 		3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD342152B9FD12600796269 /* Poppins-Medium.ttf */; };
 		3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */; };
 		B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E58F2B9689B0006B1C4A /* PulseApp.swift */; };
@@ -52,7 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F2EC2E72BA10B44001DC1F5 /* classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classes.swift; sourceTree = "<group>"; };
+		3F2EC2E72BA10B44001DC1F5 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		3F2EC2E92BA12CCA001DC1F5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3F2EC2EB2BA134E3001DC1F5 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		3F2EC2EF2BA1359D001DC1F5 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -63,11 +67,15 @@
 		3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperResponseView.swift; sourceTree = "<group>"; };
 		3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperQuestionnaireView.swift; sourceTree = "<group>"; };
 		3F6382A12B96A0F300DBF789 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		3F6382A22B96A0F300DBF789 /* structs_postBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_postBox.swift; sourceTree = "<group>"; };
-		3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_postInteractions.swift; sourceTree = "<group>"; };
-		3F6382A42B96A0F400DBF789 /* structs_buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_buttons.swift; sourceTree = "<group>"; };
-		3F6382A52B96A0F400DBF789 /* structs_textFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_textFields.swift; sourceTree = "<group>"; };
 		3F6382A62B96A0F400DBF789 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3FA9FB022BA140E5008A2C43 /* LoginStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStructs.swift; sourceTree = "<group>"; };
+		3FA9FB042BA141A5008A2C43 /* HomeStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStructs.swift; sourceTree = "<group>"; };
+		3FA9FB062BA1429C008A2C43 /* CommentsStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsStructs.swift; sourceTree = "<group>"; };
+		3FA9FB082BA14304008A2C43 /* CreatePostStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostStructs.swift; sourceTree = "<group>"; };
+		3FC3529A2BA1457A0067D369 /* EditProfileStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileStructs.swift; sourceTree = "<group>"; };
+		3FC3529C2BA146070067D369 /* PulseHelperQuestionnaireStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperQuestionnaireStructs.swift; sourceTree = "<group>"; };
+		3FC3529E2BA146D10067D369 /* PulseHelperResponseStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperResponseStructs.swift; sourceTree = "<group>"; };
+		3FC352A02BA147B70067D369 /* ProfileStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStructs.swift; sourceTree = "<group>"; };
 		3FD342152B9FD12600796269 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		3FD342192B9FD13700796269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -139,19 +147,23 @@
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
 				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
+				3FA9FB022BA140E5008A2C43 /* LoginStructs.swift */,
 				3F2EC2EB2BA134E3001DC1F5 /* SignupView.swift */,
 				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
+				3FA9FB042BA141A5008A2C43 /* HomeStructs.swift */,
 				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
+				3FA9FB062BA1429C008A2C43 /* CommentsStructs.swift */,
 				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
+				3FA9FB082BA14304008A2C43 /* CreatePostStructs.swift */,
 				3F2EC2E92BA12CCA001DC1F5 /* ProfileView.swift */,
+				3FC352A02BA147B70067D369 /* ProfileStructs.swift */,
 				3F2EC2F12BA13A73001DC1F5 /* EditProfileView.swift */,
+				3FC3529A2BA1457A0067D369 /* EditProfileStructs.swift */,
 				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
+				3FC3529C2BA146070067D369 /* PulseHelperQuestionnaireStructs.swift */,
 				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
-				3F2EC2E72BA10B44001DC1F5 /* classes.swift */,
-				3F6382A42B96A0F400DBF789 /* structs_buttons.swift */,
-				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
-				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
-				3F6382A52B96A0F400DBF789 /* structs_textFields.swift */,
+				3FC3529E2BA146D10067D369 /* PulseHelperResponseStructs.swift */,
+				3F2EC2E72BA10B44001DC1F5 /* Classes.swift */,
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
 			);
@@ -317,22 +329,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC352A12BA147B70067D369 /* ProfileStructs.swift in Sources */,
 				3F5ADE492B9FC1F400E3FD44 /* CreatePostView.swift in Sources */,
-				3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */,
 				3F2EC2F22BA13A73001DC1F5 /* EditProfileView.swift in Sources */,
 				3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */,
 				3F5ADE472B9FC1D300E3FD44 /* CommentsView.swift in Sources */,
-				3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */,
 				3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */,
-				3F2EC2E82BA10B44001DC1F5 /* classes.swift in Sources */,
+				3F2EC2E82BA10B44001DC1F5 /* Classes.swift in Sources */,
+				3FC3529D2BA146070067D369 /* PulseHelperQuestionnaireStructs.swift in Sources */,
 				B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */,
-				3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */,
 				3F2EC2EC2BA134E3001DC1F5 /* SignupView.swift in Sources */,
+				3FA9FB072BA1429C008A2C43 /* CommentsStructs.swift in Sources */,
 				3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */,
-				3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
+				3FC3529B2BA1457A0067D369 /* EditProfileStructs.swift in Sources */,
+				3FA9FB032BA140E5008A2C43 /* LoginStructs.swift in Sources */,
+				3FC3529F2BA146D10067D369 /* PulseHelperResponseStructs.swift in Sources */,
+				3FA9FB092BA14304008A2C43 /* CreatePostStructs.swift in Sources */,
 				3F2EC2EA2BA12CCA001DC1F5 /* ProfileView.swift in Sources */,
 				3F6382AC2B96A0F400DBF789 /* LoginView.swift in Sources */,
+				3FA9FB052BA141A5008A2C43 /* HomeStructs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

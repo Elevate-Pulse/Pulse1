@@ -36,8 +36,8 @@ struct SignupView: View {
                 TextField_Base(typeOfText: "Name", text: $name)
                 TextField_Base(typeOfText: "Email", text: $name)
                 TextField_Base(typeOfText: "Dropdown for select neighborhood", text: $name)
-                TextField_Base(typeOfText: "Create password", text: $name)
-                TextField_Base(typeOfText: "Repeat password", text: $name)
+                SecureField_Base(typeOfText: "Create password", text: $name)
+                SecureField_Base(typeOfText: "Repeat password", text: $name)
                 
                 Button(action: {
                                 print("Signed up")

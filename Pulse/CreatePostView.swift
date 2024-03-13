@@ -15,14 +15,14 @@ struct CreatePostView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                     
-                    TypeInSubject(subjectText: $subjectText) //find in structs_textFields
+                    TypeInSubject(subjectText: $subjectText)
                         .padding(.vertical, -10)
                     VStack(spacing: 0) {
                         Text("Tags")
                             .font(.custom("Poppins-Light", size: 24))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 10)
-                        AllTagButtons() //find in structs_buttons
+                        AllTagButtons() //implemented in HomeStructs
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.vertical, 10)
                     }
@@ -46,10 +46,10 @@ struct CreatePostView: View {
                             .foregroundColor(Color(UIColor.darkGray))
                             .padding(.leading, 10)
                         Spacer()
-                        AIButton() //find in structs_buttons
+                        AIButton()
                             .padding(.trailing, 10)
                     }
-                    ImportFileButton() //find in structs_buttons
+                    ImportFileButton()
                     Button(action: {
                         print("Post button tapped")
                     }) {

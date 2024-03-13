@@ -62,12 +62,12 @@ class Tag {
 }
 
 
-struct classes: View {
+struct Classes: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    classes()
+    Classes()
 }
