@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2EC2E82BA10B44001DC1F5 /* classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2E72BA10B44001DC1F5 /* classes.swift */; };
+		3F2EC2EA2BA12CCA001DC1F5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2E92BA12CCA001DC1F5 /* ProfileView.swift */; };
+		3F2EC2EC2BA134E3001DC1F5 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2EB2BA134E3001DC1F5 /* SignupView.swift */; };
+		3F2EC2F02BA1359D001DC1F5 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F2EC2EF2BA1359D001DC1F5 /* Poppins-Light.ttf */; };
+		3F2EC2F22BA13A73001DC1F5 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EC2F12BA13A73001DC1F5 /* EditProfileView.swift */; };
 		3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3F5ADE442B9FBFA300E3FD44 /* .gitignore */; };
 		3F5ADE472B9FC1D300E3FD44 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */; };
 		3F5ADE492B9FC1F400E3FD44 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */; };
@@ -47,6 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F2EC2E72BA10B44001DC1F5 /* classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classes.swift; sourceTree = "<group>"; };
+		3F2EC2E92BA12CCA001DC1F5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		3F2EC2EB2BA134E3001DC1F5 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		3F2EC2EF2BA1359D001DC1F5 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		3F2EC2F12BA13A73001DC1F5 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		3F5ADE442B9FBFA300E3FD44 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
@@ -124,15 +134,20 @@
 			children = (
 				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
 				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
+				3F2EC2EF2BA1359D001DC1F5 /* Poppins-Light.ttf */,
 				3FD342192B9FD13700796269 /* Info.plist */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
 				3F6382A62B96A0F400DBF789 /* LoginView.swift */,
+				3F2EC2EB2BA134E3001DC1F5 /* SignupView.swift */,
 				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
-				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
 				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
-				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
+				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
+				3F2EC2E92BA12CCA001DC1F5 /* ProfileView.swift */,
+				3F2EC2F12BA13A73001DC1F5 /* EditProfileView.swift */,
 				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
+				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
+				3F2EC2E72BA10B44001DC1F5 /* classes.swift */,
 				3F6382A42B96A0F400DBF789 /* structs_buttons.swift */,
 				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
 				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
@@ -272,6 +287,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2EC2F02BA1359D001DC1F5 /* Poppins-Light.ttf in Resources */,
 				B231E5972B9689B1006B1C4A /* Preview Assets.xcassets in Resources */,
 				3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */,
 				3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */,
@@ -303,15 +319,19 @@
 			files = (
 				3F5ADE492B9FC1F400E3FD44 /* CreatePostView.swift in Sources */,
 				3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */,
+				3F2EC2F22BA13A73001DC1F5 /* EditProfileView.swift in Sources */,
 				3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */,
 				3F5ADE472B9FC1D300E3FD44 /* CommentsView.swift in Sources */,
 				3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */,
 				3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */,
+				3F2EC2E82BA10B44001DC1F5 /* classes.swift in Sources */,
 				B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */,
 				3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */,
+				3F2EC2EC2BA134E3001DC1F5 /* SignupView.swift in Sources */,
 				3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */,
 				3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
+				3F2EC2EA2BA12CCA001DC1F5 /* ProfileView.swift in Sources */,
 				3F6382AC2B96A0F400DBF789 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

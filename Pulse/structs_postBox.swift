@@ -22,7 +22,7 @@ struct PfpName: View {
                     .foregroundColor(Color.black)
                 Text(name)
                     .foregroundColor(Color.black)
-                    .font(.custom("Poppins-Medium", size: fontSize))
+                    .font(.custom("Poppins-Light", size: fontSize))
             }
         }
     }
@@ -44,7 +44,7 @@ struct PostBox_Main: View {
                 HStack {
                     Spacer()
                     Text(date)
-                        .font(.custom("Poppins-Medium", size: 15))
+                        .font(.custom("Poppins-Light", size: 15))
                         .foregroundColor(Color(UIColor.darkGray))
                         .padding(.trailing, 10)
                 }
@@ -55,7 +55,7 @@ struct PostBox_Main: View {
                 .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .font(.custom("Poppins-Medium", size: 18))
+                .font(.custom("Poppins-Light", size: 18))
 
             
             ScrollView(.horizontal, showsIndicators: false) {
@@ -85,6 +85,8 @@ struct PostBox_Main: View {
 }
 
 struct PostBox_Trending: View {
+    let height: CGFloat
+    let color: Color
     let bodyText: String
     let name: String
     let fontSize: CGFloat
@@ -94,15 +96,14 @@ struct PostBox_Trending: View {
         }) {
             ZStack(alignment: .topLeading) {
                 RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(Color.red, lineWidth: 2)
-                    .frame(width: 225, height: 150)
+                    .strokeBorder(color, lineWidth: 2)
+                    .frame(width: 225, height: height)
                     .layoutPriority(1)
-                    .foregroundColor(.red)
                 VStack(alignment: .leading, spacing: 1) {
                     PfpName(name: name, fontSize: fontSize)
                         .padding(.vertical, 6)
                     Text(bodyText)
-                        .font(.custom("Poppins-Medium", size: 16))
+                        .font(.custom("Poppins-Light", size: 16))
                         .padding([.vertical, .horizontal], 8)
                         .foregroundColor(Color.black)
                         .multilineTextAlignment(.leading)
@@ -126,7 +127,7 @@ struct aComment: View {
                 HStack {
                     Spacer()
                     Text(date)
-                        .font(.custom("Poppins-Medium", size: 15))
+                        .font(.custom("Poppins-Light", size: 15))
                         .foregroundColor(Color(UIColor.darkGray))
                         .padding(.trailing, 10)
                 }
@@ -137,12 +138,12 @@ struct aComment: View {
                 .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                .font(.custom("Poppins-Medium", size: 16))
+                .font(.custom("Poppins-Light", size: 16))
             Button(action: {
                 print("Replies tapped on")
             }) {
                 Text("\(numReplies) \(numReplies == 1 ? "reply" : "replies")")
-                    .font(.custom("Poppins-Medium", size: 16))
+                    .font(.custom("Poppins-Light", size: 16))
                     .foregroundColor(Color(UIColor.darkGray))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
@@ -159,7 +160,7 @@ struct structs_postBox_Previews: PreviewProvider {
             Divider()
             PostBox_Main(name: "danny yao", date: "Feb 26th, 2024", bodyText: "First LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst Last Last Last", commentCount: 1, sentCount: 2, bookmarkCount: 3)
             Divider()
-            PostBox_Trending(bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
+            PostBox_Trending(height: 150, color: .red, bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
             Divider()
             aComment(name: "bob bob", date: "Feb 299th, 2024", numReplies: 10)
         }

@@ -19,7 +19,7 @@ struct CommentsView: View {
                     }
                     .padding()
                     Text("Comments")
-                        .font(.custom("Poppins-Medium", size: 24))
+                        .font(.custom("Poppins-Light", size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding()
                 }

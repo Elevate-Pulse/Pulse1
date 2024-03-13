@@ -12,17 +12,17 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Hello, \(name)")
                         .bold()
-                        .font(.custom("Poppins-Medium", size: 24))
+                        .font(.custom("Poppins-Light", size: 24))
                     Text("Trending")
-                        .font(.custom("Poppins-Medium", size: 24))
+                        .font(.custom("Poppins-Light", size: 24))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.horizontal, .vertical], 10)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 5) {
-                        PostBox_Trending(bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //find in structs_postBox
-                        PostBox_Trending(bodyText: "haha", name: "not peter", fontSize: 21) //find in structs_postBox
-                        PostBox_Trending(bodyText: "test", name: "hi bye", fontSize: 21) //find in structs_postBox
+                        PostBox_Trending(height: 150, color: .red, bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //find in structs_postBox
+                        PostBox_Trending(height: 150, color: .red, bodyText: "haha", name: "not peter", fontSize: 21) //find in structs_postBox
+                        PostBox_Trending(height: 150, color: .red, bodyText: "test", name: "hi bye", fontSize: 21) //find in structs_postBox
                     }
                 }
                 .padding(.horizontal, 10)

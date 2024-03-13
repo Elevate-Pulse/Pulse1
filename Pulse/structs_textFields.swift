@@ -63,7 +63,7 @@ struct QuestionTextfield: View {
                 .padding(.horizontal)
                 .padding(.vertical, -2)
                 .foregroundColor(Color(UIColor.darkGray))
-                .font(.custom("Poppins-Medium", size: 16))
+                .font(.custom("Poppins-Light", size: 16))
             ZStack(alignment: .topLeading) {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(UIColor.darkGray), lineWidth: 2)
@@ -73,12 +73,58 @@ struct QuestionTextfield: View {
                     .padding([.horizontal, .vertical], 10)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(Color(UIColor.darkGray))
-                    .font(.custom("Poppins-Medium", size: 16))
+                    .font(.custom("Poppins-Light", size: 16))
             }
             .padding([.horizontal, .vertical], 10)
         }
     }
 }
+
+struct TextField_Lined: View {
+    let defaultString: String
+    @Binding var text: String
+
+    var body: some View {
+        TextField(defaultString, text: $text)
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            .frame(height: 50) // Adjust the height as needed
+            .font(.custom("Poppins-Medium", size: 21))
+            .background(
+                VStack {
+                    Spacer()
+                    Rectangle()
+                        .frame(height: 3)
+                        .foregroundColor(Color(UIColor.darkGray))
+                }
+            )
+            .frame(width: 180)
+    }
+}
+
+struct SecureField_Lined: View {
+    let defaultString: String
+    @Binding var text: String
+
+    var body: some View {
+        SecureField(defaultString, text: $text)
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            .frame(height: 50) // Adjust the height as needed
+            .font(.custom("Poppins-Medium", size: 16))
+            .background(
+                VStack {
+                    Spacer()
+                    Rectangle()
+                        .frame(height: 3)
+                        .foregroundColor(Color(UIColor.darkGray))
+                }
+            )
+            .frame(width: 180)
+    }
+}
+
+
 
 
 struct structs_textFields_Previews: PreviewProvider {
@@ -92,6 +138,10 @@ struct structs_textFields_Previews: PreviewProvider {
         TypeInSubject(subjectText: $text)
             Divider()
             QuestionTextfield(height: 75, question: "What happened?", text: $text)
+            Divider()
+            TextField_Lined(defaultString: "Insert string", text: $text)
+            Divider()
+            SecureField_Lined(defaultString: "Insert pw", text: $text)
         }
     }
 }

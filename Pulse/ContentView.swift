@@ -7,8 +7,8 @@
 
 /*
 To-do list:
- -Info button has awkward positioning in createPost so how do I turn it into a TextField
  -There needs to be an expand/collapse button for posts longer than 3 lines
+ -TabBar looks ugly when u scroll down on some screens
  */
 
 import SwiftUI
@@ -20,7 +20,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-            Text("")
+            CreatePostView()
                 .tabItem {
                     Image(systemName: "plus")
                 }
@@ -28,12 +28,11 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "chart.bar")
                 }
-            Text("")
+            ProfileView()
                 .tabItem {
                     Image(systemName: "person")
             }
         }
-        
     }
 }
 

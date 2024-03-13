@@ -4,8 +4,10 @@
 
 import SwiftUI
 
-struct LoginView: View {
-    @State private var username = ""
+struct SignupView: View {
+    @State private var name = ""
+    @State private var email = ""
+    @State private var neighborhood = ""
     @State private var password = ""
     var body: some View {
         ZStack {
@@ -31,12 +33,16 @@ struct LoginView: View {
                                         .font(.custom("Poppins-Light", size: 24))
                                 }
                 }
-                TextField_Base(typeOfText: "Email", text: $username) //find in structs_textFields
-                SecureField_Base(text: $password) //find in structs_textFields
+                TextField_Base(typeOfText: "Name", text: $name)
+                TextField_Base(typeOfText: "Email", text: $name)
+                TextField_Base(typeOfText: "Dropdown for select neighborhood", text: $name)
+                TextField_Base(typeOfText: "Create password", text: $name)
+                TextField_Base(typeOfText: "Repeat password", text: $name)
+                
                 Button(action: {
-                                print("Logged in")
+                                print("Signed up")
                             }) {
-                                Text("Login")
+                                Text("Sign up")
                                     .foregroundColor(Color.white)
                                     .font(.custom("Poppins-Light", size: 21))
                                     .padding()
@@ -46,11 +52,12 @@ struct LoginView: View {
                             }
                 
                 Button(action: {
-                                print("Skipped")
+                                print("already had an acc")
                             }) {
-                                Text("Skip")
+                                Text("Already have an account?")
                                     .foregroundColor(Color.black)
-                                    .font(.custom("Poppins-Light", size: 21))
+                                    .font(.custom("Poppins-Light", size: 16))
+                                    .underline()
                             }
             }
             .padding()
@@ -59,5 +66,5 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView()
+    SignupView()
 }

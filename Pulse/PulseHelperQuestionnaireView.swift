@@ -15,32 +15,26 @@ struct PulseHelperQuestionnaireView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: -20) {
-                Button(action: {
-                    print("Going back")
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(Color(UIColor.systemGray))
-                }
+            Text("Hi, I'm your Pulse Helper")
+                .font(.custom("Poppins-Light", size: 24))
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
-                Text("Hi, I'm your Pulse Helper")
-                    .font(.custom("Poppins-Medium", size: 24))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-            }
             
-            VStack(spacing: -25) {
+            VStack(spacing: -10) {
                 Text("Please answer the questions below and I can create a post for you")
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.custom("Poppins-Light", size: 15))
                     .padding()
                 .foregroundColor(Color.black)
                 Text("You may type in phrases or in another language")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
+                    .fixedSize(horizontal: false, vertical: true)
+                    //.frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 10)
                     .foregroundColor(Color(UIColor.systemGray))
-                    .font(.custom("Poppins-Medium", size: 155))
+                    .font(.custom("Poppins-Light", size: 15))
             }
+            .padding(.vertical, 10)
             VStack(spacing: 1) {
                 QuestionTextfield(height: 75, question: "What happened?", text: $whatHappened) //find in structs_textFields
                 QuestionTextfield(height: 75, question: "When did this happen?", text: $whenHappened) //find in structs_textFields
@@ -51,7 +45,7 @@ struct PulseHelperQuestionnaireView: View {
         }
 
                 Spacer()
-                GenerateButton()
+        GenerateButton(response: "ai response 3")
         }
     }
 

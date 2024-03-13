@@ -12,28 +12,31 @@
 import SwiftUI
 
 struct AIButton: View {
+    @State private var showPHQV = false
     var body: some View {
         Button(action: {
             print("AI generator tapped")
+            
+            showPHQV = true
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 50).stroke(Color(UIColor.darkGray), lineWidth: 2)
                     .frame(width: 175, height: 40)
-                    //.padding(.leading, 215)
-                    .layoutPriority(1)
                 HStack {
                     Image(systemName: "bolt.heart")
-                        //.padding(.leading, 215)
                         .foregroundColor(Color.black)
                     Text("Pulse Assistant")
                         .foregroundColor(Color(UIColor.darkGray))
-                        .font(.custom("Poppins-Medium", size: 16))
+                        .font(.custom("Poppins-Light", size: 16))
                 }
             }
-            
+        }
+        .sheet(isPresented: $showPHQV) {
+            PulseHelperQuestionnaireView()
         }
     }
 }
+
 
 struct TagButton: View {
     let tag: String
@@ -54,7 +57,7 @@ struct TagButton: View {
                         .cornerRadius(50)
                 )
                 .foregroundColor(isSelected ? Color.white : Color(UIColor.darkGray))
-                .font(.custom("Poppins-Medium", size: 16))
+                .font(.custom("Poppins-Light", size: 16))
         }
         .animation(.default, value: isSelected)
     }
@@ -86,12 +89,12 @@ struct ImportFileButton: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
-            .frame(width: UIScreen.main.bounds.width - 20, height: 125)
+            .frame(width: UIScreen.main.bounds.width - 20, height: 100)
             .overlay(
                 VStack {
-                    Text("What do you want to add?")
+                    Text("Add media")
                         .foregroundColor(Color(UIColor.darkGray))
-                        .font(.custom("Poppins-Medium", size: 16))
+                        .font(.custom("Poppins-Light", size: 16))
                     HStack(spacing: 50) {
                         Button(action: {
                             print("link tapped")
@@ -104,7 +107,7 @@ struct ImportFileButton: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                 Text("Link")
                                     .foregroundColor(Color(UIColor.darkGray))
-                                    .font(.custom("Poppins-Medium", size: 16))
+                                    .font(.custom("Poppins-Light", size: 16))
                             }
                         }
                         Button(action: {
@@ -118,7 +121,7 @@ struct ImportFileButton: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                 Text("Media")
                                     .foregroundColor(Color(UIColor.darkGray))
-                                    .font(.custom("Poppins-Medium", size: 16))
+                                    .font(.custom("Poppins-Light", size: 16))
                             }
                         }
                         Button(action: {
@@ -132,7 +135,7 @@ struct ImportFileButton: View {
                                     .foregroundColor(Color(UIColor.darkGray))
                                 Text("Poll")
                                     .foregroundColor(Color(UIColor.darkGray))
-                                    .font(.custom("Poppins-Medium", size: 16))
+                                    .font(.custom("Poppins-Light", size: 16))
                             }
                         }
                     }
@@ -173,9 +176,12 @@ struct StylePickerButton: View {
 }
 
 struct GenerateButton: View {
+    @State private var showPHRV = false
+    let response: String
     var body: some View {
         Button(action: {
             print("Generate button tapped")
+            showPHRV = true
         }) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(UIColor.darkGray))
@@ -183,13 +189,18 @@ struct GenerateButton: View {
                 .overlay(
                     Text("Generate")
                         .foregroundColor(Color.white)
-                        .font(.custom("Poppins-Medium", size: 16))
+                        .font(.custom("Poppins-Light", size: 16))
                 )
+        }
+        .sheet(isPresented: $showPHRV) {
+            PulseHelperResponseView(bodyText: "ai response")
         }
     }
 }
 
+
 struct RegenOrGoodButtons: View {
+    
     var body: some View {
         HStack {
             Button(action: {
@@ -202,10 +213,11 @@ struct RegenOrGoodButtons: View {
                     .overlay(
                         Text("Regenerate")
                             .foregroundColor(Color(UIColor.darkGray))
+                            .font(.custom("Poppins-Light", size: 16))
                     )
         }
             Button(action: {
-                print("Generate button tapped")
+                print("Looks good button tapped")
             }) {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(UIColor.darkGray))
@@ -213,8 +225,26 @@ struct RegenOrGoodButtons: View {
                     .overlay(
                         Text("Looks good")
                             .foregroundColor(Color.white)
+                            .font(.custom("Poppins-Light", size: 16))
                     )
             }
+        }
+    }
+}
+
+struct EditButton: View {
+    var body: some View {
+        Button(action: {
+            print("Edit button tapped")
+        }) {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(UIColor.darkGray))
+                .frame(width: UIScreen.main.bounds.width - 300, height: 50)
+                .overlay(
+                    Text("Edit")
+                        .foregroundColor(Color.white)
+                        .font(.custom("Poppins-Light", size: 16))
+                )
         }
     }
 }
@@ -234,9 +264,11 @@ struct structs_buttons_Previews: PreviewProvider {
             Divider()
             StylePickerButton()
             Divider()
-            GenerateButton()
+            GenerateButton(response: "ai response")
             Divider()
             RegenOrGoodButtons()
+            Divider()
+            EditButton()
         }
     }
 }
