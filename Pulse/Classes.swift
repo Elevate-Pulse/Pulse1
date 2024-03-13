@@ -1,19 +1,14 @@
-//
 //  classes.swift
-//  Pulse
-//
-//  Created by student on 3/12/24.
-//
 
 import SwiftUI
 
 class User: Identifiable {
     var id: UUID
     var name: String
-    var pfp: Image
+    var pfp: URL
     //var bookmarks: [Post]
     //var posts: [Post]
-    init(name: String, pfp: Image) {
+    init(name: String, pfp: URL) {
         self.id = UUID()
         self.name = name
         self.pfp = pfp
@@ -27,7 +22,7 @@ class User: Identifiable {
 }
 
 let userProfilePic = Image(systemName: "person.fill")
-let user1 = User(name: "Peter Guan", pfp: userProfilePic)
+let user1 = User(name: "Peter Guan", pfp: URL(string: "https://pbs.twimg.com/profile_images/1592590631683198977/Ouiq1uCA_400x400.jpg")!)
 
 class Post {
     var user: User
