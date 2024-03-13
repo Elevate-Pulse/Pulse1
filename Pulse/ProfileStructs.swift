@@ -7,9 +7,7 @@ import SwiftUI
 
 struct EditButton: View {
     var body: some View {
-        Button(action: {
-            print("Edit button tapped")
-        }) {
+        NavigationLink(destination: EditProfileView()) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(UIColor.darkGray))
                 .frame(width: UIScreen.main.bounds.width - 300, height: 50)

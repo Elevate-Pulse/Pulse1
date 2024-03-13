@@ -6,6 +6,8 @@
  -TagButton: a singular tag
  -AllTagButtons: every tag together in the horizontal scrollview
  -AIButton: Pulse Assistant button
+ -ReactionButtons: Emoji reactions
+ -ReactionButtonHelper
  -InteractButtons: Combo of comments/sent/bookmark button
  -CommentButton
  -SentButton
@@ -78,9 +80,15 @@ struct PostBox_Main: View {
                         .foregroundColor(Color.green)
                 }
             }
-            AIButton()
-                .padding(.leading, UIScreen.main.bounds.width - 190)
-            InteractButtons(commentCount: commentCount, sentCount: sentCount, bookmarkCount: bookmarkCount)
+            ReactionButtons()
+                .padding(.horizontal, 10)
+                .padding(.vertical, 8)
+            HStack {
+                InteractButtons(commentCount: commentCount, sentCount: sentCount, bookmarkCount: bookmarkCount)
+                Spacer()
+                AIButton()
+                    .padding(.trailing, 10)
+            }
             Divider()
         }
     }
@@ -118,11 +126,15 @@ struct PostBox_Trending: View {
 
 struct TagButton: View {
     let tag: String
-    @State private var isSelected: Bool = false
+    @Binding var selectedTags: Set<String>
     
     var body: some View {
         Button(action: {
-            isSelected.toggle()
+            if selectedTags.contains(tag) {
+                selectedTags.remove(tag)
+            } else {
+                selectedTags.insert(tag)
+            }
             print("tag button tapped")
         }) {
             Text(tag)
@@ -131,37 +143,32 @@ struct TagButton: View {
                 .background(
                     RoundedRectangle(cornerRadius: 50)
                         .stroke(Color(UIColor.darkGray), lineWidth: 3)
-                        .background(isSelected ? Color(UIColor.darkGray) : Color.clear)
+                        .background(selectedTags.contains(tag) ? Color(UIColor.darkGray) : Color.clear)
                         .cornerRadius(50)
                 )
-                .foregroundColor(isSelected ? Color.white : Color(UIColor.darkGray))
+                .foregroundColor(selectedTags.contains(tag) ? Color.white : Color(UIColor.darkGray))
                 .font(.custom("Poppins-Light", size: 16))
         }
-        .animation(.default, value: isSelected)
     }
 }
 
 struct AllTagButtons: View {
+    @State private var selectedTags: Set<String> = []
+
     var body: some View {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    TagButton(tag: "#communityhealth")
-                    TagButton(tag: "#crime")
-                    TagButton(tag: "#event")
-                    TagButton(tag: "#homelessness")
-                    TagButton(tag: "#infrastructure")
-                    TagButton(tag: "#noisepullution")
-                    TagButton(tag: "#pothole")
-                    TagButton(tag: "#publicspaces")
-                    TagButton(tag: "#safety")
-                    TagButton(tag: "#education")
-                    TagButton(tag: "#shooting")
-                    TagButton(tag: "#transportation")
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: -15) {
+                ForEach(tags, id: \.self) { tag in
+                    TagButton(tag: tag, selectedTags: $selectedTags)
                 }
                 .padding(.horizontal, 10)
             }
+        }
     }
+
+    let tags = ["#communityhealth", "#crime", "#event", "#homelessness", "#infrastructure", "#noisepullution", "#pothole", "#publicspaces", "#safety", "#education", "#shooting", "#transportation"]
 }
+
 
 struct AIButton: View {
     @State private var showPHQV = false
@@ -173,7 +180,7 @@ struct AIButton: View {
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 50).stroke(Color(UIColor.darkGray), lineWidth: 2)
-                    .frame(width: 175, height: 40)
+                    .frame(width: 175, height: 35)
                 HStack {
                     Image(systemName: "bolt.heart")
                         .foregroundColor(Color.black)
@@ -185,6 +192,113 @@ struct AIButton: View {
         }
         .sheet(isPresented: $showPHQV) {
             PulseHelperQuestionnaireView()
+        }
+    }
+}
+
+struct ReactionButtons: View {
+    @State private var happyCount: Int = 1
+    @State private var congratsCount: Int = 0
+    @State private var surprisedCount: Int = 0
+    @State private var annoyedCount: Int = 0
+    @State private var sadCount: Int = 0
+    @State private var madCount: Int = 0
+    @State private var selectedReactions: Set<String> = []
+
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ReactionButtonHelper(icon: "😄", count: happyCount, reaction: "Happy", isSelected: selectedReactions.contains("Happy")) {
+                    toggleReaction("Happy")
+                }
+                ReactionButtonHelper(icon: "🙌", count: congratsCount, reaction: "Congrats", isSelected: selectedReactions.contains("Congrats")) {
+                    toggleReaction("Congrats")
+                }
+                ReactionButtonHelper(icon: "😱", count: surprisedCount, reaction: "Surprised", isSelected: selectedReactions.contains("Surprised")) {
+                    toggleReaction("Surprised")
+                }
+                ReactionButtonHelper(icon: "😒", count: annoyedCount, reaction: "Annoyed", isSelected: selectedReactions.contains("Annoyed")) {
+                    toggleReaction("Annoyed")
+                }
+                ReactionButtonHelper(icon: "😢", count: sadCount, reaction: "Sad", isSelected: selectedReactions.contains("Sad")) {
+                    toggleReaction("Sad")
+                }
+                ReactionButtonHelper(icon: "😡", count: madCount, reaction: "Mad", isSelected: selectedReactions.contains("Mad")) {
+                    toggleReaction("Mad")
+                }
+            }
+        }
+    }
+
+    private func toggleReaction(_ reaction: String) {
+        if selectedReactions.contains(reaction) {
+            selectedReactions.remove(reaction)
+            decrementCount(for: reaction)
+        } else {
+            selectedReactions.insert(reaction)
+            incrementCount(for: reaction)
+        }
+
+        print("\(reaction) reaction toggled")
+    }
+
+    private func incrementCount(for reaction: String) {
+        switch reaction {
+            case "Happy":
+                happyCount += 1
+            case "Congrats":
+                congratsCount += 1
+            case "Surprised":
+                surprisedCount += 1
+            case "Annoyed":
+                annoyedCount += 1
+            case "Sad":
+                sadCount += 1
+            case "Mad":
+                madCount += 1
+            default:
+                break
+        }
+    }
+
+    private func decrementCount(for reaction: String) {
+        switch reaction {
+            case "Happy":
+                happyCount -= 1
+            case "Congrats":
+                congratsCount -= 1
+            case "Surprised":
+                surprisedCount -= 1
+            case "Annoyed":
+                annoyedCount -= 1
+            case "Sad":
+                sadCount -= 1
+            case "Mad":
+                madCount -= 1
+            default:
+                break
+        }
+    }
+}
+
+struct ReactionButtonHelper: View {
+    let icon: String
+    let count: Int
+    let reaction: String
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 50)
+                    .strokeBorder(Color(UIColor.darkGray), lineWidth: 1)
+                    .background(RoundedRectangle(cornerRadius: 50).fill(isSelected ? Color(UIColor.darkGray) : Color.clear))
+                    .frame(width: 55, height: 30)
+                Text("\(icon) \(count)")
+                    .foregroundColor(isSelected ? .white : Color(UIColor.darkGray))
+                    .font(.custom("Poppins-Light", size: 16))
+            }
         }
     }
 }
@@ -261,11 +375,14 @@ struct BookmarkButton: View {
 struct HomeStructs_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
+            
             PfpName(name: "first last", fontSize: 21)
             Divider()
+            
             PostBox_Main(name: "danny yao", date: "Feb 26th, 2024", bodyText: "First LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst Last Last Last", commentCount: 1, sentCount: 2, bookmarkCount: 3)
             Divider()
             PostBox_Trending(height: 150, color: .red, bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
+             /*
             Divider()
             TagButton(tag: "#lol")
             Divider()
@@ -273,7 +390,10 @@ struct HomeStructs_Previews: PreviewProvider {
             Divider()
             AIButton()
             Divider()
+              */
             InteractButtons(commentCount: 23, sentCount: 223, bookmarkCount: 32)
+            Divider()
+            ReactionButtons()
         }
     }
 }

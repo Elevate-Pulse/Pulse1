@@ -7,15 +7,27 @@
 
 import SwiftUI
 
-class User {
+class User: Identifiable {
+    var id: UUID
     var name: String
     var pfp: Image
     //var bookmarks: [Post]
+    //var posts: [Post]
     init(name: String, pfp: Image) {
+        self.id = UUID()
         self.name = name
         self.pfp = pfp
+        //self.bookmarks = bookmarks
+        //self.posts = posts
+    }
+    
+    func getName() -> String {
+        return name
     }
 }
+
+let userProfilePic = Image(systemName: "person.fill")
+let user1 = User(name: "Peter Guan", pfp: userProfilePic)
 
 class Post {
     var user: User

@@ -9,6 +9,7 @@
 To-do list:
  -There needs to be an expand/collapse button for posts longer than 3 lines
  -TabBar looks ugly when u scroll down on some screens
+ -Ugly blue back button when I go back from the edit button in profile
  */
 
 import SwiftUI
