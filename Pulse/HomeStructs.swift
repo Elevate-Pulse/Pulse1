@@ -39,6 +39,7 @@ struct PostBox_Main: View {
     let commentCount: Int
     let sentCount: Int
     let bookmarkCount: Int
+    
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -197,7 +198,7 @@ struct AIButton: View {
 }
 
 struct ReactionButtons: View {
-    @State private var happyCount: Int = 1
+    @State private var happyCount: Int = 0
     @State private var congratsCount: Int = 0
     @State private var surprisedCount: Int = 0
     @State private var annoyedCount: Int = 0

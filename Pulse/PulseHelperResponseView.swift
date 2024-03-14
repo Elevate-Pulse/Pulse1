@@ -11,7 +11,7 @@ struct PulseHelperResponseView: View {
     @State var bodyText: String
     var body: some View {
         VStack(spacing: 0) {
-            Text("Pulse Helper")
+            Text("Ripple")
                 .font(.custom("Poppins-Light", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()

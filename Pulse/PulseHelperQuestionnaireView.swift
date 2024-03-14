@@ -10,7 +10,7 @@ struct PulseHelperQuestionnaireView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("Hi, I'm your Pulse Helper")
+            Text("Hi, I'm Ripple")
                 .font(.custom("Poppins-Light", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()

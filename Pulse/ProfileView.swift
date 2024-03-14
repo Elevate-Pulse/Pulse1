@@ -72,7 +72,7 @@ struct ProfileView: View {
                             }
                         }
                         .padding(.horizontal, 15)
-                        Text("Pulse Helper responses")
+                        Text("Ripple's responses")
                             .font(.custom("Poppins-Light", size: 21))
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 10)
