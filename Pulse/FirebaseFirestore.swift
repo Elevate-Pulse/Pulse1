@@ -25,26 +25,37 @@ struct pushToFirebase: View {
 struct RegisterTest: View {
   @State var email: String = ""
   @State var pw: String = ""
-  var body: some View {
-    VStack {
-      TextField("Email", text: $email)
-      SecureField("Password", text: $pw)
-      Button(action: register) {
-        Text("Register")
-          .foregroundColor(.white)
-          .frame(width: 200, height: 50)
-          .background(Color.blue)
-      }
+    let registerViewModel = RegisterViewModel()
+    var body: some View {
+        VStack {
+            TextField("Email", text: $email)
+            SecureField("Password", text: $pw)
+            Button(action: {
+                registerViewModel.register(email: email, pw: pw) // Call the register method with email and password
+            }) {
+                Text("Register")
+            }
+        }
     }
-    .padding()
-  }
-  func register() {
-    Auth.auth().createUser(withEmail: email, password: pw) { result, error in
-      if let error = error {
-        print("Login error")
-      }
+}
+
+func register(email: String, pw: String) {
+    let registerViewModel = RegisterViewModel()
+    registerViewModel.register(email: email, pw: pw)
+}
+
+
+struct RegisterViewModel {
+    func register(email: String, pw: String) {
+        
+        Auth.auth().createUser(withEmail: email, password: pw) { result, error in
+            if let error = error {
+                print("Registration error:", error.localizedDescription)
+            } else {
+                print("Registration successful")
+            }
+        }
     }
-  }
 }
 
 

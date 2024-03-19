@@ -13,10 +13,6 @@
 		3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */; };
 		3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */; };
 		3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A12B96A0F300DBF789 /* HomeView.swift */; };
-		3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A22B96A0F300DBF789 /* structs_postBox.swift */; };
-		3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */; };
-		3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A42B96A0F400DBF789 /* structs_buttons.swift */; };
-		3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6382A52B96A0F400DBF789 /* structs_textFields.swift */; };
 		3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD342152B9FD12600796269 /* Poppins-Medium.ttf */; };
 		3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */; };
 		B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E58F2B9689B0006B1C4A /* PulseApp.swift */; };
@@ -26,7 +22,6 @@
 		B231E5A12B9689B1006B1C4A /* PulseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5A02B9689B1006B1C4A /* PulseTests.swift */; };
 		B231E5AB2B9689B1006B1C4A /* PulseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5AA2B9689B1006B1C4A /* PulseUITests.swift */; };
 		B231E5AD2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5AC2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift */; };
-		B256056D2BA10504002EB406 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B256056C2BA10504002EB406 /* GoogleService-Info.plist */; };
 		B25605702BA1059B002EB406 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B256056F2BA1059B002EB406 /* FirebaseAnalytics */; };
 		B25605722BA1059B002EB406 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = B25605712BA1059B002EB406 /* FirebaseAnalyticsOnDeviceConversion */; };
 		B25605742BA1059B002EB406 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B25605732BA1059B002EB406 /* FirebaseAnalyticsSwift */; };
@@ -55,6 +50,20 @@
 		B25605A22BA1059B002EB406 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B25605A12BA1059B002EB406 /* FirebaseStorage */; };
 		B25605A42BA1059B002EB406 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B25605A32BA1059B002EB406 /* FirebaseStorageCombine-Community */; };
 		B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25605A52BA105E5002EB406 /* SwiftUIView.swift */; };
+		FFBA0A3C2BA920FC0057F024 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FFBA0A3B2BA920FC0057F024 /* GoogleService-Info.plist */; };
+		FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */; };
+		FFBA0A402BA9225C0057F024 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3F2BA9225C0057F024 /* Classes.swift */; };
+		FFBA0A422BA922720057F024 /* CommentsStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A412BA922720057F024 /* CommentsStructs.swift */; };
+		FFBA0A442BA922A60057F024 /* CreatePostStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A432BA922A60057F024 /* CreatePostStructs.swift */; };
+		FFBA0A462BA922CD0057F024 /* EditProfileStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */; };
+		FFBA0A482BA922E00057F024 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A472BA922E00057F024 /* EditProfileView.swift */; };
+		FFBA0A4A2BA922EF0057F024 /* HomeStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A492BA922EF0057F024 /* HomeStructs.swift */; };
+		FFBA0A4C2BA9230C0057F024 /* LoginStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */; };
+		FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4D2BA923180057F024 /* LoginView.swift */; };
+		FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4F2BA923290057F024 /* ProfileView.swift */; };
+		FFBA0A522BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A512BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift */; };
+		FFBA0A542BA9236D0057F024 /* PulseHelperResponseStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A532BA9236D0057F024 /* PulseHelperResponseStructs.swift */; };
+		FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A552BA9238A0057F024 /* SignupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,10 +90,6 @@
 		3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperResponseView.swift; sourceTree = "<group>"; };
 		3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperQuestionnaireView.swift; sourceTree = "<group>"; };
 		3F6382A12B96A0F300DBF789 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		3F6382A22B96A0F300DBF789 /* structs_postBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_postBox.swift; sourceTree = "<group>"; };
-		3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_postInteractions.swift; sourceTree = "<group>"; };
-		3F6382A42B96A0F400DBF789 /* structs_buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_buttons.swift; sourceTree = "<group>"; };
-		3F6382A52B96A0F400DBF789 /* structs_textFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = structs_textFields.swift; sourceTree = "<group>"; };
 		3FD342152B9FD12600796269 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		3FD342192B9FD13700796269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -98,8 +103,21 @@
 		B231E5A62B9689B1006B1C4A /* PulseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PulseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B231E5AA2B9689B1006B1C4A /* PulseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseUITests.swift; sourceTree = "<group>"; };
 		B231E5AC2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B256056C2BA10504002EB406 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B25605A52BA105E5002EB406 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		FFBA0A3B2BA920FC0057F024 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestore.swift; sourceTree = "<group>"; };
+		FFBA0A3F2BA9225C0057F024 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		FFBA0A412BA922720057F024 /* CommentsStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsStructs.swift; sourceTree = "<group>"; };
+		FFBA0A432BA922A60057F024 /* CreatePostStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostStructs.swift; sourceTree = "<group>"; };
+		FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileStructs.swift; sourceTree = "<group>"; };
+		FFBA0A472BA922E00057F024 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		FFBA0A492BA922EF0057F024 /* HomeStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStructs.swift; sourceTree = "<group>"; };
+		FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStructs.swift; sourceTree = "<group>"; };
+		FFBA0A4D2BA923180057F024 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FFBA0A4F2BA923290057F024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		FFBA0A512BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperQuestionnaireStructs.swift; sourceTree = "<group>"; };
+		FFBA0A532BA9236D0057F024 /* PulseHelperResponseStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseHelperResponseStructs.swift; sourceTree = "<group>"; };
+		FFBA0A552BA9238A0057F024 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,19 +199,28 @@
 				3FD342192B9FD13700796269 /* Info.plist */,
 				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
 				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
+				FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
+				FFBA0A3F2BA9225C0057F024 /* Classes.swift */,
+				FFBA0A552BA9238A0057F024 /* SignupView.swift */,
+				FFBA0A4D2BA923180057F024 /* LoginView.swift */,
+				FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */,
+				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
+				FFBA0A472BA922E00057F024 /* EditProfileView.swift */,
+				FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */,
 				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
+				FFBA0A492BA922EF0057F024 /* HomeStructs.swift */,
 				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
+				FFBA0A432BA922A60057F024 /* CreatePostStructs.swift */,
 				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
+				FFBA0A412BA922720057F024 /* CommentsStructs.swift */,
 				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
+				FFBA0A512BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift */,
 				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
-				3F6382A42B96A0F400DBF789 /* structs_buttons.swift */,
-				3F6382A22B96A0F300DBF789 /* structs_postBox.swift */,
-				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
-				3F6382A52B96A0F400DBF789 /* structs_textFields.swift */,
+				FFBA0A532BA9236D0057F024 /* PulseHelperResponseStructs.swift */,
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
-				B256056C2BA10504002EB406 /* GoogleService-Info.plist */,
+				FFBA0A3B2BA920FC0057F024 /* GoogleService-Info.plist */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
 				B25605A52BA105E5002EB406 /* SwiftUIView.swift */,
 			);
@@ -366,7 +393,7 @@
 				3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */,
 				3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */,
 				B231E5942B9689B1006B1C4A /* Assets.xcassets in Resources */,
-				B256056D2BA10504002EB406 /* GoogleService-Info.plist in Resources */,
+				FFBA0A3C2BA920FC0057F024 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,17 +418,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFBA0A522BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift in Sources */,
+				FFBA0A482BA922E00057F024 /* EditProfileView.swift in Sources */,
+				FFBA0A462BA922CD0057F024 /* EditProfileStructs.swift in Sources */,
 				3F5ADE492B9FC1F400E3FD44 /* CreatePostView.swift in Sources */,
-				3F6382AB2B96A0F400DBF789 /* structs_textFields.swift in Sources */,
+				FFBA0A422BA922720057F024 /* CommentsStructs.swift in Sources */,
 				B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */,
+				FFBA0A442BA922A60057F024 /* CreatePostStructs.swift in Sources */,
 				3F6382A72B96A0F400DBF789 /* HomeView.swift in Sources */,
+				FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */,
 				3F5ADE472B9FC1D300E3FD44 /* CommentsView.swift in Sources */,
-				3F6382A92B96A0F400DBF789 /* structs_postInteractions.swift in Sources */,
+				FFBA0A4C2BA9230C0057F024 /* LoginStructs.swift in Sources */,
+				FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */,
 				3F5ADE4B2B9FC22400E3FD44 /* PulseHelperResponseView.swift in Sources */,
+				FFBA0A542BA9236D0057F024 /* PulseHelperResponseStructs.swift in Sources */,
+				FFBA0A402BA9225C0057F024 /* Classes.swift in Sources */,
 				B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */,
-				3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */,
+				FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */,
 				3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */,
-				3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */,
+				FFBA0A4A2BA922EF0057F024 /* HomeStructs.swift in Sources */,
+				FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
