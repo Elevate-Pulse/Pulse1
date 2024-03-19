@@ -26,7 +26,6 @@
 		B231E5A12B9689B1006B1C4A /* PulseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5A02B9689B1006B1C4A /* PulseTests.swift */; };
 		B231E5AB2B9689B1006B1C4A /* PulseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5AA2B9689B1006B1C4A /* PulseUITests.swift */; };
 		B231E5AD2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5AC2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift */; };
-		B256056D2BA10504002EB406 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B256056C2BA10504002EB406 /* GoogleService-Info.plist */; };
 		B25605702BA1059B002EB406 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B256056F2BA1059B002EB406 /* FirebaseAnalytics */; };
 		B25605722BA1059B002EB406 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = B25605712BA1059B002EB406 /* FirebaseAnalyticsOnDeviceConversion */; };
 		B25605742BA1059B002EB406 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B25605732BA1059B002EB406 /* FirebaseAnalyticsSwift */; };
@@ -55,6 +54,8 @@
 		B25605A22BA1059B002EB406 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B25605A12BA1059B002EB406 /* FirebaseStorage */; };
 		B25605A42BA1059B002EB406 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B25605A32BA1059B002EB406 /* FirebaseStorageCombine-Community */; };
 		B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25605A52BA105E5002EB406 /* SwiftUIView.swift */; };
+		BAD3CEDA2BA912A200D5A946 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD3CED92BA912A200D5A946 /* DashboardView.swift */; };
+		BAD3CEDC2BA912EE00D5A946 /* dashboard_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD3CEDB2BA912EE00D5A946 /* dashboard_data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,8 +99,9 @@
 		B231E5A62B9689B1006B1C4A /* PulseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PulseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B231E5AA2B9689B1006B1C4A /* PulseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseUITests.swift; sourceTree = "<group>"; };
 		B231E5AC2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B256056C2BA10504002EB406 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B25605A52BA105E5002EB406 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		BAD3CED92BA912A200D5A946 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		BAD3CEDB2BA912EE00D5A946 /* dashboard_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard_data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,8 @@
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
 				3F6382A12B96A0F300DBF789 /* HomeView.swift */,
 				3F5ADE482B9FC1F400E3FD44 /* CreatePostView.swift */,
+				BAD3CED92BA912A200D5A946 /* DashboardView.swift */,
+				BAD3CEDB2BA912EE00D5A946 /* dashboard_data.swift */,
 				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
 				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
 				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
@@ -193,7 +197,6 @@
 				3F6382A32B96A0F300DBF789 /* structs_postInteractions.swift */,
 				3F6382A52B96A0F400DBF789 /* structs_textFields.swift */,
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
-				B256056C2BA10504002EB406 /* GoogleService-Info.plist */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
 				B25605A52BA105E5002EB406 /* SwiftUIView.swift */,
 			);
@@ -366,7 +369,6 @@
 				3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */,
 				3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */,
 				B231E5942B9689B1006B1C4A /* Assets.xcassets in Resources */,
-				B256056D2BA10504002EB406 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +404,8 @@
 				3F6382A82B96A0F400DBF789 /* structs_postBox.swift in Sources */,
 				3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */,
 				3F6382AA2B96A0F400DBF789 /* structs_buttons.swift in Sources */,
+				BAD3CEDA2BA912A200D5A946 /* DashboardView.swift in Sources */,
+				BAD3CEDC2BA912EE00D5A946 /* dashboard_data.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
