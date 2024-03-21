@@ -41,7 +41,7 @@ struct EditProfileView: View {
                             TextField_Lined(defaultString: "", text: $name)
                             
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 24)
                         .padding(.vertical, 10)
                         HStack {
                             Text("Neighborhood")
@@ -50,7 +50,7 @@ struct EditProfileView: View {
                             TextField_Lined(defaultString: "dropdown", text: $email)
                             
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 24)
                         .padding(.vertical, 10)
                         HStack {
                             Text("Email")
@@ -59,7 +59,7 @@ struct EditProfileView: View {
                             TextField_Lined(defaultString: "", text: $email)
                             
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 24)
                         .padding(.vertical, 10)
                         HStack {
                             Text("Password")
@@ -68,7 +68,7 @@ struct EditProfileView: View {
                             SecureField_Lined(defaultString: "Current password", text: $oldPw)
                             
                         }
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, 24)
                         .padding(.vertical, 10)
                         HStack {
                             Text(".")

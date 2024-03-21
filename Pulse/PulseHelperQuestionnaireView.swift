@@ -9,23 +9,23 @@ struct PulseHelperQuestionnaireView: View {
     @State private var consequence: String = ""
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 10) {
             Text("Hi, I'm Ripple")
                 .font(.custom("Poppins-Light", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(.horizontal, 24)
             
-            VStack(spacing: -10) {
+            VStack(spacing: 10) {
                 Text("Please answer the questions below and I can create a post for you")
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.custom("Poppins-Light", size: 15))
-                    .padding()
+                    .padding(.horizontal, 24)
                 .foregroundColor(Color.black)
                 Text("You may type in phrases or in another language")
-                    .fixedSize(horizontal: false, vertical: true)
-                    //.frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 10)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
                     .foregroundColor(Color(UIColor.systemGray))
                     .font(.custom("Poppins-Light", size: 15))
             }

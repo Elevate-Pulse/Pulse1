@@ -17,11 +17,10 @@ struct ProfileView: View {
                     Text("Profile")
                         .font(.custom("Poppins-Light", size: 24))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
+                        .padding(.horizontal, 24)
                     Circle()
                         .frame(width: 100)
-                        .padding(.horizontal, 8)
-                        .foregroundColor(Color(UIColor.darkGray))
+                        .foregroundColor(.black)
                     HStack {
                         VStack {
                             VStack {
@@ -46,44 +45,44 @@ struct ProfileView: View {
                         }
                         EditButton()
                     }
-                    .padding([.vertical, .horizontal], 10)
+                    .padding([.vertical, .horizontal], 24)
                     ScrollView(.vertical, showsIndicators: false) {
                         Text("Posts you saved")
                             .font(.custom("Poppins-Light", size: 21))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 24)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //implemented in HomeView
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
                             }
                         }
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 24)
                         Text("Posts you made")
                             .font(.custom("Poppins-Light", size: 21))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 24)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //implemented in HomeView
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
                             }
                         }
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 24)
                         Text("Ripple's responses")
                             .font(.custom("Poppins-Light", size: 21))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal, 10)
+                            .padding(.horizontal, 24)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "haha", name: "not peter", fontSize: 21) //implemented in HomeView
-                                PostBox_Trending(height: 110, color: Color(UIColor.darkGray), bodyText: "test", name: "hi bye", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
+                                PostBox_Trending(height: 100, gradientColors: [Color(UIColor.darkGray)], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21) //implemented in HomeView
                             }
                         }
-                        .padding(.horizontal, 15)
+                        .padding(.horizontal, 24)
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)

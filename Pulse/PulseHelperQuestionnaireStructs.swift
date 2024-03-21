@@ -14,7 +14,7 @@ struct StylePickerButton: View {
             ZStack() {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(UIColor.darkGray), lineWidth: 2)
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 40)
+                    .frame(width: UIScreen.main.bounds.width - 48, height: 40)
                     .overlay(
                         HStack {
                             Text("Select style")
@@ -45,8 +45,8 @@ struct GenerateButton: View {
             showPHRV = true
         }) {
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(UIColor.darkGray))
-                .frame(width: UIScreen.main.bounds.width - 20, height: 50)
+                .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
+                .frame(width: UIScreen.main.bounds.width - 48, height: 50)
                 .overlay(
                     Text("Generate")
                         .foregroundColor(Color.white)

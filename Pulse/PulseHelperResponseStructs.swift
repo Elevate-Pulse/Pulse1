@@ -10,7 +10,7 @@ struct ImportFileButton: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
-            .frame(width: UIScreen.main.bounds.width - 20, height: 100)
+            .frame(width: UIScreen.main.bounds.width - 48, height: 100)
             .overlay(
                 VStack {
                     Text("Add media")
@@ -75,7 +75,7 @@ struct RegenOrGoodButtons: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(UIColor.darkGray), lineWidth: 3)
                     .fill(Color.white)
-                    .frame(width: UIScreen.main.bounds.width - 210, height: 50)
+                    .frame(width: UIScreen.main.bounds.width - 225, height: 50)
                     .overlay(
                         Text("Regenerate")
                             .foregroundColor(Color(UIColor.darkGray))
@@ -86,8 +86,8 @@ struct RegenOrGoodButtons: View {
                 print("Looks good button tapped")
             }) {
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(Color(UIColor.darkGray))
-                    .frame(width: UIScreen.main.bounds.width - 210, height: 50)
+                    .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
+                    .frame(width: UIScreen.main.bounds.width - 225, height: 50)
                     .overlay(
                         Text("Looks good")
                             .foregroundColor(Color.white)

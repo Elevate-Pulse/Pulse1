@@ -11,6 +11,8 @@ To-do list:
  -TabBar looks ugly when u scroll down on some screens
  -Ugly blue back button when I go back from the edit button in profile
  -Link buttons to one another
+ -Increase distance between the comments and sent and bookmark buttons cause number tweaking
+ -Create dropdown menus for anything involving dropdown menus
  */
 
 import SwiftUI

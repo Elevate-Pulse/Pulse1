@@ -13,21 +13,22 @@ struct HomeView: View {
                     Text("Hello, \(name)")
                         .bold()
                         .font(.custom("Poppins-Light", size: 24))
-                    Text("Trending")
+                    Text("Trending 🔥")
                         .font(.custom("Poppins-Light", size: 24))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding([.horizontal, .vertical], 10)
+                .padding([.horizontal, .vertical], 24)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 5) {
-                        PostBox_Trending(height: 150, color: .red, bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
-                        PostBox_Trending(height: 150, color: .red, bodyText: "haha", name: "not peter", fontSize: 21)
-                        PostBox_Trending(height: 150, color: .red, bodyText: "test", name: "hi bye", fontSize: 21)
+                        PostBox_Trending(height: 150, gradientColors: [.red, .yellow], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
+                        PostBox_Trending(height: 150, gradientColors: [.red, .yellow], bodyText: "haha", name: "not peter", fontSize: 21)
+                        PostBox_Trending(height: 150, gradientColors: [.red, .yellow], bodyText: "test", name: "hi bye", fontSize: 21)
                     }
                 }
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 24)
                 AllTagButtons()
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 Spacer()
                 ScrollView(.vertical, showsIndicators: false) {

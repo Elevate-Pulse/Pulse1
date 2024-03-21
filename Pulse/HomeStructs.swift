@@ -45,13 +45,14 @@ struct PostBox_Main: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 PfpName(name: name, fontSize: 21)
+                    .padding(.horizontal, 10)
                 Spacer()
                 HStack {
                     Spacer()
                     Text(date)
                         .font(.custom("Poppins-Light", size: 15))
                         .foregroundColor(Color(UIColor.darkGray))
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 24)
                 }
             }
 
@@ -59,7 +60,7 @@ struct PostBox_Main: View {
             Text(bodyText)
                 .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(.horizontal, 24)
                 .font(.custom("Poppins-Light", size: 18))
 
             
@@ -80,15 +81,16 @@ struct PostBox_Main: View {
                         .frame(width: UIScreen.main.bounds.width / 2 - 25, height: 200)
                         .foregroundColor(Color.green)
                 }
+                .padding(.horizontal, 12)
             }
             ReactionButtons()
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 24)
                 .padding(.vertical, 8)
             HStack {
                 InteractButtons(commentCount: commentCount, sentCount: sentCount, bookmarkCount: bookmarkCount)
                 Spacer()
                 AIButton()
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 24)
             }
             Divider()
         }
@@ -97,17 +99,18 @@ struct PostBox_Main: View {
 
 struct PostBox_Trending: View {
     let height: CGFloat
-    let color: Color
+    let gradientColors: [Color]
     let bodyText: String
     let name: String
     let fontSize: CGFloat
+    
     var body: some View {
         Button(action: {
             print("Post tapped on")
         }) {
             ZStack(alignment: .topLeading) {
                 RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(color, lineWidth: 2)
+                    .strokeBorder(LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .trailing, endPoint: .leading), lineWidth: 2)
                     .frame(width: 225, height: height)
                     .layoutPriority(1)
                 VStack(alignment: .leading, spacing: 1) {
@@ -124,6 +127,7 @@ struct PostBox_Trending: View {
         .foregroundColor(Color.black)
     }
 }
+
 
 struct TagButton: View {
     let tag: String
@@ -143,8 +147,8 @@ struct TagButton: View {
                 .padding(.horizontal, 10)
                 .background(
                     RoundedRectangle(cornerRadius: 50)
-                        .stroke(Color(UIColor.darkGray), lineWidth: 3)
-                        .background(selectedTags.contains(tag) ? Color(UIColor.darkGray) : Color.clear)
+                        .stroke(selectedTags.contains(tag) ? Color(red: 35/255, green: 109/255, blue: 97/255) : Color(UIColor.darkGray), lineWidth: 3)
+                        .background(selectedTags.contains(tag) ? Color(red: 35/255, green: 109/255, blue: 97/255) : Color.clear)
                         .cornerRadius(50)
                 )
                 .foregroundColor(selectedTags.contains(tag) ? Color.white : Color(UIColor.darkGray))
@@ -152,6 +156,7 @@ struct TagButton: View {
         }
     }
 }
+
 
 struct AllTagButtons: View {
     @State private var selectedTags: Set<String> = []
@@ -165,6 +170,7 @@ struct AllTagButtons: View {
                 .padding(.horizontal, 10)
             }
         }
+        .padding(.horizontal, 0)
     }
 
     let tags = ["#communityhealth", "#crime", "#event", "#homelessness", "#infrastructure", "#noisepullution", "#pothole", "#publicspaces", "#safety", "#education", "#shooting", "#transportation"]
@@ -294,7 +300,7 @@ struct ReactionButtonHelper: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 50)
                     .strokeBorder(Color(UIColor.darkGray), lineWidth: 1)
-                    .background(RoundedRectangle(cornerRadius: 50).fill(isSelected ? Color(UIColor.darkGray) : Color.clear))
+                    .background(RoundedRectangle(cornerRadius: 50).fill(isSelected ? Color(red: 35/255, green: 109/255, blue: 97/255) : Color.clear))
                     .frame(width: 55, height: 30)
                 Text("\(icon) \(count)")
                     .foregroundColor(isSelected ? .white : Color(UIColor.darkGray))
@@ -317,7 +323,7 @@ struct InteractButtons: View {
                 SentButton(sentCount: sentCount)
                 BookmarkButton(bookmarkCount: bookmarkCount)
             }
-            .padding(.horizontal, 15)
+            .padding(.horizontal, 24)
 
         }
         .accentColor(Color(UIColor.darkGray))
@@ -336,6 +342,7 @@ struct CommentButton: View {
                 Text(String(commentCount))
                     .font(.custom("Poppins-Light", size: 18))
             }
+
         }
     }
 }
@@ -382,16 +389,21 @@ struct HomeStructs_Previews: PreviewProvider {
             
             PostBox_Main(name: "danny yao", date: "Feb 26th, 2024", bodyText: "First LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst Last Last Last", commentCount: 1, sentCount: 2, bookmarkCount: 3)
             Divider()
-            PostBox_Trending(height: 150, color: .red, bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
-             /*
+            PostBox_Trending(height: 150, gradientColors: [.red, .yellow], bodyText: "abc def gh ijk l mn opq rst uv wx yz......................dsdsdsdsdsdsdsdsddsds..........", name: "first last", fontSize: 21)
+             
             Divider()
+            /*
             TagButton(tag: "#lol")
+            
             Divider()
+            */
             AllTagButtons()
+            /*
             Divider()
+            
             AIButton()
             Divider()
-              */
+            */
             InteractButtons(commentCount: 23, sentCount: 223, bookmarkCount: 32)
             Divider()
             ReactionButtons()

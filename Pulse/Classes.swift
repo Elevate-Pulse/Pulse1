@@ -2,6 +2,10 @@
 
 import SwiftUI
 
+extension Color {
+    static let greenColor = Color(red: 35/255, green: 109/255, blue: 97/255)
+}
+
 class User: Identifiable {
     var id: UUID
     var name: String

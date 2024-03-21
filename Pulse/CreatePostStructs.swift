@@ -12,10 +12,10 @@ struct TypeInSubject: View {
         ZStack() {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color(UIColor.darkGray), lineWidth: 2)
-                .frame(width: UIScreen.main.bounds.width - 20, height: 40)
+                .frame(width: UIScreen.main.bounds.width - 48, height: 40)
             
             TextField("Type in subject", text: $subjectText)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 24)
                 .font(.custom("Poppins-Medium", size: 16))
         }
         .foregroundColor(Color(UIColor.darkGray))
@@ -32,14 +32,14 @@ struct QuestionTextfield: View {
         VStack(spacing: 0) {
             Text(question)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
+                .padding(.horizontal, 24)
                 .padding(.vertical, -2)
                 .foregroundColor(Color(UIColor.darkGray))
                 .font(.custom("Poppins-Light", size: 16))
-            ZStack(alignment: .topLeading) {
+            ZStack() {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(UIColor.darkGray), lineWidth: 2)
-                    .frame(width: UIScreen.main.bounds.width - 20, height: height)
+                    .frame(width: UIScreen.main.bounds.width - 48, height: height)
                     .foregroundColor(Color(UIColor.darkGray))
                 TextField("", text: $text)
                     .padding([.horizontal, .vertical], 10)
