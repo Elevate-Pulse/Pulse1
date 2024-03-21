@@ -15,13 +15,14 @@ struct aComment: View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 PfpName(name: name, fontSize: 21)
+                    .padding(.horizontal, 15)
                 Spacer()
                 HStack {
                     Spacer()
                     Text(date)
                         .font(.custom("Poppins-Light", size: 15))
                         .foregroundColor(Color(UIColor.darkGray))
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 24)
                 }
             }
 
@@ -29,7 +30,7 @@ struct aComment: View {
             Text("First LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst LastFirst Last Last Last")
                 .lineLimit(3)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .padding(.horizontal, 24)
                 .font(.custom("Poppins-Light", size: 16))
             Button(action: {
                 print("Replies tapped on")
@@ -38,7 +39,7 @@ struct aComment: View {
                     .font(.custom("Poppins-Light", size: 16))
                     .foregroundColor(Color(UIColor.darkGray))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 24)
             }
             Divider()
         }
