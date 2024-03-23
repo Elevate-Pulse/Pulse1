@@ -42,8 +42,9 @@ struct QuestionTextfield: View {
                     .frame(width: UIScreen.main.bounds.width - 48, height: height)
                     .foregroundColor(Color(UIColor.darkGray))
                 TextField("", text: $text)
-                    .padding([.horizontal, .vertical], 10)
-                    .multilineTextAlignment(.leading)
+                    .padding(.horizontal, 24)
+                    .padding(.top, -5)
+                    .multilineTextAlignment(.leading) // Align text to the leading edge
                     .foregroundColor(Color(UIColor.darkGray))
                     .font(.custom("Poppins-Light", size: 16))
             }

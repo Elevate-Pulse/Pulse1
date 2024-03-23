@@ -54,6 +54,7 @@
 		BA1FC6432BAA5ACA00E6B38F /* dashboard_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6422BAA5AC900E6B38F /* dashboard_extension.swift */; };
 		BA1FC6452BAA5AE400E6B38F /* survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6442BAA5AE400E6B38F /* survey.swift */; };
 		BA1FC6472BAA5B2400E6B38F /* struct_dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */; };
+		FF3B07CA2BAEBC46000366B3 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */; };
 		FF83968E2BAB9EDE00D92CB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF83968D2BAB9EDE00D92CB5 /* GoogleService-Info.plist */; };
 		FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */; };
 		FFBA0A402BA9225C0057F024 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3F2BA9225C0057F024 /* Classes.swift */; };
@@ -112,6 +113,8 @@
 		BA1FC6422BAA5AC900E6B38F /* dashboard_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard_extension.swift; sourceTree = "<group>"; };
 		BA1FC6442BAA5AE400E6B38F /* survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = survey.swift; sourceTree = "<group>"; };
 		BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct_dashboard.swift; sourceTree = "<group>"; };
+		FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		FF3B07CB2BAED110000366B3 /* Pulse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pulse.entitlements; sourceTree = "<group>"; };
 		FF83968D2BAB9EDE00D92CB5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Pulse1 copy/Pulse/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestore.swift; sourceTree = "<group>"; };
 		FFBA0A3F2BA9225C0057F024 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
@@ -204,16 +207,18 @@
 		B231E58E2B9689B0006B1C4A /* Pulse */ = {
 			isa = PBXGroup;
 			children = (
+				FF3B07CB2BAED110000366B3 /* Pulse.entitlements */,
 				3FD342192B9FD13700796269 /* Info.plist */,
 				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
 				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
 				FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */,
+				FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
 				FFBA0A3F2BA9225C0057F024 /* Classes.swift */,
-				FFBA0A552BA9238A0057F024 /* SignupView.swift */,
 				FFBA0A4D2BA923180057F024 /* LoginView.swift */,
 				FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */,
+				FFBA0A552BA9238A0057F024 /* SignupView.swift */,
 				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
 				BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */,
 				BA1FC6422BAA5AC900E6B38F /* dashboard_extension.swift */,
@@ -227,9 +232,9 @@
 				FFBA0A432BA922A60057F024 /* CreatePostStructs.swift */,
 				3F5ADE462B9FC1D300E3FD44 /* CommentsView.swift */,
 				FFBA0A412BA922720057F024 /* CommentsStructs.swift */,
-				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
-				FFBA0A512BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift */,
 				3F5ADE4C2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift */,
+				FFBA0A512BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift */,
+				3F5ADE4A2B9FC22400E3FD44 /* PulseHelperResponseView.swift */,
 				FFBA0A532BA9236D0057F024 /* PulseHelperResponseStructs.swift */,
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
 				FF83968D2BAB9EDE00D92CB5 /* GoogleService-Info.plist */,
@@ -454,6 +459,7 @@
 				FFBA0A4A2BA922EF0057F024 /* HomeStructs.swift in Sources */,
 				BA1FC6432BAA5ACA00E6B38F /* dashboard_extension.swift in Sources */,
 				FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */,
+				FF3B07CA2BAEBC46000366B3 /* AuthViewModel.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +621,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pulse/Pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pulse/Preview Content\"";
@@ -644,6 +651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Pulse/Pulse.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Pulse/Preview Content\"";
