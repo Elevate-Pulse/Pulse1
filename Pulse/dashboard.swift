@@ -14,6 +14,7 @@ struct Bar: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Rectangle()
                 .fill(label == "last week" ? Color.gray : Color.black)
                 .frame(width: 30, height: value)

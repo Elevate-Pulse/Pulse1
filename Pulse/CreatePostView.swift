@@ -4,6 +4,7 @@ struct CreatePostView: View {
     @State private var isSheetPresented = false
     @State private var subjectText: String = ""
     @State private var bodyText: String = ""
+    @Binding var selectedTab: Int
     var body: some View {
         ZStack {
             Color(UIColor.systemGray5)
@@ -52,6 +53,7 @@ struct CreatePostView: View {
                     ImportFileButton()
                     Button(action: {
                         print("Post button tapped")
+                        self.selectedTab = 0
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(UIColor.darkGray))
@@ -70,6 +72,6 @@ struct CreatePostView: View {
 
 struct createPost_Previews: PreviewProvider {
     static var previews: some View {
-        CreatePostView()
+        CreatePostView(selectedTab: .constant(1))
     }
 }

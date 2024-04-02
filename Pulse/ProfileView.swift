@@ -44,7 +44,7 @@ struct ProfileView: View {
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
-                        EditButton()
+                        editButton()
                     }
                     .padding([.vertical, .horizontal], 10)
                     ScrollView(.vertical, showsIndicators: false) {

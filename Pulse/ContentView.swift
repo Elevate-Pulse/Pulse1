@@ -16,16 +16,20 @@ To-do list:
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedTab = 0
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             HomeView(name: "Peter")
                 .tabItem {
                     Image(systemName: "house")
                 }
-            CreatePostView()
+                .tag(0)
+            CreatePostView(selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "plus")
                 }
+                .tag(1)
             dashboard()
                 .tabItem {
                     Image(systemName: "chart.bar")
@@ -33,7 +37,7 @@ struct ContentView: View {
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")
-            }
+                }
         }
     }
 }

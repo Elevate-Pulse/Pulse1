@@ -4,6 +4,7 @@ struct CommentsView: View {
     let name: String
     let date: String
     @State private var isTextExpanded = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
@@ -13,6 +14,7 @@ struct CommentsView: View {
                 HStack(spacing: -20) {
                     Button(action: {
                         print("Going back")
+                        presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(Color(UIColor.systemGray))

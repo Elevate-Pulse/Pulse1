@@ -325,10 +325,12 @@ struct InteractButtons: View {
 }
 
 struct CommentButton: View {
+    @State private var openComments = false
     let commentCount: Int
     var body: some View {
         Button(action: {
             print("Comments tapped")
+            openComments = true
         }) {
             HStack {
                 Image(systemName: "message")
@@ -336,6 +338,9 @@ struct CommentButton: View {
                 Text(String(commentCount))
                     .font(.custom("Poppins-Light", size: 18))
             }
+        }
+        .sheet(isPresented: $openComments) {
+            CommentsView(name: "danny yao2", date: "Feb 25th, 2024")
         }
     }
 }
