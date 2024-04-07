@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3F5ADE442B9FBFA300E3FD44 /* .gitignore */; };
-		3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD342152B9FD12600796269 /* Poppins-Medium.ttf */; };
-		3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */; };
 		B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E58F2B9689B0006B1C4A /* PulseApp.swift */; };
 		B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B231E5912B9689B0006B1C4A /* ContentView.swift */; };
 		B231E5942B9689B1006B1C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B231E5932B9689B1006B1C4A /* Assets.xcassets */; };
@@ -82,9 +80,7 @@
 
 /* Begin PBXFileReference section */
 		3F5ADE442B9FBFA300E3FD44 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		3FD342152B9FD12600796269 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		3FD342192B9FD13700796269 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		B231E58C2B9689B0006B1C4A /* Pulse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pulse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B231E58F2B9689B0006B1C4A /* PulseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseApp.swift; sourceTree = "<group>"; };
 		B231E5912B9689B0006B1C4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,8 +189,6 @@
 			children = (
 				FF3B07CB2BAED110000366B3 /* Pulse.entitlements */,
 				3FD342192B9FD13700796269 /* Info.plist */,
-				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
-				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
 				FF6BFA372BC340B200DB7266 /* Comfortaa-Bold.ttf */,
 				FF6BFA362BC340B200DB7266 /* Comfortaa-Regular.ttf */,
 				FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */,
@@ -383,8 +377,6 @@
 			files = (
 				FF6BFA392BC340B200DB7266 /* Comfortaa-Bold.ttf in Resources */,
 				B231E5972B9689B1006B1C4A /* Preview Assets.xcassets in Resources */,
-				3FD342172B9FD12700796269 /* Poppins-Medium.ttf in Resources */,
-				3FD3421B2B9FD1FA00796269 /* Poppins-Bold.ttf in Resources */,
 				FF6BFA382BC340B200DB7266 /* Comfortaa-Regular.ttf in Resources */,
 				3F5ADE452B9FBFA300E3FD44 /* .gitignore in Resources */,
 				B231E5942B9689B1006B1C4A /* Assets.xcassets in Resources */,
