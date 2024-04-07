@@ -13,14 +13,16 @@ To-do list:
  -Link buttons to one another
  -Increase distance between the comments and sent and bookmark buttons cause number tweaking
  -Create dropdown menus for anything involving dropdown menus
+ -Fix QuestionTextfield to appear on top left of textfield
  */
 
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
         TabView {
-            HomeView(name: "Peter")
+            HomeView()
                 .tabItem {
                     Image(systemName: "house")
                 }
@@ -42,4 +44,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(AuthViewModel())
 }

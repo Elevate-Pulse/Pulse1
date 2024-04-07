@@ -18,6 +18,9 @@ import SwiftUI
 
 @main
 struct PulseApp: App {
+    @StateObject var viewModel = AuthViewModel()
+    
+    
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
@@ -26,6 +29,7 @@ struct PulseApp: App {
     WindowGroup {
       NavigationView {
         ContentView()
+              .environmentObject(viewModel)
       }
     }
   }

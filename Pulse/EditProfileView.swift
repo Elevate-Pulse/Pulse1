@@ -44,15 +44,6 @@ struct EditProfileView: View {
                         .padding(.horizontal, 24)
                         .padding(.vertical, 10)
                         HStack {
-                            Text("Neighborhood")
-                                .font(.custom("Poppins-Light", size: 21))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            TextField_Lined(defaultString: "dropdown", text: $email)
-                            
-                        }
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 10)
-                        HStack {
                             Text("Email")
                                 .font(.custom("Poppins-Light", size: 21))
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -74,6 +65,7 @@ struct EditProfileView: View {
                             Text(".")
                                 .font(.custom("Poppins-Light", size: 21))
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(Color(UIColor.systemGray5))
                             SecureField_Lined(defaultString: "New password", text: $newPw)
                             
                         }

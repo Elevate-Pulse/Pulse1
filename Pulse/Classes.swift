@@ -6,27 +6,28 @@ extension Color {
     static let greenColor = Color(red: 35/255, green: 109/255, blue: 97/255)
 }
 
-class User: Identifiable {
-    var id: UUID
-    var name: String
-    var pfp: URL
+class User: Identifiable, Codable {
+    var id: String
+    var fName: String
+    var lName: String
+    var email: String
+    //var pfp: URL
     //var bookmarks: [Post]
     //var posts: [Post]
-    init(name: String, pfp: URL) {
-        self.id = UUID()
-        self.name = name
-        self.pfp = pfp
+    init(id: String, fName: String, lName: String, email: String) {
+        self.id = id
+        self.fName = fName
+        self.lName = lName
+        self.email = email
+        //self.pfp = pfp
         //self.bookmarks = bookmarks
         //self.posts = posts
     }
-    
-    func getName() -> String {
-        return name
-    }
 }
 
-let userProfilePic = Image(systemName: "person.fill")
-let user1 = User(name: "Peter Guan", pfp: URL(string: "https://pbs.twimg.com/profile_images/1592590631683198977/Ouiq1uCA_400x400.jpg")!)
+extension User {
+    static var user1 = User(id: "test_id", fName: "test_fName", lName: "test_lName", email: "test_email@gmail.com")
+}
 
 class Post {
     var user: User

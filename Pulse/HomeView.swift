@@ -3,14 +3,15 @@
 import SwiftUI
 
 struct HomeView: View {
-    let name: String
+    @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
+        let userName = viewModel.currentUser?.fName ?? "Guest"
         ZStack {
             Color(UIColor.systemGray5)
                 .ignoresSafeArea()
             VStack(spacing: 0){
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Hello, \(name)")
+                    Text("Hello, \(userName)")
                         .bold()
                         .font(.custom("Poppins-Light", size: 24))
                     Text("Trending 🔥")
@@ -45,5 +46,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(name: "Peter")
+    HomeView()
+        .environmentObject(AuthViewModel())
 }
