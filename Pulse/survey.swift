@@ -98,6 +98,24 @@ struct SurveyQuestionView: View {
         let adjustedMcIndex = max(mcIndex, 0)
         return selectedMCAnswer.indices.contains(adjustedMcIndex) && selectedMCAnswer[adjustedMcIndex] == optionIndex
     }
+    
+    func pushResponses(question: Int, userID: String) async {
+
+        let fs = Firestore.firestore()
+        let survey = fs.collection("survey_answers")
+        
+        // Apply both filters at once before fetching the documents
+        let query = survey //inside or before do
+            .whereField("question", isEqualTo: question)
+            .whereField("answer", isEqualTo: answer)
+        
+        do {
+            let snapshot = try await query.getDocuments()
+            count = snapshot.documents.count // Directly get the count of documents matching the criteria
+        } catch {
+            print("Error in retrieving firebase text", error.localizedDescription)
+        }
+    }
 }
 //struct SurveyQuestionView: View {
 //    @Binding var selectedSliderAnswer: Int
