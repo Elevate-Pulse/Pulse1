@@ -51,7 +51,7 @@ struct CardView: View {
 struct dashboard: View {
 //    @State var selectedAnswer = 1 // Default answer to start wit
     @State private var showPopup = true
-//    @State private var currentQuestionIndex = 0
+    @State private var currentQuestionIndex = 0
 //    let questions: [String] = [
 //        "On a scale of 1 to 5, how supported do you feel by local government or community organizations in addressing any issues or concerns you may have?",
 //        "How would you rate your likelihood to recommend living in this area to others from 1 (not likely) to 5 (very likely)?",
@@ -95,7 +95,7 @@ struct dashboard: View {
     ]
 
     private func closeSurvey() {
-        self.showPopup = false
+        showPopup = false
 //        self.currentQuestionIndex = 0 // Reset the survey for next time it's shown
 //        self.selectedSliderAnswers = 1 // Reset the selected answer
     }
@@ -121,10 +121,10 @@ struct dashboard: View {
             }
                 
             if showPopup {
-                SurveyQuestionView(selectedSliderAnswer: $selectedSliderAnswers[0], // Assuming you start with the first slider question
+                SurveyQuestionView(selectedSliderAnswers: $selectedSliderAnswers,
                                    selectedMCAnswer: $selectedMCAnswers,
                                    questions: questions,
-                                   onClose: closeSurvey(),
+                                   onClose: closeSurvey,
                                    range: 1...5)
                     .background(Color.white)
                     .cornerRadius(20)
@@ -137,12 +137,11 @@ struct dashboard: View {
         }
         .onAppear {
             // Show the survey popup when the view appears
-            self.showPopup = true
+            showPopup = true
         }
     }
 }
 
-#Preview {
+#Preview{
     dashboard()
 }
-

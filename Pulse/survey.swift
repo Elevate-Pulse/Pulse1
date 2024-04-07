@@ -1,11 +1,12 @@
-//
+
 //  survey.swift
 //  Pulse
 //
 //  Created by Yinglin Jiang on 3/19/24.
-//
+
 
 import SwiftUI
+import FirebaseFirestore
 
 struct SurveyQuestion: Identifiable {
     let id: Int
@@ -20,7 +21,7 @@ struct SurveyQuestion: Identifiable {
 }
 
 struct SurveyQuestionView: View {
-    @Binding var selectedSliderAnswer: Int
+    @Binding var selectedSliderAnswers: [Int]
     @Binding var selectedMCAnswer: [Int]
     @State private var currentQuestionIndex = 0
     let questions: [SurveyQuestion]
@@ -38,11 +39,13 @@ struct SurveyQuestionView: View {
                         .bold()
                     
                     if questions[currentQuestionIndex].type == .slider {
-                        Slider(value: Binding(get: { Double(selectedSliderAnswer) }, set: { selectedSliderAnswer = Int($0.rounded()) }),
-                               in: 1...5, step: 1)
+                        Slider(value: Binding(
+                            get: { Double(selectedSliderAnswers[currentQuestionIndex]) },
+                            set: { selectedSliderAnswers[currentQuestionIndex] = Int($0) }
+                        ), in: Double(range.lowerBound)...Double(range.upperBound))
                         HStack {
                             ForEach(range, id: \.self) { number in
-                                Text("\(number)              ").tag(number)
+                                Text("\(number)                                 ").tag(number)
                             }
                         }.padding (.leading, 20)
                     } else if let mcAnswers = questions[currentQuestionIndex].answers, questions[currentQuestionIndex].type == .multipleChoice {
@@ -62,36 +65,59 @@ struct SurveyQuestionView: View {
                                     .background(self.isOptionSelected(mcIndex: currentQuestionIndex - 5, optionIndex: index) ? Color.blue.opacity(0.2) : Color.clear)
                                     .cornerRadius(5)
                                 }
-                                .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle for iOS 14 compatibility
+                                .buttonStyle(PlainButtonStyle())
                             }
                         }
                         
                     }
                     // Spacer()
                     
-                    Button("Next") {
-                        goToNextQuestion()
+                    Button(currentQuestionIndex == questions.count - 1 ? "Close" : "Next") {
+                        if currentQuestionIndex == questions.count - 1 {
+                            completeSurvey() // Close the survey
+                        } else {
+                            goToNextQuestion() // Go to next question
+                        }
                     }
-                    .disabled(currentQuestionIndex >= questions.count - 1)
                 }
                 .padding()
             }
             .frame(maxHeight: geometry.size.height * 0.7)
         }
     }
+    private func completeSurvey() {
+        // Calculate the personality type based on the most selected MC answer
+        let personalityType = calculatePersonalityType(from: selectedMCAnswer)
+
+        // Prepare the survey data for submission
+        var surveyData: [String: Any] = [
+            "userID": "exampleUserID",  // Use the actual user ID here
+            "personalityType": personalityType
+        ]
+
+        // Append each slider question's answer
+        for (index, answer) in selectedSliderAnswers.enumerated() {
+            let questionKey = "question\(index + 1)"
+            surveyData[questionKey] = answer
+        }
+
+        // Push the survey results to Firebase
+        pushResponses(surveyData: surveyData)
+        
+        // Close the survey view
+        onClose()
+    }
     
     private func goToNextQuestion() {
         if currentQuestionIndex < questions.count - 1 {
-            currentQuestionIndex += 1
-            // For slider questions, reset the answer for the next question
-            if questions[currentQuestionIndex].type == .slider {
-                selectedSliderAnswer = 0 // Assuming midpoint as default
+                // Move to the next question
+                currentQuestionIndex += 1
+            } else {
+                // Last question already answered, so complete the survey
+                completeSurvey()
             }
-            // No need to reset selectedMCAnswer here as its value is directly bound to the Picker
-        } else {
-            onClose() // All questions have been answered
-        }
     }
+
     
     private func isOptionSelected(mcIndex: Int, optionIndex: Int) -> Bool {
         // Adjusting mcIndex to be non-negative in case of questions[currentQuestionIndex].type == .multipleChoice
@@ -99,128 +125,30 @@ struct SurveyQuestionView: View {
         return selectedMCAnswer.indices.contains(adjustedMcIndex) && selectedMCAnswer[adjustedMcIndex] == optionIndex
     }
     
-    func pushResponses(question: Int, userID: String) async {
-
+    private func calculatePersonalityType(from answers: [Int]) -> String {
+        let answerCounts = answers.reduce(into: [:]) { counts, answer in
+            counts[answer, default: 0] += 1
+        }
+        
+        guard let mostFrequentAnswer = answerCounts.max(by: { $0.value < $1.value })?.key else {
+            return "Undetermined" // Or handle this case as appropriate
+        }
+        
+        // Map the most frequent answer to a personality type
+        let personalityTypes = ["Outgoing", "Open-Minded", "Private", "Engaged", "Easygoing"]
+        return personalityTypes[mostFrequentAnswer]
+    }
+    
+    func pushResponses(surveyData: [String: Any]) {
         let fs = Firestore.firestore()
-        let survey = fs.collection("survey_answers")
         
-        // Apply both filters at once before fetching the documents
-        let query = survey //inside or before do
-            .whereField("question", isEqualTo: question)
-            .whereField("answer", isEqualTo: answer)
-        
-        do {
-            let snapshot = try await query.getDocuments()
-            count = snapshot.documents.count // Directly get the count of documents matching the criteria
-        } catch {
-            print("Error in retrieving firebase text", error.localizedDescription)
+        fs.collection("survey_responses").addDocument(data: surveyData) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
         }
     }
+
 }
-//struct SurveyQuestionView: View {
-//    @Binding var selectedSliderAnswer: Int
-//    @Binding var selectedMCAnswer: [Int]
-//    //  @State private var currentQuestionIndex = 0
-//    let questions: [SurveyQuestion]
-//    //    @Binding var selectedAnswer: Int
-//    @State private var currentQuestionIndex = 0
-//    //    let questions: [String]
-//    let range: ClosedRange<Int>
-//    let onClose: () -> Void
-//    
-//    //    // Use a local variable to bind to the slider as a Double
-//    //        private var sliderValue: Binding<Double> {
-//    //            Binding<Double>(
-//    //                get: { Double(selectedAnswer) },
-//    //                set: { selectedAnswer = Int($0.rounded()) }
-//    //            )
-//    //        }
-//    //        private func goToNextQuestion() {
-//    //            if currentQuestionIndex < questions.count - 1 {
-//    //                currentQuestionIndex += 1
-//    //                selectedAnswer = range.lowerBound // Reset selected answer for the next question
-//    //            } else {
-//    //                onClose() // All questions have been answered, close the survey
-//    //            }
-//    //        }
-//    
-//    
-//    var body: some View {
-//        //            VStack(alignment: .leading, spacing: 20) {
-//        //                Text("Answer the survey to see your community health dashboard")
-//        //                    .multilineTextAlignment(.center)
-//        //                Text(questions[currentQuestionIndex])
-//        //                    .bold()
-//        //                Slider(value: sliderValue, in: Double(range.lowerBound)...Double(range.upperBound), step: 1.0)
-//        //                HStack {
-//        //                    ForEach(range, id: \.self) { number in
-//        //                        Text("\(number)").tag(number)
-//        //                    }
-//        //                }
-//        //
-//        //                HStack {
-//        //                    Button("Next") {
-//        //                        goToNextQuestion()
-//        //                    }
-//        //                    .disabled(currentQuestionIndex >= questions.count - 1) // Disable "Next" if this is the last question
-//        //
-//        //                    Button("Close") {  // This button will close the popup
-//        //                        onClose()
-//        //                    }
-//        //                }
-//        //            }
-//        //            .padding()
-//        
-//        VStack(alignment: .leading, spacing: 20) {
-//            Text("Answer the survey to see your community health dashboard")
-//                .multilineTextAlignment(.center)
-//            
-//            Text(questions[currentQuestionIndex].text)
-//                .bold()
-//            
-//            // Check the question type and render the appropriate UI
-//            if questions[currentQuestionIndex].type == .slider {
-//                Slider(value: Binding(
-//                    get: { Double(selectedSliderAnswer) },
-//                    set: { selectedSliderAnswer = Int($0.rounded())
-//                    }),
-//                       in: Double(1)...Double(5), step: 1.0)
-//                HStack {
-//                    ForEach(range, id: \.self) { number in
-//                        Text("\(number)     ").tag(number)
-//                    }
-//                }
-//                .padding(.leading, 20)
-//            } else if questions[currentQuestionIndex].type == .multipleChoice {
-//                let mcIndex = currentQuestionIndex - 5 // Adjust based on the number of slider questions
-//                Picker("", selection: $selectedMCAnswer[mcIndex]) {
-//                    ForEach(0..<mcAnswers.count, id: \.self) { index in
-//                        Text(mcAnswers[index]).tag(index)
-//                    }
-//                }
-//                .pickerStyle(SegmentedPickerStyle())
-//            }
-//            
-//            HStack {
-//                Button("Next", action: goToNextQuestion)
-//                    .disabled(currentQuestionIndex >= questions.count - 1)
-//            }
-//        }
-//        .padding()
-//    }
-//    private func goToNextQuestion() {
-//        
-//        if currentQuestionIndex < questions.count - 1 {
-//            currentQuestionIndex += 1
-//            // Reset selected answer for the next question based on type
-//            if questions[currentQuestionIndex].type == .slider {
-//                selectedSliderAnswer = 0 // or your default value for slider questions
-//                //            } else {
-//                //                selectedMCAnswer[currentQuestionIndex] = 0 // default to first option for MC questions
-//                //            }
-//            } else {
-//                onClose() // All questions have been answered, close the survey
-//            }
-//        }
-//    }
-//}
