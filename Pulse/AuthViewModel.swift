@@ -46,12 +46,12 @@ class AuthViewModel: ObservableObject {
          */
     }
     
-    func register(withEmail email: String, pw: String, fName: String, lName: String) async throws {
+    func register(withEmail email: String, pw: String, name: String) async throws {
         print("auth Signed up")
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: pw)
             self.userSession = result.user
-            let user = User(id: result.user.uid, fName: fName, lName: lName, email: email)
+            let user = User(id: result.user.uid, name: name, email: email)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await pullUserData()
@@ -75,6 +75,27 @@ class AuthViewModel: ObservableObject {
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else { return }
         self.currentUser = try? snapshot.data(as: User.self)
         print("current user is \(self.currentUser)")
+    }
+    func deleteAccount() async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw NSError(domain: "", code: 404, userInfo: [NSLocalizedDescriptionKey: "User not found"])
+        }
+        
+        do {
+            // Delete user data from Firestore
+            let userRef = Firestore.firestore().collection("users").document(user.uid)
+            try await userRef.delete()
+            
+            // Delete user account from Firebase Authentication
+            try await user.delete()
+            
+            // Update local session and current user
+            self.userSession = nil
+            self.currentUser = nil
+            
+        } catch {
+            throw error
+        }
     }
     
 }

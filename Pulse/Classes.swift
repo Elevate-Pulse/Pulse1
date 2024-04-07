@@ -8,25 +8,19 @@ extension Color {
 
 class User: Identifiable, Codable {
     var id: String
-    var fName: String
-    var lName: String
+    var name: String
     var email: String
     //var pfp: URL
     //var bookmarks: [Post]
     //var posts: [Post]
-    init(id: String, fName: String, lName: String, email: String) {
+    init(id: String, name: String, email: String) {
         self.id = id
-        self.fName = fName
-        self.lName = lName
+        self.name = name
         self.email = email
         //self.pfp = pfp
         //self.bookmarks = bookmarks
         //self.posts = posts
     }
-}
-
-extension User {
-    static var user1 = User(id: "test_id", fName: "test_fName", lName: "test_lName", email: "test_email@gmail.com")
 }
 
 class Post {

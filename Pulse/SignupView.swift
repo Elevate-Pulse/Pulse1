@@ -1,88 +1,74 @@
-//  login.swift
-
-// PUT FNS IN A VIEWMODEL
-
 import SwiftUI
 
 struct SignupView: View {
-    @State private var fName = ""
-    @State private var lName = ""
+    @State private var name = ""
     @State private var email = ""
     @State private var neighborhood = ""
     @State private var createPw = ""
     @State private var repeatPw = ""
     @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         ZStack {
-            Color(UIColor.systemGray5)
+            Color(red: 1.0, green: 0.996, blue: 0.953)
                 .ignoresSafeArea()
+            
             VStack(spacing: 20) {
-                Circle()
-                    .frame(width:100)
-                    .padding()
+                Image("pulse_logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+                    .padding(.bottom, -50)
+                
                 HStack(spacing: 20) {
-                    Button(action: {
-                                    print("Login tapped")
-                                }) {
-                                    Text("Login")
-                                        .foregroundColor(Color.black)
-                                        .font(.custom("Poppins-Light", size: 24))
-                                }
-                    Button(action: {
-                                    print("Sign up tapped")
-                                }) {
-                                    Text("Sign up")
-                                        .foregroundColor(Color.black)
-                                        .font(.custom("Poppins-Light", size: 24))
-                                        .underline()
-                                }
+                    NavigationLink(destination: LoginView()) {
+                        Text("Login")
+                            .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                            .font(.custom("Comfortaa-Regular", size: 21))
+                    }
+                    
+                    NavigationLink(destination: SignupView()) {
+                        Text("Sign up")
+                            .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                            .font(.custom("Comfortaa-Regular", size: 21))
+                            .underline()
+                    }
                 }
-                TextField_Base(typeOfText: "First name", text: $fName)
-                TextField_Base(typeOfText: "Last name", text: $lName)
+                
+                TextField_Base(typeOfText: "Username or name", text: $name)
                 TextField_Base(typeOfText: "Email", text: $email)
-                //TextField_Base(typeOfText: "Dropdown for select neighborhood", text: $neighborhood)
                 SecureField_Base(typeOfText: "Create password", text: $createPw)
                 SecureField_Base(typeOfText: "Repeat password", text: $repeatPw)
                 
                 Button(action: {
-                    //register(email: email, pw: repeatPw)
-                                //print("Signed up")
                     Task {
-                        try await viewModel.register(withEmail: email, pw: createPw, fName: fName, lName: lName)
+                        try await viewModel.register(withEmail: email, pw: createPw, name: name)
                     }
-                            }) {
-                                Text("Sign up")
-                                    .foregroundColor(Color.white)
-                                    .font(.custom("Poppins-Light", size: 21))
-                                    .padding()
-                                    .frame(width: 300, height: 50)
-                                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 35/255, green: 109/255, blue: 97/255)))
-                                    .disabled(!formIsValid)
-                                    .opacity(formIsValid ? 1.0 : 0.5)
-                                
-                            }
-                
-                Button(action: {
-                                print("already had an acc")
-                            }) {
-                                Text("Already have an account?")
-                                    .foregroundColor(Color.black)
-                                    .font(.custom("Poppins-Light", size: 16))
-                                    .underline()
-                            }
+                }) {
+                    Text("Sign up")
+                        .foregroundColor(Color.white)
+                        .font(.custom("Comfortaa-Regular", size: 18))
+                        .padding()
+                        .frame(width: 300, height: 50)
+                        .background(RoundedRectangle(cornerRadius: 25).fill(Color(red: 35/255, green: 109/255, blue: 97/255)))
+                        .disabled(!formIsValid)
+                }
             }
             .padding()
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 extension SignupView: AuthenticationFormProtocol {
     var formIsValid: Bool {
-        return !email.isEmpty && email.contains("@") && !createPw.isEmpty && createPw.count > 5 && !fName.isEmpty && createPw == repeatPw && !lName.isEmpty
+        return !email.isEmpty && email.contains("@") && !createPw.isEmpty && createPw.count > 5 && !name.isEmpty && createPw == repeatPw
     }
 }
 
-#Preview {
-    SignupView()
-        .environmentObject(AuthViewModel())
+struct SignupView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignupView()
+            .environmentObject(AuthViewModel())
+    }
 }
