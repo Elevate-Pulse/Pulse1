@@ -53,7 +53,6 @@
 		FF6BFA392BC340B200DB7266 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF6BFA372BC340B200DB7266 /* Comfortaa-Bold.ttf */; };
 		FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */; };
 		FFBA0A402BA9225C0057F024 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3F2BA9225C0057F024 /* Classes.swift */; };
-		FFBA0A462BA922CD0057F024 /* EditProfileStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */; };
 		FFBA0A4C2BA9230C0057F024 /* LoginStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */; };
 		FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4D2BA923180057F024 /* LoginView.swift */; };
 		FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4F2BA923290057F024 /* ProfileView.swift */; };
@@ -103,7 +102,6 @@
 		FF6BFA372BC340B200DB7266 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../../Downloads/Comfortaa/static/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestore.swift; sourceTree = "<group>"; };
 		FFBA0A3F2BA9225C0057F024 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
-		FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileStructs.swift; sourceTree = "<group>"; };
 		FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStructs.swift; sourceTree = "<group>"; };
 		FFBA0A4D2BA923180057F024 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FFBA0A4F2BA923290057F024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -191,21 +189,20 @@
 				3FD342192B9FD13700796269 /* Info.plist */,
 				FF6BFA372BC340B200DB7266 /* Comfortaa-Bold.ttf */,
 				FF6BFA362BC340B200DB7266 /* Comfortaa-Regular.ttf */,
-				FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,
-				FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */,
-				BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */,
-				BA1FC6442BAA5AE400E6B38F /* survey.swift */,
-				BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */,
-				FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */,
-				FFBA0A3F2BA9225C0057F024 /* Classes.swift */,
+				FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */,
 				FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */,
-				FFBA0A552BA9238A0057F024 /* SignupView.swift */,
+				FFBA0A3F2BA9225C0057F024 /* Classes.swift */,
+				FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */,
 				FFBA0A4D2BA923180057F024 /* LoginView.swift */,
-				B231E5912B9689B0006B1C4A /* ContentView.swift */,
-				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
+				FFBA0A552BA9238A0057F024 /* SignupView.swift */,
 				FF2FECC92BC3398D00B2249A /* HomeView1.swift */,
+				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
+				BA1FC6442BAA5AE400E6B38F /* survey.swift */,
+				BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */,
+				BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */,
 				FFF646752BC345E000336069 /* DonutChartView.swift */,
+				B231E5912B9689B0006B1C4A /* ContentView.swift */,
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
 				FF2FECCB2BC33A3D00B2249A /* GoogleService-Info.plist */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
@@ -406,7 +403,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1FC6472BAA5B2400E6B38F /* struct_dashboard.swift in Sources */,
-				FFBA0A462BA922CD0057F024 /* EditProfileStructs.swift in Sources */,
 				FF2FECCA2BC3398D00B2249A /* HomeView1.swift in Sources */,
 				B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */,
 				FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */,

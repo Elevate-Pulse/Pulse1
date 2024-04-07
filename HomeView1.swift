@@ -49,11 +49,11 @@ struct HomeView1: View {
                         Button(action: {
                             print("retake quiz tapped on")
                         }) {
-                            Text("Retake Quiz")
+                            Text("Retake Survey")
                                 .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 10)
-                                .font(.custom("Comfortaa-Regular", size: 18))
+                                .font(.custom("Comfortaa-Regular", size: 15))
                                 .background(
                                     RoundedRectangle(cornerRadius: 25)
                                         .foregroundColor(Color(red: 1.0, green: 0.996, blue: 0.953))
@@ -65,10 +65,10 @@ struct HomeView1: View {
                         }
                         .padding(.top, 45)
                     }
-                    Text("Just like 50% of your neighbors")
+                    Text("Just like 20% of your neighbors")
                         .font(.custom("Comfortaa-Regular", size: 18))
                         .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                    Text("Private Residents do this and that.")
+                    Text("Private Residents do this.")
                         .font(.custom("Comfortaa-Regular", size: 18))
                         .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
                         .padding(.bottom, 10)
@@ -82,10 +82,10 @@ struct HomeView1: View {
                         .padding(.top, 10) // Add some top padding
                     GoalsView()
                     
-                    Text("Your dominant ??? is:")
+                    Text("Your dominant character trait is:")
                         .font(.custom("Comfortaa-Regular", size: 21))
                         .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                    Text("idk")
+                    Text("Social")
                         .font(.custom("Comfortaa-Bold", size: 24))
                         .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                         .padding(.bottom, CGFloat(Circles().data.map { $0.size }.min() ?? 120))
@@ -135,8 +135,8 @@ struct StrengthsWeaknessesSection: View {
             }
             if isExpanded {
                 HStack {
-                    StrengthWeakness(label: "Strengths", bulletText1: "This is one of the strengths", bulletText2: "This is another strength", bulletText3: "This is the last strength")
-                    StrengthWeakness(label: "Weaknesses", bulletText1: "This is one of the weaknesses", bulletText2: "This is another weakness", bulletText3: "This is the last weakness")
+                    StrengthWeakness(label: "Strengths", bulletText1: "Private Resident Strength 1", bulletText2: "Private Resident Strength 1", bulletText3: "Private Resident Strength 1")
+                    StrengthWeakness(label: "Weaknesses", bulletText1: "Private Resident Weakness 1", bulletText2: "Private Resident Weakness 1", bulletText3: "Private Resident Weakness 1")
                 }
                 .padding(.vertical, 15)
             }
@@ -276,7 +276,7 @@ struct ProgressBar: View {
         .overlay(
             Group {
                 if showWaitMessage {
-                    MessageBubble(isProgressComplete: progress == 1.0)
+                    MessageBubble()
                 }
             }
         )
@@ -285,13 +285,12 @@ struct ProgressBar: View {
 
 struct MessageBubble: View {
     @State private var isShowing = true
-    var isProgressComplete: Bool
 
     var body: some View {
-        let backgroundColor: Color = isProgressComplete ? Color(red: 0.9255, green: 0.9294, blue: 0.9451) : Color(red: 0.9255, green: 0.9294, blue: 0.9451)
+        let backgroundColor: Color = Color(red: 0.9255, green: 0.9294, blue: 0.9451)
 
         return VStack {
-            Text(isProgressComplete ? "Please until next week for new goals" : "Please until next week for new goals")
+            Text("Please until next week for new goals")
                 .font(.custom("Comfortaa-Regular", size: 15))
                 .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
                 .padding(8)
@@ -318,36 +317,36 @@ struct MessageBubble: View {
 struct GoalsView: View {
     var body: some View {
         VStack(spacing: 15) {
-            Goal(progress: 1/7, goalText: "Pick up a piece of trash")
-            Goal(progress: 6/7, goalText: "ooga booga")
-            Goal(progress: 2/7, goalText: "yurr")
+            Goal(progress: 0/7, goalText: "Greet a neighbor")
+            Goal(progress: 0/7, goalText: "Turn off the lights in an unoccupied room")
+            Goal(progress: 0/7, goalText: "Pick up a piece of trash")
         }
     }
 }
 
 struct Circles: View {
     @State var data: [DataItem] = [
+        DataItem(title: "👥 Social", size: 90, color: Color(red: 186/255, green: 255/255, blue: 201/255)),
+        DataItem(title: "🌳 Surroundings", size: 90, color: Color(red: 161/255, green: 204/255, blue: 255/255)),
+        DataItem(title: "🚗 Convenience", size: 90, color: Color(red: 255/255, green: 194/255, blue: 168/255)),
+        DataItem(title: "🔒 Security", size: 90, color: Color(red: 220/255, green: 185/255, blue: 255/255)),
+        DataItem(title: "📢 Engagement", size: 90, color: Color(red: 255/255, green: 244/255, blue: 189/255)),
         
-        DataItem(title: "🧑‍⚕️ Caretaker", size: 120, color: Color(red: 186/255, green: 255/255, blue: 201/255)),
-               DataItem(title: "🙋‍♂️ Volunteer", size: 110, color: Color(red: 161/255, green: 204/255, blue: 255/255)),
-               DataItem(title: "📢 Activist", size: 100, color: Color(red: 255/255, green: 194/255, blue: 168/255)),
-               DataItem(title: "✌️ Peacemaker", size: 90, color: Color(red: 220/255, green: 185/255, blue: 255/255)),
-               DataItem(title: "😊 Friend", size: 80, color: Color(red: 255/255, green: 244/255, blue: 189/255)),
-                 
         /*
-               DataItem(title: "🧑‍⚕️ Caretaker", size: 120, color: .green),
-               DataItem(title: "🙋‍♂️ Volunteer", size: 120, color: .blue),
-               DataItem(title: "📢 Activist", size: 120, color: .red),
-               DataItem(title: "✌️ Peacemaker", size: 120, color: .pink),
-               DataItem(title: "😊 Friend", size: 120, color: .yellow),
-                */
+        DataItem(title: "🧑‍⚕️ Caretaker", size: 120, color: .green),
+        DataItem(title: "🙋‍♂️ Volunteer", size: 120, color: .blue),
+        DataItem(title: "📢 Activist", size: 120, color: .red),
+        DataItem(title: "✌️ Peacemaker", size: 120, color: .pink),
+        DataItem(title: "😊 Friend", size: 120, color: .yellow),
+        */
+        
         /*
-               DataItem(title: "🧑‍⚕️ Caretaker", size: 60, color: .green),
-               DataItem(title: "🙋‍♂️ Volunteer", size: 60, color: .blue),
-               DataItem(title: "📢 Activist", size: 60, color: .red),
-               DataItem(title: "✌️ Peacemaker", size: 60, color: .pink),
-               DataItem(title: "😊 Friend", size: 60, color: .yellow),
-                  */
+        DataItem(title: "🧑‍⚕️ Caretaker", size: 60, color: .green),
+        DataItem(title: "🙋‍♂️ Volunteer", size: 60, color: .blue),
+        DataItem(title: "📢 Activist", size: 60, color: .red),
+        DataItem(title: "✌️ Peacemaker", size: 60, color: .pink),
+        DataItem(title: "😊 Friend", size: 60, color: .yellow),
+        */
     ]
     
     var body: some View {
@@ -361,10 +360,15 @@ struct Circles: View {
                             .foregroundColor(item.color)
                             .overlay(
                                 Circle()
-                                    .stroke(Color(red: 28/255, green: 21/255, blue: 21/255), lineWidth: 1)
+                                    .stroke(Color(red: 28/255, green: 21/255, blue: 21/255), lineWidth: 0.5)
+                                    .opacity(0)
                             )
-                        Text(item.title.prefix(1))
-                            .font(.custom("Comfortaa-Regular", size: item.size * 0.5))
+                        VStack(spacing: 1) { // Stack for emoji and level
+                            Text(item.title.prefix(1))
+                                .font(.custom("Comfortaa-Regular", size: item.size * 0.5))
+                            Text("Lvl \(7 - Int((item.size - 80) / 10))")
+                                .font(.custom("Comfortaa-Regular", size: 15))
+                        }
                     }
                     .offset(item.offset)
                     .onAppear {
@@ -379,6 +383,7 @@ struct Circles: View {
             reverseAnimation()
         }
     }
+    
     
     func sortDataBySize() {
         data.sort(by: { $0.size > $1.size })
