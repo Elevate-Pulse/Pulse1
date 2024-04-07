@@ -18,12 +18,16 @@ struct SurveyQuestionView: View {
         private var sliderValue: Binding<Double> {
             Binding<Double>(
                 get: { Double(selectedAnswer) },
-                set: { selectedAnswer = Int($0.rounded()) }
+                set: { selectedAnswer = Int($0.rounded())
+//                    print("Selected answer: ", selectedAnswer)
+                }
+                
             )
         }
 
         private func goToNextQuestion() {
             if currentQuestionIndex < questions.count - 1 {
+//                print("Selected answer: ", selectedAnswer)
                 currentQuestionIndex += 1
                 selectedAnswer = range.lowerBound // Reset selected answer for the next question
             } else {
@@ -40,13 +44,15 @@ struct SurveyQuestionView: View {
                 Slider(value: sliderValue, in: Double(range.lowerBound)...Double(range.upperBound), step: 1.0)
                 HStack {
                     ForEach(range, id: \.self) { number in
-                        Text("\(number)").tag(number)
+                        Text("\(number)             ").tag(number)
                     }
+                    .padding(.leading, 27)
                 }
                 
                 HStack {
                     Button("Next") {
                         goToNextQuestion()
+//                        print("selected answer: ", selectedAnswer)
                     }
                     .disabled(currentQuestionIndex >= questions.count - 1) // Disable "Next" if this is the last question
 
@@ -58,4 +64,8 @@ struct SurveyQuestionView: View {
             .padding()
         }
 }
+
+//#Preview {
+//    SurveyQuestionView()
+//}
 

@@ -30,7 +30,7 @@ struct ContentView: View {
                     Image(systemName: "plus")
                 }
                 .tag(1)
-            dashboard()
+//            dashboard()
                 .tabItem {
                     Image(systemName: "chart.bar")
                 }

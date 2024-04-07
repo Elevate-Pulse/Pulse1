@@ -51,11 +51,11 @@
 		B25605A42BA1059B002EB406 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B25605A32BA1059B002EB406 /* FirebaseStorageCombine-Community */; };
 		B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25605A52BA105E5002EB406 /* SwiftUIView.swift */; };
 		BA1FC6412BAA5A9E00E6B38F /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */; };
-		BA1FC6432BAA5ACA00E6B38F /* dashboard_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6422BAA5AC900E6B38F /* dashboard_extension.swift */; };
 		BA1FC6452BAA5AE400E6B38F /* survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6442BAA5AE400E6B38F /* survey.swift */; };
-		BA1FC6472BAA5B2400E6B38F /* struct_dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */; };
+		BA1FC6472BAA5B2400E6B38F /* DonutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6462BAA5B2400E6B38F /* DonutChartView.swift */; };
 		BA1FC6492BAA711A00E6B38F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BA1FC6482BAA711A00E6B38F /* GoogleService-Info.plist */; };
 		BA1FC64B2BABA57400E6B38F /* edit_comment_buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC64A2BABA57400E6B38F /* edit_comment_buttons.swift */; };
+		BA1FC64D2BC1B6EB00E6B38F /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC64C2BC1B6EB00E6B38F /* test.swift */; };
 		FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */; };
 		FFBA0A402BA9225C0057F024 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3F2BA9225C0057F024 /* Classes.swift */; };
 		FFBA0A422BA922720057F024 /* CommentsStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A412BA922720057F024 /* CommentsStructs.swift */; };
@@ -110,11 +110,11 @@
 		B231E5AC2B9689B1006B1C4A /* PulseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B25605A52BA105E5002EB406 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
-		BA1FC6422BAA5AC900E6B38F /* dashboard_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard_extension.swift; sourceTree = "<group>"; };
 		BA1FC6442BAA5AE400E6B38F /* survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = survey.swift; sourceTree = "<group>"; };
-		BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct_dashboard.swift; sourceTree = "<group>"; };
+		BA1FC6462BAA5B2400E6B38F /* DonutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChartView.swift; sourceTree = "<group>"; };
 		BA1FC6482BAA711A00E6B38F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BA1FC64A2BABA57400E6B38F /* edit_comment_buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = edit_comment_buttons.swift; sourceTree = "<group>"; };
+		BA1FC64C2BC1B6EB00E6B38F /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestore.swift; sourceTree = "<group>"; };
 		FFBA0A3F2BA9225C0057F024 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		FFBA0A412BA922720057F024 /* CommentsStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsStructs.swift; sourceTree = "<group>"; };
@@ -218,9 +218,9 @@
 				FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */,
 				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
 				BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */,
-				BA1FC6422BAA5AC900E6B38F /* dashboard_extension.swift */,
+				BA1FC64C2BC1B6EB00E6B38F /* test.swift */,
 				BA1FC6442BAA5AE400E6B38F /* survey.swift */,
-				BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */,
+				BA1FC6462BAA5B2400E6B38F /* DonutChartView.swift */,
 				FFBA0A472BA922E00057F024 /* EditProfileView.swift */,
 				BA1FC64A2BABA57400E6B38F /* edit_comment_buttons.swift */,
 				FFBA0A452BA922CD0057F024 /* EditProfileStructs.swift */,
@@ -433,7 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1FC6472BAA5B2400E6B38F /* struct_dashboard.swift in Sources */,
+				BA1FC6472BAA5B2400E6B38F /* DonutChartView.swift in Sources */,
 				FFBA0A522BA9234E0057F024 /* PulseHelperQuestionnaireStructs.swift in Sources */,
 				FFBA0A482BA922E00057F024 /* EditProfileView.swift in Sources */,
 				FFBA0A462BA922CD0057F024 /* EditProfileStructs.swift in Sources */,
@@ -455,7 +455,7 @@
 				FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */,
 				3F5ADE4D2B9FC23C00E3FD44 /* PulseHelperQuestionnaireView.swift in Sources */,
 				FFBA0A4A2BA922EF0057F024 /* HomeStructs.swift in Sources */,
-				BA1FC6432BAA5ACA00E6B38F /* dashboard_extension.swift in Sources */,
+				BA1FC64D2BC1B6EB00E6B38F /* test.swift in Sources */,
 				BA1FC64B2BABA57400E6B38F /* edit_comment_buttons.swift in Sources */,
 				FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
