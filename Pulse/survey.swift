@@ -4,6 +4,7 @@
 //  Created by Yinglin Jiang on 3/19/24.
 import SwiftUI
 import FirebaseFirestore
+import FirebaseAuth
 struct SurveyQuestion: Identifiable {
     let id: Int
     let text: String
@@ -81,11 +82,12 @@ struct SurveyQuestionView: View {
         }
     }
     private func completeSurvey() {
+        let curUserID:String = Auth.auth().currentUser?.uid ?? "exampleID"
         // Calculate the personality type based on the most selected MC answer
         let personalityType = calculatePersonalityType(from: selectedMCAnswer)
         // Prepare the survey data for submission
         var surveyData: [String: Any] = [
-            "userID": "exampleUserID",  // Use the actual user ID here
+            "userID": curUserID,  // Use the actual user ID here
             "personalityType": personalityType
         ]
         // Append each slider question's answer
