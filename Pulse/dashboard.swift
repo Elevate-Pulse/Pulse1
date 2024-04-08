@@ -75,11 +75,11 @@ struct dashboard: View {
     // Combine your slider and multiple-choice questions into one array
     let questions: [SurveyQuestion] = [
         // Your 5 original slider-based questions
-        SurveyQuestion(id: 0, text: "Do you feel a sense of community living in your neighborhood? (1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
-        SurveyQuestion(id: 1, text: "I feel safe walking alone in my neighborhood at night (1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
-        SurveyQuestion(id: 2, text: "Accessing daily necessities (groceries, healthcare, etc.) within the neighborhood or by public transportation is easy (1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
-        SurveyQuestion(id: 3, text: "Would you recommend anyone to move to the neighborhood? (1 = Strong no, 5 = Strong yes)", type: .slider, answers: nil),
-        SurveyQuestion(id: 4, text: "The streets and parks in my neighborhood are well-maintained and visually appealing (1 = Strongly disagree, 5 = Strongly agree", type: .slider, answers: nil),
+        SurveyQuestion(id: 0, text: "I feel a sense of community living in my neighborhood \n(1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
+        SurveyQuestion(id: 1, text: "I feel safe walking alone in my neighborhood at night \n(1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
+        SurveyQuestion(id: 2, text: "Accessing daily necessities (groceries, healthcare, etc.) within the neighborhood or by public transportation is easy \n(1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
+        SurveyQuestion(id: 3, text: "Would you recommend anyone to move to the neighborhood? \n(1 = Strong no, 5 = Strong yes)", type: .slider, answers: nil),
+        SurveyQuestion(id: 4, text: "The streets and parks in my neighborhood are well-maintained and visually appealing \n(1 = Strongly disagree, 5 = Strongly agree", type: .slider, answers: nil),
         // Your 5 new multiple-choice questions
         SurveyQuestion(id: 5, text: "You’re leaving to work for the day, walking to your car, and you see your new nextdoor neighbor, what do you do?", type: .multipleChoice,
                        answers: ["Good morning, [Neighbor's Name]! Anything exciting planned for today?",

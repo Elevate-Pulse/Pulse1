@@ -25,7 +25,7 @@ struct SurveyQuestionView: View {
     let range: ClosedRange<Int>
     
     var body: some View {
-        GeometryReader { geometry in
+//        GeometryReader { geometry in
             ScrollView{
                 VStack(alignment: .leading, spacing: 20) {
                     Text("Answer the survey to see your community health dashboard")
@@ -60,6 +60,10 @@ struct SurveyQuestionView: View {
                                     }
                                     .background(self.isOptionSelected(mcIndex: currentQuestionIndex - 5, optionIndex: index) ? Color.blue.opacity(0.2) : Color.clear)
                                     .cornerRadius(5)
+                                    .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(.black, lineWidth: 2)
+                                        )
                                 }
                                 .buttonStyle(PlainButtonStyle())
                             }
@@ -77,8 +81,8 @@ struct SurveyQuestionView: View {
                     }
                 }
                 .padding()
-            }
-            .frame(maxHeight: geometry.size.height * 0.7)
+//            }
+//            .frame(maxHeight: geometry.size.height)
         }
     }
     private func completeSurvey() {
@@ -135,7 +139,7 @@ struct SurveyQuestionView: View {
     func pushResponses(surveyData: [String: Any]) {
         let fs = Firestore.firestore()
         
-        fs.collection("survey_responses").addDocument(data: surveyData) { error in
+        fs.collection("testing").addDocument(data: surveyData) { error in
             if let error = error {
                 print("Error writing document: \(error)")
             } else {
