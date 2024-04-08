@@ -88,12 +88,20 @@ struct newDashboard: View {
                                      title: question.title)
                         }
                     }
-                    .padding()
+                    .padding([.horizontal, .top])
+                    
+                    Spacer(minLength: 50)
+                    Text("Personality Types")
+                        .bold()
+                    Spacer(minLength: 70)
+                    
                     
                     DonutChartView()
                 }
             }
-        } .onAppear {
+        } 
+        .background(Color("cream"))
+        .onAppear {
             Task {
 //                await pullData(questionID: "question1", title: "Question 1 Title")
 //                await pullData(questionID: "question2", title: "Question 2 Title")
@@ -109,78 +117,56 @@ struct newDashboard: View {
     func pullData() async {
         
         let fs = Firestore.firestore()
-            let surveyResponses = fs.collection("testing")
+        let surveyResponses = fs.collection("testing")
 
-            var questionAnswers: [String: [Int]] = [:]
+        var questionAnswers: [String: [Int]] = [:]
 
-            do {
-                let snapshot = try await surveyResponses.getDocuments()
+        do {
+            let snapshot = try await surveyResponses.getDocuments()
 
-                // Initialize the dictionary to store answer counts for each question
-                for questionID in 1...5 { // Assuming 5 questions
-                    questionAnswers["question\(questionID)"] = [0, 0, 0, 0, 0] // 5 answer choices
-                }
-
-                // Tally the answers for each question
-                for document in snapshot.documents {
-                    let data = document.data()
-                    for questionID in 1...5 {
-                        if let answer = data["question\(questionID)"] as? Int, answer >= 1 && answer <= 5 {
-                            questionAnswers["question\(questionID)"]?[answer - 1] += 1
-                        }
-                    }
-                }
-
-                // Convert counts to percentages and prepare for UI
-                var uiData: [QuestionData] = []
-                for questionID in 1...5 {
-                    if let answers = questionAnswers["question\(questionID)"] {
-                        let totalAnswers = answers.reduce(0, +)
-                        if totalAnswers > 0 {
-                            let percentages = answers.map { CGFloat($0 * 100 / totalAnswers) }
-                            uiData.append(QuestionData(
-                                title: "Question \(questionID)",
-                                a1: Int(percentages[0]),
-                                a2: Int(percentages[1]),
-                                a3: Int(percentages[2]),
-                                a4: Int(percentages[3]),
-                                a5: Int(percentages[4])
-                            ))
-                        }
-                    }
-                }
-
-                // Update UI
-                DispatchQueue.main.async {
-                    self.questionsData = uiData
-                }
-            } catch {
-                print("Error fetching survey responses: \(error.localizedDescription)")
+            // Initialize the dictionary to store answer counts for each question
+            for questionID in 1...5 { // Assuming 5 questions
+                questionAnswers["question\(questionID)"] = [0, 0, 0, 0, 0] // 5 answer choices
             }
-        
+
+            // Tally the answers for each question
+            for document in snapshot.documents {
+                let data = document.data()
+                for questionID in 1...5 {
+                    if let answer = data["question\(questionID)"] as? Int, answer >= 1 && answer <= 5 {
+                        questionAnswers["question\(questionID)"]?[answer - 1] += 1
+                    }
+                }
+            }
+
+            // Convert counts to percentages and prepare for UI
+            var uiData: [QuestionData] = []
+            for questionID in 1...5 {
+                if let answers = questionAnswers["question\(questionID)"] {
+                    let totalAnswers = answers.reduce(0, +)
+                    if totalAnswers > 0 {
+                        let percentages = answers.map { CGFloat($0 * 100 / totalAnswers) }
+                        uiData.append(QuestionData(
+                            title: "Question \(questionID)",
+                            a1: Int(percentages[0]),
+                            a2: Int(percentages[1]),
+                            a3: Int(percentages[2]),
+                            a4: Int(percentages[3]),
+                            a5: Int(percentages[4])
+                        ))
+                    }
+                }
+            }
+
+            // Update UI
+            DispatchQueue.main.async {
+                self.questionsData = uiData
+            }
+        } catch {
+            print("Error fetching survey responses: \(error.localizedDescription)")
+        }
+    
     }
-//    func getCount(question: String) async -> Int {
-//        var count: Int = 0
-//        let fs = Firestore.firestore()
-//        let survey = fs.collection("testing")
-////        let questionID: [String] = ["question1","question2","question3","question4",
-////            "question5"
-////        ]
-//        
-//        // Apply both filters at once before fetching the documents
-//        let query = survey //inside or before do
-//            .whereField("question", isEqualTo: question)
-////            .whereField("answer", isEqualTo: answer)
-//        
-//        do {
-//            let snapshot = try await query.getDocuments()
-//            count = snapshot.documents.count // Directly get the count of documents matching the criteria
-//        } catch {
-//            print("Error in retrieving firebase text", error.localizedDescription)
-//        }
-//        
-//        return count
-//    }
 }
 
 #Preview{
