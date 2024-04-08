@@ -152,33 +152,45 @@ struct Personality: Identifiable {
 
 struct DonutChartView: View {
     @State private var typeCount: [Personality] = []
+    @State private var totalCount: Int = 0
 
     // Define a set of colors to use in the chart and legend
-    private let colors: [Color] = [.yellow, .orange, .green, .purple, .blue]
+    private let colors: [Color] = [Color("yellow"), Color("peach"), Color("light_green"), Color("purple"), Color("blue")]
 
     var body: some View {
-        VStack {
-            Chart(typeCount) { personality in
-                SectorMark(
-                    angle: .value(personality.type, Double(personality.count)),
-                    innerRadius: .ratio(0.85),
-                    angularInset: 2
-                )
-                .foregroundStyle(by: .value(personality.type, Double(personality.count)))
-            }
-            .scaleEffect(1.2)
-            .frame(height: 300)
-            .chartXAxis(.hidden)
-            .chartYAxis(.hidden)
-            
-            // Legend
-            ForEach(Array(zip(typeCount, colors)), id: \.0.id) { (personality, color) in
-                HStack {
-                    Rectangle()
-                        .fill(color)
-                        .frame(width: 20, height: 20)
-                    Text(personality.type)
+        ZStack {
+            VStack {
+                Chart(typeCount) { personality in
+                    SectorMark(
+                        angle: .value(personality.type, Double(personality.count)),
+                        innerRadius: .ratio(0.85),
+                        angularInset: 2
+                    )
+                    .foregroundStyle(self.colorForType(personality.type))
                 }
+                .scaleEffect(1.2)
+                .frame(height: 300)
+                .chartXAxis(.hidden)
+                .chartYAxis(.hidden)
+                .padding(.bottom, 55)
+                
+                // Legend
+                ForEach(typeCount, id: \.id) { personality in
+                    HStack {
+                        Rectangle()
+                            .fill(self.colorForType(personality.type))
+                            .frame(width: 20, height: 20)
+                        Text(personality.type)
+                    }
+                }
+            }
+            
+            // Overlay text in the center of the donut chart
+            if totalCount > 0 {
+                Text("\(totalCount) people answered")
+//                    .font("Comfortaa") // Adjust font size as needed
+                    .foregroundColor(.black) // Change text color as needed
+                    .offset(y: -100)
             }
         }
         .onAppear {
@@ -193,11 +205,11 @@ struct DonutChartView: View {
                 print("Error getting documents: \(err)")
             } else {
                 var personalityCounts: [String: Int] = [
-                    "The Outgoing Spirit": 0,
-                    "The Open-Minded Explorer": 0,
-                    "The Private Resident": 0,
-                    "The Engaged Citizen": 0,
-                    "The Easygoing Neighbor": 0
+                    "Outgoing": 0,
+                    "Open-Minded": 0,
+                    "Private": 0,
+                    "Engaged": 0,
+                    "Easygoing": 0
                 ]
                 
                 for document in querySnapshot!.documents {
@@ -207,13 +219,30 @@ struct DonutChartView: View {
                 }
                 
                 // Calculate total count
-                let totalCount = personalityCounts.values.reduce(0, +)
+                self.totalCount = personalityCounts.values.reduce(0, +)
                 
                 // Update typeCount with percentages
                 if totalCount > 0 {
                     typeCount = personalityCounts.map { Personality(type: $0.key, count: ($0.value * 100) / totalCount) }
                 }
             }
+        }
+    }
+    
+    private func colorForType(_ type: String) -> Color {
+        switch type {
+        case "Outgoing":
+            return Color("yellow")
+        case "Open-Minded":
+            return Color("peach") // Ensure this color is defined in your asset catalog or use a SwiftUI color approximation
+        case "Private":
+            return Color("light_green") // Define this color too
+        case "Engaged":
+            return Color("purple")
+        case "Easygoing":
+            return Color("blue")
+        default:
+            return Color.gray // Fallback color
         }
     }
 }
