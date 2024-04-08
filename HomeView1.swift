@@ -3,7 +3,7 @@
 //  Pulse
 //
 //  Created by Peter Guan on 4/5/24.
-//
+//a
 //.foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255)) <-- black
 //.foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255)) <-- pulse green
 //.foregroundColor(Color(red: 1.0, green: 0.996, blue: 0.953)) <-- cream
