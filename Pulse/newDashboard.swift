@@ -113,7 +113,7 @@ struct newDashboard: View {
                     Spacer(minLength: 50)
                     Text("Personality Types")
                         .bold()
-                        .font(Font.custom("Comfortaa-Regular", size: 20))
+                        .font(Font.custom("Comfortaa-Light", size: 20))
                     Spacer(minLength: 70)
                     
                     
