@@ -28,8 +28,9 @@ struct PulseApp: App {
   var body: some Scene {
     WindowGroup {
       NavigationView {
-        ContentView()
-              .environmentObject(viewModel)
+//        ContentView()
+//              .environmentObject(viewModel)
+          FriendsTest()
       }
     }
   }
