@@ -260,10 +260,10 @@ struct ProgressBar: View {
                     
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: CGFloat(self.progress) * (progressBarWidth - 50), height: 35)
-                        .foregroundColor(Color(red: 161/255, green: 204/255, blue: 255/255))
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                     
                     Text(String(format: "%.0f/7", self.progress * 7))
-                        .foregroundColor(Color(red: 88/255, green: 111/255, blue: 124/255))
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                         .font(.custom("Comfortaa-Regular", size: 15))
                         .padding(.horizontal, 8)
                         .background(Color.white)
@@ -273,11 +273,11 @@ struct ProgressBar: View {
                 
                 if progress >= 1.0 && progress <= 7.0 {
                     Image(systemName: "checkmark.seal.fill")
-                        .foregroundColor(Color(red: 161/255, green: 204/255, blue: 255/255))
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                         .font(.system(size: 24))
                 } else {
                     Image(systemName: "plus.app")
-                        .foregroundColor(Color(red: 161/255, green: 204/255, blue: 255/255))
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                         .font(.system(size: 27))
                 }
             }
