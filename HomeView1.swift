@@ -27,83 +27,93 @@ struct DataItem: Identifiable {
 
 struct HomeView1: View {
     @EnvironmentObject var viewModel: AuthViewModel
-    @State private var isExpanded = true // Goals section is expanded by default
+    @State private var isExpanded = true
+    
+    // Define a state variable to track whether the dashboard view should be presented
+    @State private var isDashboardActive = false
     
     var body: some View {
         let userName = viewModel.currentUser?.name ?? "Guest"
-        VStack(spacing: 0) {
-            TopBarView()
-            ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("\(userName), you are a")
-                                .font(.custom("Comfortaa-Regular", size: 18))
-                                .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                            Text("Private Resident")
-                                .font(.custom("Comfortaa-Bold", size: 21))
-                                .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-                        }
-                        .padding(.top, 45)
-                        Spacer()
-                        Button(action: {
-                            print("retake quiz tapped on")
-                        }) {
-                            Text("Retake Survey")
-                                .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .font(.custom("Comfortaa-Regular", size: 15))
-                                .background(
-                                    RoundedRectangle(cornerRadius: 25)
-                                        .foregroundColor(Color(red: 1.0, green: 0.996, blue: 0.953))
-                                        .overlay(
+        NavigationView { // Move the NavigationView here
+            VStack(spacing: 0) {
+                TopBarView()
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text("\(userName), you are a")
+                                    .font(.custom("Comfortaa-Regular", size: 18))
+                                    .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                                Text("Private Resident")
+                                    .font(.custom("Comfortaa-Bold", size: 21))
+                                    .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                            }
+                            .padding(.top, 45)
+                            Spacer()
+                            VStack {
+                                // Your other screen content here
+                                Button(action: {
+                                    // Set the state variable to true to activate the navigation link
+                                    self.isDashboardActive = true
+                                }) {
+                                    Text("Retake Survey")
+                                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                                        .padding(.horizontal, 20)
+                                        .padding(.vertical, 10)
+                                        .font(.custom("Comfortaa-Regular", size: 15))
+                                        .background(
                                             RoundedRectangle(cornerRadius: 25)
-                                                .stroke(Color(red: 35/255, green: 109/255, blue: 97/255), lineWidth: 2)
+                                                .foregroundColor(Color(red: 1.0, green: 0.996, blue: 0.953))
+                                                .overlay(
+                                                    RoundedRectangle(cornerRadius: 25)
+                                                        .stroke(Color(red: 35/255, green: 109/255, blue: 97/255), lineWidth: 2)
+                                                )
                                         )
-                                )
+                                }
+                                // Use the NavigationLink to conditionally navigate to the dashboard view
+                                NavigationLink(destination: dashboard(), isActive: $isDashboardActive) {
+
+                                }
+                            }
+                            .padding(.top, 45)
                         }
-                        .padding(.top, 45)
+                        Text("Just like 20% of your neighbors")
+                            .font(.custom("Comfortaa-Regular", size: 18))
+                            .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                        Text("Private Residents do this.")
+                            .font(.custom("Comfortaa-Regular", size: 18))
+                            .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                            .padding(.bottom, 10)
+                        StrengthsWeaknessesSection()
+                        Text("Weekly Goals")
+                            .font(.custom("Comfortaa-Bold", size: 21))
+                            .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                            .padding(.top, 10) // Add some top padding
+                        GoalsView()
+                        Text("Your dominant character trait is:")
+                            .font(.custom("Comfortaa-Regular", size: 21))
+                            .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                        Text("Social")
+                            .font(.custom("Comfortaa-Bold", size: 24))
+                            .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                            .padding(.bottom, CGFloat(Circles().data.map { $0.size }.min() ?? 120))
                     }
-                    Text("Just like 20% of your neighbors")
-                        .font(.custom("Comfortaa-Regular", size: 18))
-                        .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                    Text("Private Residents do this.")
-                        .font(.custom("Comfortaa-Regular", size: 18))
-                        .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                        .padding(.bottom, 10)
-                    // Strengths and Weaknesses section
-                    StrengthsWeaknessesSection()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 24)
+                    .padding(.top, -36)
                     
-                    // Weekly Goals section
-                    Text("Weekly Goals")
-                        .font(.custom("Comfortaa-Bold", size: 21))
-                        .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                        .padding(.top, 10) // Add some top padding
-                    GoalsView()
-                    
-                    Text("Your dominant character trait is:")
-                        .font(.custom("Comfortaa-Regular", size: 21))
-                        .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                    Text("Social")
-                        .font(.custom("Comfortaa-Bold", size: 24))
-                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-                        .padding(.bottom, CGFloat(Circles().data.map { $0.size }.min() ?? 120))
+                    Circles()
+                        .frame(height: 175)// Placing Circles view here
+                    Text("space filler")
+                        .font(.custom("Comfortaa-Bold", size: 75))
+                        .foregroundColor(Color(red: 1.0, green: 0.996, blue: 0.953))
+                        .opacity(0)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 24)
-                .padding(.top, -36)
-                
-                Circles()
-                    .frame(height: 175)// Placing Circles view here
-                Text("space filler")
-                    .font(.custom("Comfortaa-Bold", size: 75))
-                    .foregroundColor(Color(red: 1.0, green: 0.996, blue: 0.953))
-                    .opacity(0)
+                .background(Color(red: 1.0, green: 0.996, blue: 0.953))
+                .edgesIgnoringSafeArea(.all)
             }
-            .background(Color(red: 1.0, green: 0.996, blue: 0.953))
-            .edgesIgnoringSafeArea(.all)
-        }.navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
+        }
     }
 }
 
@@ -366,7 +376,7 @@ struct Circles: View {
                         VStack(spacing: 1) { // Stack for emoji and level
                             Text(item.title.prefix(1))
                                 .font(.custom("Comfortaa-Regular", size: item.size * 0.5))
-                            Text("Lvl \(7 - Int((item.size - 80) / 10))")
+                            Text("Lvl 1")
                                 .font(.custom("Comfortaa-Regular", size: 15))
                         }
                     }

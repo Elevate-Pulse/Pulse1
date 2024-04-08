@@ -4,171 +4,185 @@
 //
 //  Created by Yinglin Jiang on 3/19/24.
 //
-
 import SwiftUI
 import Charts
-import Firebase
-import FirebaseFirestore
-
 struct Bar: View {
     var value: CGFloat
     var label: String
     
     var body: some View {
         VStack {
-            Spacer()
             Rectangle()
                 .fill(label == "last week" ? Color.gray : Color.black)
-                .frame(width: 20, height: value)
+                .frame(width: 30, height: value)
+//                .padding(.bottom)
             Text(label)
                 .font(.caption)
         }
     }
 }
-
 struct CardView: View {
-    var Q1_ans1: CGFloat
-    var Q1_ans2: CGFloat
-    var Q1_ans3: CGFloat
-    var Q1_ans4: CGFloat
-    var Q1_ans5: CGFloat
-    var title: String
+    var lastWeekValue: CGFloat
+    var thisWeekValue: CGFloat
     
     private let maxValue: CGFloat = 100
     
     var body: some View {
         VStack {
-            Text("\(title)")
+            Text("Safety")
                 .bold()
             HStack {
-                Bar(value: (Q1_ans1 /*/ maxValue) * 100*/), label: "a1")
-                Bar(value: (Q1_ans2 /*/ maxValue) * 100*/), label: "a2")
-                Bar(value: (Q1_ans3 /*/ maxValue) * 100*/), label: "a3")
-                Bar(value: (Q1_ans4 /*/ maxValue) * 100*/), label: "a4")
-                Bar(value: (Q1_ans5 /*/ maxValue) * 100*/), label: "a5")
+                Bar(value: (lastWeekValue / maxValue) * 100, label: "last week")
+                Bar(value: (thisWeekValue / maxValue) * 100, label: "this week")
             }
-//            .padding(.bottom)
-//            Text("residents think that it's safer than the last week")
-//                .font(.caption)
-//                .multilineTextAlignment(.center)
+            .padding(.bottom)
+            Text("residents think that it's safer than the last week")
+                .font(.caption)
+                .multilineTextAlignment(.center)
         }
         .padding()
         .background(Color.white)
-        .frame(width: 280, height: 230)
-        .cornerRadius(50)
+        .cornerRadius(20)
         .shadow(radius: 5)
     }
 }
-
-struct QuestionData {
-    let title: String
-    var a1: Int
-    var a2: Int
-    var a3: Int
-    var a4: Int
-    var a5: Int
-}
-
 struct dashboard: View {
+//    @State var selectedAnswer = 1 // Default answer to start wit
+    @State private var showPopup = true
+    @State private var currentQuestionIndex = 0
+//    let questions: [String] = [
+//        "On a scale of 1 to 5, how supported do you feel by local government or community organizations in addressing any issues or concerns you may have?",
+//        "How would you rate your likelihood to recommend living in this area to others from 1 (not likely) to 5 (very likely)?",
+//        "On a scale of 1 to 5, how strong is your sense of belonging and community in your area?",
+//        "On a scale of 1 (very unsafe) - 5 (very safe), how safe do you feel in your neighborhood?",
+//        "On a scale of 1 to 5, how satisfied are you with your current living situation?",
+//        "How are you feeling today?",
+//        "Rate the overall quality of life in your neighborhood on a scale of 1 to 5",
+//        "How would you rate the overall challenges or concerns you've encountered in your living situation in this area from 1 to 5?"
+//    ]
+//    let range: ClosedRange<Int> = 1...5
+//    // Dummy data for the bar values
+    let data = [
+        (lastWeek: 50, thisWeek: 70),
+        (lastWeek: 80, thisWeek: 40),
+        (lastWeek: 30, thisWeek: 90),
+        (lastWeek: 60, thisWeek: 60)
+    ]
     
-    @State private var questionsData: [QuestionData] = []
-    @State private var answerCounts: [(a1: Int, a2: Int, a3: Int, a4: Int, a5: Int)] = []
+    @State private var selectedSliderAnswers: [Int] = Array(repeating: 3, count: 5) // Assuming 5 slider questions
+    // State for the multiple-choice answers, one for each question
+    @State private var selectedMCAnswers: [Int] = Array(repeating: 0, count: 5) // Assuming 5 multiple-choice questions
+    // Combine your slider and multiple-choice questions into one array
+    let questions: [SurveyQuestion] = [
+        // Your 5 original slider-based questions
+        SurveyQuestion(id: 0, text: "Do you feel a sense of community living in your neighborhood? (1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
+        SurveyQuestion(id: 1, text: "I feel safe walking alone in my neighborhood at night (1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
+        SurveyQuestion(id: 2, text: "Accessing daily necessities (groceries, healthcare, etc.) within the neighborhood or by public transportation is easy (1 = Strongly disagree, 5 = Strongly agree)", type: .slider, answers: nil),
+        SurveyQuestion(id: 3, text: "Would you recommend anyone to move to the neighborhood? (1 = Strong no, 5 = Strong yes)", type: .slider, answers: nil),
+        SurveyQuestion(id: 4, text: "The streets and parks in my neighborhood are well-maintained and visually appealing (1 = Strongly disagree, 5 = Strongly agree", type: .slider, answers: nil),
+        // Your 5 new multiple-choice questions
+        SurveyQuestion(id: 5, text: "You’re leaving to work for the day, walking to your car, and you see your new nextdoor neighbor, what do you do?", type: .multipleChoice,
+                       answers: ["Good morning, [Neighbor's Name]! Anything exciting planned for today?",
+                                 
+                                 "We haven’t spoken much, maybe I'll introduce myself today.",
+                                 
+                                 "Give a small wave if you make eye contact",
+                                 
+                                 "Have a nice day! Is there anything you need help with around the neighborhood?",
+                                 "Offer a friendly smile and a simple “Hello”"]),
+        
+        SurveyQuestion(id: 6, text: "You're driving to work and see a sign for a new fast food chain restaurant opening. How do you feel?", type: .multipleChoice,
+                       answers: ["Ooh, a new place to try! Maybe I can grab lunch with some friends when it opens.",
+                                 
+                                 "A new restaurant! I’ll have to try it out.",
+                                 
+                                 "Another fast food place? Not really my thing. I prefer to cook at home",
+                                 "Hmm, I wonder if this will affect local businesses or traffic flow in the area.",
+                                 
+                                 "(Barely notices the sign, continues driving)"]),
+        
+        SurveyQuestion(id: 7, text: "You read a flier that a new community building has opened nearby. How do you respond?", type: .multipleChoice,
+                       answers: ["Wow, this could be great! I’ll check if it has the gym/pool/library I’ve been looking for. Maybe it’s a chance to meet more people!",
+                                 
+                                 "Interesting, I'll have to see what amenities they offer. It’s always good to have more options nearby.",
+                                 
+                                 "As long as it doesn’t get too crowded or noisy, it’s fine by me.",
+                                 
+                                 "New amenities could be beneficial. I should see if they align with community needs and sustainability goals",
+                                 
+                                 "Neat, might check it out if I remember. More amenities could be handy."]),
+        
+        SurveyQuestion(id: 8, text: "There’s been crime happening near your neighborhood. How do you respond?", type: .multipleChoice,
+                       answers: ["Safety first! I’ll see if there’s a neighborhood watch or a new security system I can join or recommend.",
+                                 
+                                 "Security is important. Maybe there’s an innovative or community-driven solution to explore.",
+                                 
+                                 " prefer to maintain my privacy and security on my own",
+                                 
+                                 "Community safety is key. I wonder if there are meetings or initiatives I can participate in to help improve it.",
+                                 
+                                 "Hope everyone’s doing their part to keep the neighborhood safe. I’ll keep an eye out."]),
+        
+        SurveyQuestion(id: 9, text: "When you get home from work, you see a flier taped to your door inviting you to a community event that the alderman is hosting this weekend. Are you going?", type: .multipleChoice,
+                       answers: ["Absolutely going! It’s a perfect opportunity to connect with neighbors and discuss community issues.",
+                                 
+                                 "I’m curious about what will be discussed. Attending could be a great way to learn more about the community.",
+                                 
+                                 "Maybe I’ll go, if it seems like it won’t be too crowded. It's good to stay informed, even if I keep to myself",
+                                 
+                                 "Definitely. It’s important to be involved in community decisions and understand what’s happening in the neighborhood.",
+                                 
+                                 "Sounds like it could be interesting. If I’m free, I’ll check it out. Nice to see what’s going on in the community."])
+        
+    ]
+    private func closeSurvey() {
+        showPopup = false
+//        self.currentQuestionIndex = 0 // Reset the survey for next time it's shown
+//        self.selectedSliderAnswers = 1 // Reset the selected answer
+    }
     
     var body: some View {
         
-        VStack {
-            ZStack {
-                ScrollView {
-                    Text("Your community health check")
-                        .bold()
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                        ForEach(0..<questionsData.count, id: \.self) { index in
-                            let question = questionsData[index]
-                            CardView(Q1_ans1: CGFloat(question.a1),
-                                     Q1_ans2: CGFloat(question.a2),
-                                     Q1_ans3: CGFloat(question.a3),
-                                     Q1_ans4: CGFloat(question.a4),
-                                     Q1_ans5: CGFloat(question.a5),
-                                     title: question.title)
-                        }
+        ZStack {
+            ScrollView {
+                Text("Your community health check")
+                    .bold()
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                    ForEach(data.indices, id: \.self) { index in
+                        CardView(lastWeekValue: CGFloat(data[index].lastWeek),
+                                 thisWeekValue: CGFloat(data[index].thisWeek))
                     }
-                    .padding()
-                    
-                    DonutChartView()
                 }
+                .padding()
             }
-        } .onAppear {
-            Task {
-                await pullData(questionID: "question1", title: "Question 1 Title")
-                await pullData(questionID: "question2", title: "Question 2 Title")
-                await pullData(questionID: "question3", title: "Question 3 Title")
-                await pullData(questionID: "question4", title: "Question 4 Title")
-                await pullData(questionID: "question5", title: "Question 5 Title")
+            .blur(radius: showPopup ? 3 : 0)
+            .background(Color(red: 1.0, green: 0.996, blue: 0.953))
+            
+            if showPopup {
+                Color.black.opacity(0.5).edgesIgnoringSafeArea(.all)
             }
+                
+            if showPopup {
+                SurveyQuestionView(selectedSliderAnswers: $selectedSliderAnswers,
+                                   selectedMCAnswer: $selectedMCAnswers,
+                                   questions: questions,
+                                   onClose: closeSurvey,
+                                   range: 1...5)
+                    .background((Color(red: 1.0, green: 0.996, blue: 0.953)))
+                    .cornerRadius(20)
+                    .shadow(radius: 5)
+                    .padding()
+                    .transition(.move(edge: .bottom))
+                    .animation(.spring(), value: showPopup)
+            }
+        }
+        .onAppear {
+            // Show the survey popup when the view appears
+            showPopup = true
         }
     }
-    
-    
-    func pullData(questionID: String, title: String) async {
-        var countsForQuestion: (a1: Int, a2: Int, a3: Int, a4: Int, a5: Int) = (0, 0, 0, 0, 0)
-        var totalAnswersCount = 0
-        
-        for answer in 1...5 {
-            let count = try? await getCount(question: questionID, answer: answer)
-            totalAnswersCount += count ?? 0
-            switch answer {
-            case 1:
-                countsForQuestion.a1 = count ?? 0
-            case 2:
-                countsForQuestion.a2 = count ?? 0
-            case 3:
-                countsForQuestion.a3 = count ?? 0
-            case 4:
-                countsForQuestion.a4 = count ?? 0
-            case 5:
-                countsForQuestion.a5 = count ?? 0
-            default:
-                break
-            }
-        }
-        
-        if totalAnswersCount > 0 {
-            let percentages = (
-                a1: (countsForQuestion.a1 * 100) / totalAnswersCount,
-                a2: (countsForQuestion.a2 * 100) / totalAnswersCount,
-                a3: (countsForQuestion.a3 * 100) / totalAnswersCount,
-                a4: (countsForQuestion.a4 * 100) / totalAnswersCount,
-                a5: (countsForQuestion.a5 * 100) / totalAnswersCount
-            )
-            let questionData = QuestionData(title: title, a1: percentages.a1, a2: percentages.a2, a3: percentages.a3, a4: percentages.a4, a5: percentages.a5)
-            DispatchQueue.main.async {
-                self.questionsData.append(questionData)
-            }
-        }
-    }
-
-    func getCount(question: String, answer: Int) async -> Int {
-        var count: Int = 0
-        let fs = Firestore.firestore()
-        let survey = fs.collection("survey_answers")
-        
-        // Apply both filters at once before fetching the documents
-        let query = survey //inside or before do
-            .whereField("question", isEqualTo: question)
-            .whereField("answer", isEqualTo: answer)
-        
-        do {
-            let snapshot = try await query.getDocuments()
-            count = snapshot.documents.count // Directly get the count of documents matching the criteria
-        } catch {
-            print("Error in retrieving firebase text", error.localizedDescription)
-        }
-        
-        return count
-    }
-
 }
-    
-#Preview {
+#Preview{
     dashboard()
+        .environmentObject(AuthViewModel())
 }

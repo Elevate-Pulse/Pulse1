@@ -45,7 +45,6 @@
 		B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25605A52BA105E5002EB406 /* SwiftUIView.swift */; };
 		BA1FC6412BAA5A9E00E6B38F /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */; };
 		BA1FC6452BAA5AE400E6B38F /* survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6442BAA5AE400E6B38F /* survey.swift */; };
-		BA1FC6472BAA5B2400E6B38F /* struct_dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */; };
 		FF2FECCA2BC3398D00B2249A /* HomeView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2FECC92BC3398D00B2249A /* HomeView1.swift */; };
 		FF2FECCC2BC33A3D00B2249A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF2FECCB2BC33A3D00B2249A /* GoogleService-Info.plist */; };
 		FF3B07CA2BAEBC46000366B3 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */; };
@@ -58,6 +57,7 @@
 		FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4F2BA923290057F024 /* ProfileView.swift */; };
 		FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A552BA9238A0057F024 /* SignupView.swift */; };
 		FFF646762BC345E000336069 /* DonutChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF646752BC345E000336069 /* DonutChartView.swift */; };
+		FFF646782BC3811900336069 /* Test1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF646772BC3811900336069 /* Test1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +93,6 @@
 		B25605A52BA105E5002EB406 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
 		BA1FC6442BAA5AE400E6B38F /* survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = survey.swift; sourceTree = "<group>"; };
-		BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = struct_dashboard.swift; sourceTree = "<group>"; };
 		FF2FECC92BC3398D00B2249A /* HomeView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeView1.swift; path = ../HomeView1.swift; sourceTree = "<group>"; };
 		FF2FECCB2BC33A3D00B2249A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		FFBA0A4F2BA923290057F024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FFBA0A552BA9238A0057F024 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		FFF646752BC345E000336069 /* DonutChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonutChartView.swift; sourceTree = "<group>"; };
+		FFF646772BC3811900336069 /* Test1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,9 +200,9 @@
 				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
 				BA1FC6442BAA5AE400E6B38F /* survey.swift */,
 				BA1FC6402BAA5A9E00E6B38F /* dashboard.swift */,
-				BA1FC6462BAA5B2400E6B38F /* struct_dashboard.swift */,
 				FFF646752BC345E000336069 /* DonutChartView.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
+				FFF646772BC3811900336069 /* Test1.swift */,
 				B231E5932B9689B1006B1C4A /* Assets.xcassets */,
 				FF2FECCB2BC33A3D00B2249A /* GoogleService-Info.plist */,
 				B231E5952B9689B1006B1C4A /* Preview Content */,
@@ -402,7 +402,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1FC6472BAA5B2400E6B38F /* struct_dashboard.swift in Sources */,
 				FF2FECCA2BC3398D00B2249A /* HomeView1.swift in Sources */,
 				B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */,
 				FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */,
@@ -415,6 +414,7 @@
 				FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */,
 				FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */,
 				FFF646762BC345E000336069 /* DonutChartView.swift in Sources */,
+				FFF646782BC3811900336069 /* Test1.swift in Sources */,
 				FF3B07CA2BAEBC46000366B3 /* AuthViewModel.swift in Sources */,
 				B231E5902B9689B0006B1C4A /* PulseApp.swift in Sources */,
 			);
