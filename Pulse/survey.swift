@@ -144,3 +144,20 @@ struct SurveyQuestionView: View {
         }
     }
 }
+
+#Preview{
+    SurveyQuestionView(selectedSliderAnswers: .constant([3, 3, 3, 3, 3]), // Example values for selectedSliderAnswers
+                       selectedMCAnswer: .constant([0, 0, 0, 0, 0]), // Example values for selectedMCAnswer
+                       questions: [
+                           SurveyQuestion(id: 0, text: "Example Slider Question 1", type: .slider, answers: nil),
+                           SurveyQuestion(id: 1, text: "Example Slider Question 2", type: .slider, answers: nil),
+                           // Add more example slider questions if needed
+                           SurveyQuestion(id: 5, text: "Example Multiple Choice Question 1", type: .multipleChoice, answers: ["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"]),
+                           SurveyQuestion(id: 6, text: "Example Multiple Choice Question 2", type: .multipleChoice, answers: ["Option A", "Option B", "Option C", "Option D", "Option E"])
+                           // Add more example multiple-choice questions if needed
+                       ],
+                       onClose: {},
+                       range: 1...5)
+        .environmentObject(AuthViewModel())
+}
+

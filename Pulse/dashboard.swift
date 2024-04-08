@@ -41,7 +41,7 @@ struct CardView: View {
                 .multilineTextAlignment(.center)
         }
         .padding()
-        .background(Color.white)
+        .background(Color(red: 1.0, green: 0.996, blue: 0.953))
         .cornerRadius(20)
         .shadow(radius: 5)
     }
@@ -82,7 +82,7 @@ struct dashboard: View {
         SurveyQuestion(id: 4, text: "The streets and parks in my neighborhood are well-maintained and visually appealing (1 = Strongly disagree, 5 = Strongly agree", type: .slider, answers: nil),
         // Your 5 new multiple-choice questions
         SurveyQuestion(id: 5, text: "You’re leaving to work for the day, walking to your car, and you see your new nextdoor neighbor, what do you do?", type: .multipleChoice,
-                       answers: ["Good morning, [Neighbor's Name]! Anything exciting planned for today?",
+                       answers: ["Good morning, [neighbor's name]! Anything exciting planned for today?",
                                  
                                  "We haven’t spoken much, maybe I'll introduce myself today.",
                                  
@@ -169,6 +169,7 @@ struct dashboard: View {
                                    onClose: closeSurvey,
                                    range: 1...5)
                     .background((Color(red: 1.0, green: 0.996, blue: 0.953)))
+                    .accentColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                     .cornerRadius(20)
                     .shadow(radius: 5)
                     .padding()
