@@ -14,7 +14,7 @@ struct TextField_Base: View {
             .padding()
             .background(RoundedRectangle(cornerRadius: 10).stroke((Color(UIColor.darkGray))))
             .frame(width: 300, height: 50)
-            .font(.custom("Poppins-Medium", size: 16))
+            .font(.custom("Comfortaa-Regular", size: 15))
             .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
     }
 }
@@ -28,7 +28,7 @@ struct SecureField_Base: View {
             .padding()
             .background(RoundedRectangle(cornerRadius: 10).stroke((Color(UIColor.darkGray))))
             .frame(width: 300, height: 50)
-            .font(.custom("Poppins-Medium", size: 16))
+            .font(.custom("Comfortaa-Regular", size: 15))
             .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
     }
 }

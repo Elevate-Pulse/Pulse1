@@ -52,6 +52,7 @@
 		FF56A3C72BC3D2E8006F97AE /* donut.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF56A3C62BC3D2E8006F97AE /* donut.swift */; };
 		FF6BFA382BC340B200DB7266 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF6BFA362BC340B200DB7266 /* Comfortaa-Regular.ttf */; };
 		FF6BFA392BC340B200DB7266 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF6BFA372BC340B200DB7266 /* Comfortaa-Bold.ttf */; };
+		FFB261132BC3D7A6008ED9D4 /* dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB261122BC3D7A6008ED9D4 /* dashboard.swift */; };
 		FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */; };
 		FFBA0A402BA9225C0057F024 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A3F2BA9225C0057F024 /* Classes.swift */; };
 		FFBA0A4C2BA9230C0057F024 /* LoginStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */; };
@@ -102,6 +103,7 @@
 		FF56A3C62BC3D2E8006F97AE /* donut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donut.swift; sourceTree = "<group>"; };
 		FF6BFA362BC340B200DB7266 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../../Downloads/Comfortaa/static/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		FF6BFA372BC340B200DB7266 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../../Downloads/Comfortaa/static/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		FFB261122BC3D7A6008ED9D4 /* dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboard.swift; sourceTree = "<group>"; };
 		FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestore.swift; sourceTree = "<group>"; };
 		FFBA0A3F2BA9225C0057F024 /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		FFBA0A4B2BA9230C0057F024 /* LoginStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStructs.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				FF2FECC92BC3398D00B2249A /* HomeView1.swift */,
 				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
 				BA1FC6442BAA5AE400E6B38F /* survey.swift */,
+				FFB261122BC3D7A6008ED9D4 /* dashboard.swift */,
 				FF56A3C22BC3D23D006F97AE /* newDashboard.swift */,
 				FF56A3C62BC3D2E8006F97AE /* donut.swift */,
 				B231E5912B9689B0006B1C4A /* ContentView.swift */,
@@ -408,6 +411,7 @@
 			files = (
 				FF2FECCA2BC3398D00B2249A /* HomeView1.swift in Sources */,
 				B25605A62BA105E5002EB406 /* SwiftUIView.swift in Sources */,
+				FFB261132BC3D7A6008ED9D4 /* dashboard.swift in Sources */,
 				FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */,
 				FFBA0A4C2BA9230C0057F024 /* LoginStructs.swift in Sources */,
 				FFBA0A3E2BA9212A0057F024 /* FirebaseFirestore.swift in Sources */,

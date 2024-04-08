@@ -206,11 +206,11 @@ struct DonutChartView: View {
                 print("Error getting documents: \(err)")
             } else {
                 var personalityCounts: [String: Int] = [
-                    "Outgoing": 0,
-                    "Open-Minded": 0,
-                    "Private": 0,
-                    "Engaged": 0,
-                    "Easygoing": 0
+                    "Outgoing Spirit": 0,
+                    "Open-Minded Explorer": 0,
+                    "Private Resident": 0,
+                    "Engaged Citizen": 0,
+                    "Easygoing Neighbor": 0
                 ]
                 
                 for document in querySnapshot!.documents {
@@ -232,15 +232,15 @@ struct DonutChartView: View {
     
     private func colorForType(_ type: String) -> Color {
         switch type {
-        case "Outgoing":
+        case "Outgoing Spirit":
             return Color("yellow_c")
-        case "Open-Minded":
+        case "Open-Minded Explorer":
             return Color("peach") // Ensure this color is defined in your asset catalog or use a SwiftUI color approximation
-        case "Private":
+        case "Private Resident":
             return Color("light_green") // Define this color too
-        case "Engaged":
+        case "Engaged Citizen":
             return Color("purple_c")
-        case "Easygoing":
+        case "Easygoing Neighbor":
             return Color("blue_c")
         default:
             return Color.gray // Fallback color

@@ -18,6 +18,8 @@
 
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 struct DataItem: Identifiable {
     var id = UUID()
@@ -27,12 +29,18 @@ struct DataItem: Identifiable {
     var offset = CGSize.zero
 }
 
+import SwiftUI
+
 struct HomeView1: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var isExpanded = true
     
     // Define a state variable to track whether the dashboard view should be presented
     @State private var isDashboardActive = false
+    @State private var neighborPercentage = 0
+    
+    // Define a state variable to hold the calculated personality type
+    @State private var personalityType = "Undetermined"
     
     var body: some View {
         let userName = viewModel.currentUser?.name ?? "Guest"
@@ -43,10 +51,11 @@ struct HomeView1: View {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             VStack(alignment: .leading, spacing: 5) {
-                                Text("\(userName), you are a")
+                                Text("\(userName), you are \(personalityType.starts(with: ["A", "E", "I", "O", "U"]) ? "a" : "an")")
                                     .font(.custom("Comfortaa-Regular", size: 18))
                                     .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                                Text("Private Resident")
+
+                                Text(personalityType) // Display the calculated personality type
                                     .font(.custom("Comfortaa-Bold", size: 21))
                                     .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                             }
@@ -73,13 +82,13 @@ struct HomeView1: View {
                                         )
                                 }
                                 // Use the NavigationLink to conditionally navigate to the dashboard view
-                                NavigationLink(destination: newDashboard(), isActive: $isDashboardActive) {
+                                NavigationLink(destination: dashboard(), isActive: $isDashboardActive) {
 
                                 }
                             }
                             .padding(.top, 45)
                         }
-                        Text("Just like 20% of your neighbors")
+                        Text("Just like \(neighborPercentage)% of your neighbors")
                             .font(.custom("Comfortaa-Regular", size: 18))
                             .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
                         Text("Private Residents do this.")
@@ -95,8 +104,8 @@ struct HomeView1: View {
                         Text("Your dominant character trait is:")
                             .font(.custom("Comfortaa-Regular", size: 21))
                             .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                        Text("Social")
-                            .font(.custom("Comfortaa-Bold", size: 24))
+                        Text(personalityType) // Display the calculated personality type
+                            .font(.custom("Comfortaa-Bold", size: 21))
                             .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                             .padding(.bottom, CGFloat(Circles().data.map { $0.size }.min() ?? 120))
                     }
@@ -115,9 +124,53 @@ struct HomeView1: View {
                 .edgesIgnoringSafeArea(.all)
             }
             .navigationBarBackButtonHidden(true)
+            .onAppear {
+                // Call the calculatePersonalityType function when the view appears
+                let answers = [0, 0, 0, 0, 0] // Example values for selectedMCAnswer
+                self.personalityType = calculatePersonalityType(from: answers)
+                calculateNeighborPercentage()
+            }
         }
     }
+    
+    // Move the calculatePersonalityType function here
+    private func calculatePersonalityType(from answers: [Int]) -> String {
+        let answerCounts = answers.reduce(into: [:]) { counts, answer in
+            counts[answer, default: 0] += 1
+        }
+        
+        guard let mostFrequentAnswer = answerCounts.max(by: { $0.value < $1.value })?.key else {
+            return "Undetermined" // Or handle this case as appropriate
+        }
+        
+        // Map the most frequent answer to a personality type
+        let personalityTypes = ["Outgoing Spirit", "Open-Minded Explorer", "Private Resident", "Engaged Citizen", "Easygoing Neighbor"]
+        return personalityTypes[mostFrequentAnswer]
+    }
+    
+    private func calculateNeighborPercentage() {
+        let db = Firestore.firestore()
+        
+        // Fetch documents from Firestore collection
+        db.collection("survey_responses").whereField("personalityType", isEqualTo: self.personalityType).getDocuments { (snapshot, error) in
+            if let error = error {
+                print("Error fetching documents: \(error)")
+            } else {
+                if let snapshot = snapshot {
+                    let totalCount = snapshot.documents.count
+                    let currentUserCount = totalCount > 0 ? 1 : 0 // Exclude current user's document from count
+                    let percentage = Int(Double(totalCount - currentUserCount) / Double(totalCount) * 100)
+                    self.neighborPercentage = percentage
+                    print(totalCount)
+                    print (currentUserCount)
+                    print(percentage)
+                }
+            }
+        }
+    }
+    
 }
+
 
 struct TopBarView: View {
     var body: some View {
@@ -165,12 +218,12 @@ struct StrengthWeakness: View {
     var body: some View {
         VStack(spacing: 0) {
             Rectangle()
-                .fill(Color(red: 255/255, green: 194/255, blue: 168/255))
+                .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
                 .frame(width: 170, height: 30)
                 .overlay(
                     Text(label)
                         .font(.custom("Comfortaa-Regular", size: 15))
-                        .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+                        .foregroundColor(Color.white)
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: 0)
@@ -188,7 +241,7 @@ struct StrengthWeakness: View {
                     VStack(alignment: .leading, spacing: 5) {
                         HStack {
                             Circle()
-                                .fill(Color(red: 255/255, green: 194/255, blue: 168/255))
+                                .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
                                 .frame(width: 10, height: 10)
                             Text(bulletText1)
                                 .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
@@ -196,7 +249,7 @@ struct StrengthWeakness: View {
                         }
                         HStack {
                             Circle()
-                                .fill(Color(red: 255/255, green: 194/255, blue: 168/255))
+                                .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
                                 .frame(width: 10, height: 10)
                             Text(bulletText2)
                                 .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
@@ -204,7 +257,7 @@ struct StrengthWeakness: View {
                         }
                         HStack {
                             Circle()
-                                .fill(Color(red: 255/255, green: 194/255, blue: 168/255))
+                                .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
                                 .frame(width: 10, height: 10)
                             Text(bulletText3)
                                 .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
