@@ -201,7 +201,7 @@ struct DonutChartView: View {
 
     private func fetchPersonalityData() {
         let fs = Firestore.firestore()
-        fs.collection("testing").getDocuments { (querySnapshot, err) in
+        fs.collection("survey_responses").getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {

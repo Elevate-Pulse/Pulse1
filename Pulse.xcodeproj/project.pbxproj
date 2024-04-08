@@ -120,6 +120,8 @@
 		BA1FC6582BC3589700E6B38F /* newDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newDashboard.swift; sourceTree = "<group>"; };
 		BA1FC65A2BC358A700E6B38F /* donut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = donut.swift; sourceTree = "<group>"; };
 		BA1FC65E2BC3BBB700E6B38F /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../../Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		BA1FC6602BC3C81900E6B38F /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		BA1FC6612BC3C82000E6B38F /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		FF3B07CB2BAED110000366B3 /* Pulse.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pulse.entitlements; sourceTree = "<group>"; };
 		FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestore.swift; sourceTree = "<group>"; };
@@ -218,6 +220,8 @@
 				3FD342152B9FD12600796269 /* Poppins-Medium.ttf */,
 				3FD3421A2B9FD1FA00796269 /* Poppins-Bold.ttf */,
 				BA1FC65E2BC3BBB700E6B38F /* Comfortaa-Light.ttf */,
+				BA1FC6602BC3C81900E6B38F /* Comfortaa-Bold.ttf */,
+				BA1FC6612BC3C82000E6B38F /* Comfortaa-Regular.ttf */,
 				FFBA0A3D2BA9212A0057F024 /* FirebaseFirestore.swift */,
 				FF3B07C92BAEBC46000366B3 /* AuthViewModel.swift */,
 				B231E58F2B9689B0006B1C4A /* PulseApp.swift */,

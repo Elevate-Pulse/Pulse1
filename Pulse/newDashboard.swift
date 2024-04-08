@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 import Firebase
 import FirebaseFirestore
+
 struct Bar: View {
     var value: CGFloat
     var label: String
@@ -17,10 +18,27 @@ struct Bar: View {
         VStack {
             Spacer()
             Rectangle()
-                .fill(label == "last week" ? Color.gray : Color.black)
+                .fill(colorForLabel(label))
                 .frame(width: 20, height: value)
             Text(label)
                 .font(.caption)
+        }
+    }
+    
+    private func colorForLabel(_ label: String) -> Color {
+        switch label {
+        case "1":
+            return Color("yellow_c")
+        case "2":
+            return Color("blue_c")
+        case "3":
+            return Color("purple_c")
+        case "4":
+            return Color("peach")
+        case "5":
+            return Color("light_green")
+        default:
+            return Color.gray // Fallback color
         }
     }
 }
@@ -38,12 +56,13 @@ struct CardView: View {
         VStack {
             Text("\(title)")
                 .bold()
+                .font(Font.custom("Comfortaa-Light", size: 10))
             HStack {
-                Bar(value: (Q1_ans1 /*/ maxValue) * 100*/), label: "a1")
-                Bar(value: (Q1_ans2 /*/ maxValue) * 100*/), label: "a2")
-                Bar(value: (Q1_ans3 /*/ maxValue) * 100*/), label: "a3")
-                Bar(value: (Q1_ans4 /*/ maxValue) * 100*/), label: "a4")
-                Bar(value: (Q1_ans5 /*/ maxValue) * 100*/), label: "a5")
+                Bar(value: (Q1_ans1 /*/ maxValue) * 100*/), label: "1")
+                Bar(value: (Q1_ans2 /*/ maxValue) * 100*/), label: "2")
+                Bar(value: (Q1_ans3 /*/ maxValue) * 100*/), label: "3")
+                Bar(value: (Q1_ans4 /*/ maxValue) * 100*/), label: "4")
+                Bar(value: (Q1_ans5 /*/ maxValue) * 100*/), label: "5")
             }
 //            .padding(.bottom)
 //            Text("residents think that it's safer than the last week")
@@ -52,8 +71,8 @@ struct CardView: View {
         }
         .padding()
         .background(Color.white)
-        .frame(width: 280, height: 230)
-        .cornerRadius(50)
+        .frame(width: 180, height: 230)
+        .cornerRadius(30)
         .shadow(radius: 2)
     }
 }
@@ -77,6 +96,7 @@ struct newDashboard: View {
                 ScrollView {
                     Text("Your community health check")
                         .bold()
+                        .font(Font.custom("Comfortaa-Light", size: 20))
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
                         ForEach(0..<questionsData.count, id: \.self) { index in
                             let question = questionsData[index]
@@ -93,6 +113,7 @@ struct newDashboard: View {
                     Spacer(minLength: 50)
                     Text("Personality Types")
                         .bold()
+                        .font(Font.custom("Comfortaa-Light", size: 20))
                     Spacer(minLength: 70)
                     
                     
@@ -117,7 +138,7 @@ struct newDashboard: View {
     func pullData() async {
         
         let fs = Firestore.firestore()
-        let surveyResponses = fs.collection("testing")
+        let surveyResponses = fs.collection("survey_responses")
 
         var questionAnswers: [String: [Int]] = [:]
 
@@ -138,6 +159,17 @@ struct newDashboard: View {
                     }
                 }
             }
+            let q_s: [String] = [
+                "Do you feel a sense of community living in your neighborhood? \n(1 = Strongly disagree, 5 = Strongly agree)",
+                
+                "I feel safe walking alone in my neighborhood at night \n(1 = Strongly disagree, 5 = Strongly agree)",
+                
+                "Accessing daily necessities (groceries, healthcare, etc.) within the neighborhood or by public transportation is easy \n(1 = Strongly disagree, 5 = Strongly agree)",
+                
+                "Would you recommend anyone to move to the neighborhood? \n(1 = Strong no, 5 = Strong yes)",
+                
+                "The streets and parks in my neighborhood are well-maintained and visually appealing \n(1 = Strongly disagree, 5 = Strongly agree"
+            ]
 
             // Convert counts to percentages and prepare for UI
             var uiData: [QuestionData] = []
@@ -147,7 +179,7 @@ struct newDashboard: View {
                     if totalAnswers > 0 {
                         let percentages = answers.map { CGFloat($0 * 100 / totalAnswers) }
                         uiData.append(QuestionData(
-                            title: "Question \(questionID)",
+                            title: "\(q_s[questionID-1])",
                             a1: Int(percentages[0]),
                             a2: Int(percentages[1]),
                             a3: Int(percentages[2]),

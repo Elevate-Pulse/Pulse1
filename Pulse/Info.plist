@@ -4,6 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Comfortaa-Regular.ttf</string>
+		<string>Comfortaa-Bold.ttf</string>
 		<string>Comfortaa-Light.ttf</string>
 		<string>Poppins-Medium.ttf</string>
 		<string>Poppins-Bold.ttf</string>
