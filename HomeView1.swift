@@ -12,6 +12,8 @@
 
 /*
  -Why tf does login screen have back buttons bruh
+ -retake survey button should open up survey
+ -calculate bubbles
  */
 
 
@@ -71,7 +73,7 @@ struct HomeView1: View {
                                         )
                                 }
                                 // Use the NavigationLink to conditionally navigate to the dashboard view
-                                NavigationLink(destination: dashboard(), isActive: $isDashboardActive) {
+                                NavigationLink(destination: newDashboard(), isActive: $isDashboardActive) {
 
                                 }
                             }

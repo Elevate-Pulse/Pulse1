@@ -24,7 +24,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-            dashboard()
+            newDashboard()
                 .tabItem {
                     Image(systemName: "chart.bar")
                 }
