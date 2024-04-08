@@ -54,7 +54,7 @@ struct CardView: View {
         .background(Color.white)
         .frame(width: 280, height: 230)
         .cornerRadius(50)
-        .shadow(radius: 5)
+        .shadow(radius: 2)
     }
 }
 struct QuestionData {

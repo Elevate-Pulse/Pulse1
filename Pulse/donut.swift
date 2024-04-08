@@ -155,7 +155,7 @@ struct DonutChartView: View {
     @State private var totalCount: Int = 0
 
     // Define a set of colors to use in the chart and legend
-    private let colors: [Color] = [Color("yellow"), Color("peach"), Color("light_green"), Color("purple"), Color("blue")]
+//    private let colors: [Color] = [Color("yellow_c"), Color("peach"), Color("light_green"), Color("purple_c"), Color("blue_c")]
 
     var body: some View {
         ZStack {
@@ -181,6 +181,7 @@ struct DonutChartView: View {
                             .fill(self.colorForType(personality.type))
                             .frame(width: 20, height: 20)
                         Text(personality.type)
+                            .font(Font.custom("Comfortaa-Light", size: 14))
                     }
                 }
             }
@@ -188,7 +189,7 @@ struct DonutChartView: View {
             // Overlay text in the center of the donut chart
             if totalCount > 0 {
                 Text("\(totalCount) people answered")
-//                    .font("Comfortaa") // Adjust font size as needed
+                    .font(Font.custom("Comfortaa-Light", size: 20)) // Adjust font size as needed
                     .foregroundColor(.black) // Change text color as needed
                     .offset(y: -100)
             }
@@ -232,15 +233,15 @@ struct DonutChartView: View {
     private func colorForType(_ type: String) -> Color {
         switch type {
         case "Outgoing":
-            return Color("yellow")
+            return Color("yellow_c")
         case "Open-Minded":
             return Color("peach") // Ensure this color is defined in your asset catalog or use a SwiftUI color approximation
         case "Private":
             return Color("light_green") // Define this color too
         case "Engaged":
-            return Color("purple")
+            return Color("purple_c")
         case "Easygoing":
-            return Color("blue")
+            return Color("blue_c")
         default:
             return Color.gray // Fallback color
         }
