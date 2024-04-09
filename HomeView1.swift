@@ -24,8 +24,6 @@ struct DataItem: Identifiable {
     var offset = CGSize.zero
 }
 
-import SwiftUI
-
 struct HomeView1: View {
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var isExpanded = true
@@ -189,7 +187,7 @@ struct StrengthsWeaknessesSection: View {
             }
             if isExpanded {
                 HStack {
-                    StrengthWeakness(label: "Strengths", bulletText1: "Private Resident Strength 1", bulletText2: "Private Resident Strength 1", bulletText3: "Private Resident Strength 1")
+                    StrengthWeakness(label: "Strengths", bulletText1: "Enthusiastic, social, excellent organizer, builds strong relationships, promotes community spirit.", bulletText2: "Private Resident Strength 1", bulletText3: "Private Resident Strength 1")
                     StrengthWeakness(label: "Weaknesses", bulletText1: "Private Resident Weakness 1", bulletText2: "Private Resident Weakness 1", bulletText3: "Private Resident Weakness 1")
                 }
                 .padding(.vertical, 15)
