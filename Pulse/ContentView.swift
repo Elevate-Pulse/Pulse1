@@ -3,12 +3,13 @@
  -Store goals locally
  -Make friends screen look sexy
  -Circle size update
- -Store user personality to firebase so that it displays the right one on homeview1 + 
+ -Store user personality to firebase so that it displays the right one on homeview1 + u can see it on friends list
  -Strengths and weaknesses of each personality
  
  -Randomize goals every wk
  -Apple login
  -Remove back button from login/signup screen
+ -Having to scroll down to see next button on survey
 
  */
 
