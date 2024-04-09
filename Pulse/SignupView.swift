@@ -33,19 +33,21 @@ struct SignupView: View {
         TextField_Base(typeOfText: "Email", text: $email)
         SecureField_Base(typeOfText: "Create password", text: $createPw)
         SecureField_Base(typeOfText: "Repeat password", text: $repeatPw)
-        Button(action: {
-          Task {
-            try await viewModel.register(withEmail: email, pw: createPw, name: name)
+          Button(action: {
+              Task {
+                  try await viewModel.register(withEmail: email, pw: createPw, name: name)
+              }
+          }) {
+              Text("Sign up")
+                  .foregroundColor(Color.white)
+                  .font(.custom("Comfortaa-Regular", size: 18))
+                  .padding()
+                  .frame(width: 300, height: 50)
+                  .background(RoundedRectangle(cornerRadius: 25).fill(Color(red: 35/255, green: 109/255, blue: 97/255)))
+                  .opacity(formIsValid ? 1.0 : 0.5) // Adjust opacity based on formIsValid
           }
-        }) {
-          Text("Sign up")
-            .foregroundColor(Color.white)
-            .font(.custom("Comfortaa-Regular", size: 18))
-            .padding()
-            .frame(width: 300, height: 50)
-            .background(RoundedRectangle(cornerRadius: 25).fill(Color(red: 35/255, green: 109/255, blue: 97/255)))
-            .disabled(!formIsValid)
-        }
+          .disabled(!formIsValid)
+
       }
       .padding()
     }

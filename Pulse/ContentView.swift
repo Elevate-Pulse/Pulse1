@@ -3,7 +3,7 @@
  -Store goals locally
  -Make friends screen look sexy
  -Circle size update
- -Store user personality to firebase
+ -Store user personality to firebase so that it displays the right one on homeview1 + 
  -Strengths and weaknesses of each personality
  
  -Randomize goals every wk

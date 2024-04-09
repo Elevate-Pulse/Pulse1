@@ -88,7 +88,7 @@ struct dashboard: View {
                                    onClose: closeSurvey,
                                    range: 1...5)
                     .background(Color(red: 1.0, green: 0.996, blue: 0.953))
-                    .cornerRadius(20)
+                    .cornerRadius(25)
                     .shadow(radius: 5)
                     .padding()
                     .transition(.move(edge: .bottom))

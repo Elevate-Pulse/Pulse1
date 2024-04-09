@@ -10,11 +10,6 @@
 //.foregroundColor(Color(red: 88/255, green: 111/255, blue: 124/255)) <-- gray
 
 
-/*
- -Why tf does login screen have back buttons bruh
- -retake survey button should open up survey
- -calculate bubbles
- */
 
 
 import SwiftUI
@@ -145,6 +140,7 @@ struct HomeView1: View {
         
         // Map the most frequent answer to a personality type
         let personalityTypes = ["Outgoing Spirit", "Open-Minded Explorer", "Private Resident", "Engaged Citizen", "Easygoing Neighbor"]
+        print (personalityTypes[mostFrequentAnswer])
         return personalityTypes[mostFrequentAnswer]
     }
     
