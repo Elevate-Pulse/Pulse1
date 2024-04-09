@@ -2,6 +2,7 @@ import SwiftUI
 
 struct dashboard: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: AuthViewModel
     
     @State private var showPopup = true
     @State private var currentQuestionIndex = 0
@@ -55,7 +56,7 @@ struct dashboard: View {
                                  
                                  "Security is important. Maybe there’s an innovative or community-driven solution to explore.",
                                  
-                                 " prefer to maintain my privacy and security on my own",
+                                 "I prefer to maintain my privacy and security on my own",
                                  
                                  "Community safety is key. I wonder if there are meetings or initiatives I can participate in to help improve it.",
                                  
@@ -104,5 +105,6 @@ struct dashboard: View {
 struct dashboard_Previews: PreviewProvider {
     static var previews: some View {
         dashboard()
+            .environmentObject(AuthViewModel())
     }
 }

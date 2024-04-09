@@ -46,7 +46,7 @@ struct HomeView1: View {
         let userName = viewModel.currentUser?.name ?? "Guest"
         NavigationView { // Move the NavigationView here
             VStack(spacing: 0) {
-                TopBarView()
+                
                 ScrollView {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
@@ -54,12 +54,12 @@ struct HomeView1: View {
                                 Text("\(userName), you are \(personalityType.starts(with: ["A", "E", "I", "O", "U"]) ? "a" : "an")")
                                     .font(.custom("Comfortaa-Regular", size: 18))
                                     .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-
+                                
                                 Text(personalityType) // Display the calculated personality type
                                     .font(.custom("Comfortaa-Bold", size: 21))
                                     .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
                             }
-                            .padding(.top, 45)
+                            .padding(.top, 100)
                             Spacer()
                             VStack {
                                 // Your other screen content here
@@ -83,10 +83,10 @@ struct HomeView1: View {
                                 }
                                 // Use the NavigationLink to conditionally navigate to the dashboard view
                                 NavigationLink(destination: dashboard(), isActive: $isDashboardActive) {
-
+                                    
                                 }
                             }
-                            .padding(.top, 45)
+                            .padding(.top, 100)
                         }
                         Text("Just like \(neighborPercentage)% of your neighbors")
                             .font(.custom("Comfortaa-Regular", size: 18))
@@ -172,16 +172,6 @@ struct HomeView1: View {
     }
 
     
-}
-
-
-struct TopBarView: View {
-    var body: some View {
-        Text("1")
-            .padding(.horizontal, UIScreen.main.bounds.width)
-            .padding(.bottom, -10)
-            .background(Color(red: 1.0, green: 0.996, blue: 0.953))
-    }
 }
 
 

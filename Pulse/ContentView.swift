@@ -3,9 +3,13 @@
  -Store goals locally
  -Make friends screen look sexy
  -Circle size update
+ -Store user personality to firebase
+ -Strengths and weaknesses of each personality
  
  -Randomize goals every wk
  -Apple login
+ -Remove back button from login/signup screen
+
  */
 
 import SwiftUI

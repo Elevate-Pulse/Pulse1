@@ -157,6 +157,7 @@ struct SurveyQuestionView: View {
         
         // Map the most frequent answer to a personality type
         let personalityTypes = ["Outgoing Spirit", "Open-Minded Explorer", "Private Resident", "Engaged Citizen", "Easygoing Neighbor"]
+        print (personalityTypes[mostFrequentAnswer])
         return personalityTypes[mostFrequentAnswer]
     }
     
