@@ -27,31 +27,34 @@ class AuthViewModel: ObservableObject {
     }
     
     func login(withEmail email: String, pw: String) async throws {
-        print("auth sign in")
-        do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: pw)
-            self.userSession = result.user
-            await pullUserData()
-        } catch {
-            print("error logging in")
-        }
-        /*
-        Auth.auth().signIn(withEmail: email, password: pw) { result, error in
-            if let error = error {
-                print("Registration error:", error.localizedDescription)
-            } else {
-                print("Login successful")
+            print("auth sign in")
+            do {
+                let result = try await Auth.auth().signIn(withEmail: email, password: pw)
+                self.userSession = result.user
+                await updateLoginCount() // Update timesLoggedIn
+                await pullUserData()
+            } catch {
+                print("error logging in")
+                throw error // Rethrow the error for handling in LoginView
             }
         }
-         */
-    }
-    
+
+        // New method to update timesLoggedIn
+        public func updateLoginCount() async {
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let userRef = Firestore.firestore().collection("users").document(uid)
+            do {
+                try await userRef.updateData(["timesLoggedIn": FieldValue.increment(Int64(1))])
+            } catch {
+                print("Error updating login count: \(error.localizedDescription)")
+            }
+        }
     func register(withEmail email: String, pw: String, name: String) async throws {
         print("auth Signed up")
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: pw)
             self.userSession = result.user
-            let user = User(id: result.user.uid, name: name, email: email)
+            let user = User(id: result.user.uid, name: name, email: email, timesLoggedIn: 0, initialSurvey: false)
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await pullUserData()

@@ -22,7 +22,7 @@ struct LoginView: View {
                         .padding(.bottom, -50)
                     
                     HStack(spacing: 20) {
-                        NavigationLink(destination: LoginView()) {
+                        NavigationLink(destination: LoginView().environmentObject(viewModel)) {
                             Text("Login")
                                 .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
                                 .font(.custom("Comfortaa-Regular", size: 21))
@@ -31,7 +31,7 @@ struct LoginView: View {
                         }
                         
                         // Navigate to SignupView
-                        NavigationLink(destination: SignupView()) {
+                        NavigationLink(destination: SignupView().environmentObject(viewModel)) {
                             Text("Sign up")
                                 .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
                                 .font(.custom("Comfortaa-Regular", size: 21))

@@ -34,14 +34,13 @@ struct Test1: View {
                         )
                 }
                 // Use the NavigationLink to conditionally navigate to the dashboard view
-                NavigationLink(destination: newDashboard(), isActive: $isDashboardActive) {
+                //NavigationLink(destination: newDashboard().environmentObject(viewModel), isActive: $isDashboardActive) {
                     EmptyView() // Use EmptyView if you don't want to display any visible link
                 }
             }
             .navigationTitle("Other Screen")
         }
     }
-}
 //
 
 #Preview {

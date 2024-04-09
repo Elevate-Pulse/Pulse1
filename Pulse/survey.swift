@@ -23,6 +23,8 @@ struct SurveyQuestionView: View {
     let questions: [SurveyQuestion]
     let onClose: () -> Void
     let range: ClosedRange<Int>
+    @EnvironmentObject var viewModel: AuthViewModel
+    @State private var isNavigationActive = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -77,12 +79,23 @@ struct SurveyQuestionView: View {
                     }
                 }
                 .padding()
-            }
-            .frame(maxHeight: geometry.size.height * 0.7)
-        }
-    }
+                           }
+                           .frame(maxHeight: geometry.size.height * 0.7)
+                       }
+                       //.navigationTitle("Survey") // Set navigation title
+                       .navigationBarBackButtonHidden(true) // Hide back button
+                       .navigationBarItems(trailing: NavigationLink(destination: ContentView().environmentObject(viewModel), isActive: $isNavigationActive) {
+                           EmptyView()
+                       })
+                   }
     private func completeSurvey() {
-        let curUserID:String = Auth.auth().currentUser?.uid ?? "exampleID"
+        guard let currentUser = viewModel.currentUser else {
+            // Handle the case where currentUser is nil
+            print("Error: currentUser is nil")
+            return
+        }
+        
+        let curUserID: String = Auth.auth().currentUser?.uid ?? "exampleID"
         // Calculate the personality type based on the most selected MC answer
         let personalityType = calculatePersonalityType(from: selectedMCAnswer)
         // Prepare the survey data for submission
@@ -98,9 +111,24 @@ struct SurveyQuestionView: View {
         // Push the survey results to Firebase
         pushResponses(surveyData: surveyData)
         
+        // Increment timesLoggedIn count and set initialSurvey to true
+        do {
+            Task {
+                await viewModel.updateLoginCount()
+                // Set initialSurvey to true
+                currentUser.initialSurvey = true
+                // Print out timesLoggedIn
+                print("timesLoggedIn: \(viewModel.currentUser?.timesLoggedIn ?? 9999999)")
+                // Present ContentView after completing the survey
+                isNavigationActive = true
+            }
+        } catch {
+            print("Error incrementing timesLoggedIn count: \(error.localizedDescription)")
+        }
         // Close the survey view
         onClose()
     }
+
     
     private func goToNextQuestion() {
         if currentQuestionIndex < questions.count - 1 {

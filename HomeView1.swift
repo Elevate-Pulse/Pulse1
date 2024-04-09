@@ -158,16 +158,19 @@ struct HomeView1: View {
             } else {
                 if let snapshot = snapshot {
                     let totalCount = snapshot.documents.count
-                    let currentUserCount = totalCount > 0 ? 1 : 0 // Exclude current user's document from count
-                    let percentage = Int(Double(totalCount - currentUserCount) / Double(totalCount) * 100)
-                    self.neighborPercentage = percentage
-                    print(totalCount)
-                    print (currentUserCount)
-                    print(percentage)
+                    if totalCount == 0 {
+                        // Denominator is 0, so display 100%
+                        self.neighborPercentage = 0
+                    } else {
+                        let currentUserCount = totalCount > 0 ? 1 : 0 // Exclude current user's document from count
+                        let percentage = Int(Double(totalCount - currentUserCount) / Double(totalCount) * 100)
+                        self.neighborPercentage = percentage
+                    }
                 }
             }
         }
     }
+
     
 }
 
