@@ -84,7 +84,7 @@ struct HomeView1: View {
                         Text("Just like \(neighborPercentage)% of your neighbors")
                             .font(.custom("Comfortaa-Regular", size: 18))
                             .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-                        Text("Private Residents do this.")
+                        Text("\(personalityType) are good communication.")
                             .font(.custom("Comfortaa-Regular", size: 18))
                             .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
                             .padding(.bottom, 10)
@@ -118,27 +118,28 @@ struct HomeView1: View {
             }
             .navigationBarBackButtonHidden(true)
             .onAppear {
-                fetchCurrentUserPersonalityType()
-                calculateNeighborPercentage()
+                            Task {
+                                await fetchCurrentUserPersonalityType()
+                                await calculateNeighborPercentage()
+                            }
+                        }
+                    }
+                }
+    private func fetchCurrentUserPersonalityType() async {
+            guard let userID = viewModel.currentUser?.id else {
+                print("Error: Current user ID not available")
+                return
             }
-        }
-    }
-    private func fetchCurrentUserPersonalityType() {
-        guard let userID = viewModel.currentUser?.id else {
-            print("Error: Current user ID not available")
-            return
-        }
-        
-        let db = Firestore.firestore()
-        
-        db.collection("survey_responses")
-            .whereField("userID", isEqualTo: userID)
-            .getDocuments { (snapshot, error) in
-                if let error = error {
-                    print("Error fetching documents: \(error)")
-                } else if let snapshot = snapshot, let document = snapshot.documents.first {
+            
+            let db = Firestore.firestore()
+            
+            do {
+                let querySnapshot = try await db.collection("survey_responses")
+                    .whereField("userID", isEqualTo: userID)
+                    .getDocuments()
+                
+                if let document = querySnapshot.documents.first {
                     if let personalityType = document.data()["personalityType"] as? String {
-                        // Assign the fetched personalityType to the local variable
                         self.personalityType = personalityType
                     } else {
                         print("Personality type not found for user ID: \(userID)")
@@ -146,37 +147,33 @@ struct HomeView1: View {
                 } else {
                     print("Document not found for user ID: \(userID)")
                 }
-            }
-    }
-
-    
-    
-    private func calculateNeighborPercentage() {
-        let db = Firestore.firestore()
-        
-        // Fetch documents from Firestore collection
-        db.collection("survey_responses").whereField("personalityType", isEqualTo: self.personalityType).getDocuments { (snapshot, error) in
-            if let error = error {
+            } catch {
                 print("Error fetching documents: \(error)")
-            } else {
-                if let snapshot = snapshot {
-                    let totalCount = snapshot.documents.count
-                    if totalCount == 0 {
-                        // Denominator is 0, so display 100%
-                        self.neighborPercentage = 0
-                    } else {
-                        let currentUserCount = totalCount > 0 ? 1 : 0 // Exclude current user's document from count
-                        let percentage = Int(Double(totalCount - currentUserCount) / Double(totalCount) * 100)
-                        self.neighborPercentage = percentage
-                        print (percentage)
-                    }
+            }
+        }
+
+        private func calculateNeighborPercentage() async {
+            let db = Firestore.firestore()
+            
+            do {
+                let querySnapshot = try await db.collection("survey_responses")
+                    .whereField("personalityType", isEqualTo: self.personalityType)
+                    .getDocuments()
+                
+                let totalCount = querySnapshot.documents.count
+                if totalCount == 0 {
+                    self.neighborPercentage = 0
+                } else {
+                    let currentUserCount = totalCount > 0 ? 1 : 0
+                    let percentage = Int(Double(totalCount - currentUserCount) / Double(totalCount) * 100)
+                    self.neighborPercentage = percentage
                 }
+            } catch {
+                print("Error fetching documents: \(error)")
             }
         }
     }
-
     
-}
 
 
 struct StrengthsWeaknessesSection: View {
