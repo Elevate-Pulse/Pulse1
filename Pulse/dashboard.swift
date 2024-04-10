@@ -75,8 +75,8 @@ struct dashboard: View {
     ]
     
     private func closeSurvey() {
-        presentationMode.wrappedValue.dismiss() // Dismiss the dashboard view
-    }
+           presentationMode.wrappedValue.dismiss() // Dismiss the dashboard view
+       }
     
     var body: some View {
         ZStack {
@@ -102,9 +102,7 @@ struct dashboard: View {
     }
 }
 
-struct dashboard_Previews: PreviewProvider {
-    static var previews: some View {
-        dashboard()
-            .environmentObject(AuthViewModel())
-    }
+#Preview{
+    dashboard()
+        .environmentObject(AuthViewModel())
 }

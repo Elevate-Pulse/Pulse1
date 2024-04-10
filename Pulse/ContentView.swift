@@ -1,10 +1,8 @@
 /*
--Registerering an acc should go to survey
+-Retaking survey should automatically update personality type, strengths/weaknesses, and summary
  -Store goals locally
  -Make friends screen look sexy
  -Circle size update
- -Store user personality to firebase so that it displays the right one on homeview1 + u can see it on friends list
- -Strengths and weaknesses of each personality
  
  -Randomize goals every wk
  -Apple login

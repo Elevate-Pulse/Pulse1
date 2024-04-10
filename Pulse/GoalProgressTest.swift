@@ -10,40 +10,37 @@ import FirebaseFirestore
 import Firebase
 
 struct GoalProgressTest: View {
-    var progressNum = 3
+    var progressNum = 1
     var goal = "goal1"
     @State private var goalProgress: [Int] = []
     
-    var body: some View {
-        VStack {
-            Text("Goal Progress")
-                .font(.title)
-                .padding()
-            
-            // Display goal progress data
-            
-            ForEach(0..<goalProgress.count, id: \.self) { index in
-                Text("Goal \(index + 1): \(goalProgress[index])")
-                    .padding()
-            }
-            
-            
-            Spacer()
-            
-            //                Button("Fetch Goal Progress") {
-            //                    // Call the function to fetch goal progress data
-            //                    goalProgress = getGoalProgress()
-            //                }
-            //                .padding()
-        }
+    var goalNames = ["lvl_ame", "lvl_eng", "lvl_phys", "lvl_safe", "lvl_soc"]
+
+       var body: some View {
+           VStack {
+               Text("Goal Progress")
+                   .font(.title)
+                   .padding()
+               
+               // Display goal progress data
+               ForEach(0..<goalProgress.count, id: \.self) { index in
+                   if index < goalNames.count {
+                       Text("\(goalNames[index]): \(goalProgress[index])")
+                           .padding()
+                   }
+               }
+               
+               Spacer()
+           }
         .onAppear {
             // Fetch goal progress data when the view appears
-            //                goalProgress = getGoalProgress()
+            //                goalProgress = getLvls()
             //                updateGoalProgress(progressNum: progressNum, goal: goal)
             Task {
                 print("Inside Task")
                 do {
-                    goalProgress = try await getGoalProgress()
+                    goalProgress = try await getLvls()
+                    print("done")
                 } catch {
                     print("Error fetching network data: \(error)")
                 }
@@ -89,9 +86,9 @@ struct GoalProgressTest: View {
                     // Check if the goal has reached or exceeded 7
                     if currentProgress >= 7 {
                         // Increase the level by 1
-                        if var level = data["level"] as? Int {
+                        if var level = data["lvl_ame"] as? Int {
                             level += 1
-                            data["level"] = level
+                            data["lvl_ame"] = level
                         }
                         
                         // Reset the goal progress
@@ -112,6 +109,55 @@ struct GoalProgressTest: View {
     }
     
     // Pull goal progress from Firebase
+    func getLvls() async -> [Int] {
+        var goalProgress: [Int] = []
+        let fs = Firestore.firestore()
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("User not logged in")
+            return goalProgress
+        }
+        
+        
+        let goalProgressCollection = fs.collection("goal_progress")
+        do {
+            // Create a query to get documents with matching userID
+            let goalProgressQuery = goalProgressCollection.whereField("userID", isEqualTo: userID)
+            
+            let goalProgressSnapshot = try await goalProgressQuery.getDocuments()
+            
+            for document in goalProgressSnapshot.documents {
+                
+                let data = document.data()
+                
+                // Retrieve the values for "goal1", "goal2", "goal3", and "level"
+                if let lvl_ame = data["lvl_ame"] as? Int {
+                    goalProgress.append(lvl_ame)
+                }
+                
+                if let lvl_eng = data["lvl_eng"] as? Int {
+                    goalProgress.append(lvl_eng)
+                }
+                
+                if let lvl_phys = data["lvl_phys"] as? Int {
+                    goalProgress.append(lvl_phys)
+                }
+                
+                if let lvl_safe = data["lvl_safe"] as? Int {
+                    goalProgress.append(lvl_safe)
+                }
+                
+                if let lvl_soc = data["lvl_soc"] as? Int {
+                    goalProgress.append(lvl_soc)
+                }
+                
+            }
+        } catch {
+            print("Error fetching goal progress: \(error.localizedDescription)")
+        }
+        return goalProgress
+    }
+    
     func getGoalProgress() async -> [Int] {
         var goalProgress: [Int] = []
         let fs = Firestore.firestore()
@@ -134,11 +180,15 @@ struct GoalProgressTest: View {
                 let data = document.data()
                 
                 // Retrieve the values for "goal1", "goal2", "goal3", and "level"
-                if let goal1 = data["goal1"] as? Int,
-                   let goal2 = data["goal2"] as? Int,
-                   let goal3 = data["goal3"] as? Int,
-                   let level = data["level"] as? Int {
-                    goalProgress.append(contentsOf: [goal1, goal2, goal3, level])
+                if let goal1Progress = data["goal1Progress"] as? Int {
+                    goalProgress.append(goal1Progress)
+                }
+                
+                if let goal2Progress = data["goal2Progress"] as? Int {
+                    goalProgress.append(goal2Progress)
+                }
+                if let goal3Progress = data["goal3Progress"] as? Int {
+                    goalProgress.append(goal3Progress)
                 }
                 
             }
@@ -147,6 +197,7 @@ struct GoalProgressTest: View {
         }
         return goalProgress
     }
+    
 }
 
 
