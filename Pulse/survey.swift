@@ -163,14 +163,35 @@ struct SurveyQuestionView: View {
     
     func pushResponses(surveyData: [String: Any]) {
         let fs = Firestore.firestore()
-        
-        fs.collection("survey_responses").addDocument(data: surveyData) { error in
-            if let error = error {
-                print("Error writing document: \(error)")
+        let curUserID = Auth.auth().currentUser?.uid ?? "exampleID"
+
+        // Check if the document for the current user already exists
+        let surveyResponsesRef = fs.collection("survey_responses")
+        surveyResponsesRef.whereField("userID", isEqualTo: curUserID).getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else if querySnapshot!.documents.count != 0 {
+                // Document for the user exists, so update it
+                let documentID = querySnapshot!.documents.first!.documentID
+                surveyResponsesRef.document(documentID).updateData(surveyData) { error in
+                    if let error = error {
+                        print("Error updating document: \(error)")
+                    } else {
+                        print("Document successfully updated!")
+                    }
+                }
             } else {
-                print("Document successfully written!")
+                // No document exists for the user, create a new one
+                surveyResponsesRef.addDocument(data: surveyData) { error in
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
             }
         }
+        
     }
 }
 
