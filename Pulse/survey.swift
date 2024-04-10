@@ -79,15 +79,15 @@ struct SurveyQuestionView: View {
                     }
                 }
                 .padding()
-                           }
-                           .frame(maxHeight: geometry.size.height * 0.7)
-                       }
-                       //.navigationTitle("Survey") // Set navigation title
-                       .navigationBarBackButtonHidden(true) // Hide back button
-                       .navigationBarItems(trailing: NavigationLink(destination: ContentView().environmentObject(viewModel), isActive: $isNavigationActive) {
-                           EmptyView()
-                       })
-                   }
+            }
+            .frame(maxHeight: geometry.size.height * 0.7)
+        }
+        //.navigationTitle("Survey") // Set navigation title
+        .navigationBarBackButtonHidden(true) // Hide back button
+        .navigationBarItems(trailing: NavigationLink(destination: ContentView().environmentObject(viewModel), isActive: $isNavigationActive) {
+            EmptyView()
+        })
+    }
     private func completeSurvey() {
         guard let currentUser = viewModel.currentUser else {
             // Handle the case where currentUser is nil
@@ -128,16 +128,16 @@ struct SurveyQuestionView: View {
         // Close the survey view
         onClose()
     }
-
+    
     
     private func goToNextQuestion() {
         if currentQuestionIndex < questions.count - 1 {
-                // Move to the next question
-                currentQuestionIndex += 1
-            } else {
-                // Last question already answered, so complete the survey
-                completeSurvey()
-            }
+            // Move to the next question
+            currentQuestionIndex += 1
+        } else {
+            // Last question already answered, so complete the survey
+            completeSurvey()
+        }
     }
     
     private func isOptionSelected(mcIndex: Int, optionIndex: Int) -> Bool {
@@ -163,17 +163,35 @@ struct SurveyQuestionView: View {
     
     func pushResponses(surveyData: [String: Any]) {
         let fs = Firestore.firestore()
-        
-        fs.collection("survey_responses").addDocument(data: surveyData) { error in
-            if let error = error {
-                print("Error writing document: \(error)")
+        let curUserID = Auth.auth().currentUser?.uid ?? "exampleID"
+        // Check if the document for the current user already exists
+        let surveyResponsesRef = fs.collection("survey_responses")
+        surveyResponsesRef.whereField("userID", isEqualTo: curUserID).getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else if querySnapshot!.documents.count != 0 {
+                // Document for the user exists, so update it
+                let documentID = querySnapshot!.documents.first!.documentID
+                surveyResponsesRef.document(documentID).updateData(surveyData) { error in
+                    if let error = error {
+                        print("Error updating document: \(error)")
+                    } else {
+                        print("Document successfully updated!")
+                    }
+                }
             } else {
-                print("Document successfully written!")
+                // No document exists for the user, create a new one
+                surveyResponsesRef.addDocument(data: surveyData) { error in
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
             }
         }
     }
 }
-
 #Preview{
     SurveyQuestionView(selectedSliderAnswers: .constant([3, 3, 3, 3, 3]), // Example values for selectedSliderAnswers
                        selectedMCAnswer: .constant([0, 0, 0, 0, 0]), // Example values for selectedMCAnswer

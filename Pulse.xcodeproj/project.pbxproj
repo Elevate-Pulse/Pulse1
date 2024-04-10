@@ -59,6 +59,7 @@
 		FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4D2BA923180057F024 /* LoginView.swift */; };
 		FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A4F2BA923290057F024 /* ProfileView.swift */; };
 		FFBA0A562BA9238A0057F024 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBA0A552BA9238A0057F024 /* SignupView.swift */; };
+		FFD348442BC604F7007B417E /* GoalProgressTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD348432BC604F7007B417E /* GoalProgressTest.swift */; };
 		FFF646782BC3811900336069 /* Test1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF646772BC3811900336069 /* Test1.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		FFBA0A4D2BA923180057F024 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FFBA0A4F2BA923290057F024 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FFBA0A552BA9238A0057F024 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		FFD348432BC604F7007B417E /* GoalProgressTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalProgressTest.swift; sourceTree = "<group>"; };
 		FFF646772BC3811900336069 /* Test1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 				FFBA0A4D2BA923180057F024 /* LoginView.swift */,
 				FFBA0A552BA9238A0057F024 /* SignupView.swift */,
 				FF2FECC92BC3398D00B2249A /* HomeView1.swift */,
+				FFD348432BC604F7007B417E /* GoalProgressTest.swift */,
 				FFBA0A4F2BA923290057F024 /* ProfileView.swift */,
 				BA1FC6442BAA5AE400E6B38F /* survey.swift */,
 				FFB261122BC3D7A6008ED9D4 /* dashboard.swift */,
@@ -420,6 +423,7 @@
 				B231E5922B9689B0006B1C4A /* ContentView.swift in Sources */,
 				FFBA0A4E2BA923180057F024 /* LoginView.swift in Sources */,
 				FF56A3C72BC3D2E8006F97AE /* donut.swift in Sources */,
+				FFD348442BC604F7007B417E /* GoalProgressTest.swift in Sources */,
 				FFBA0A502BA923290057F024 /* ProfileView.swift in Sources */,
 				FFF646782BC3811900336069 /* Test1.swift in Sources */,
 				FF3B07CA2BAEBC46000366B3 /* AuthViewModel.swift in Sources */,

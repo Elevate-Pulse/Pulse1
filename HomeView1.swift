@@ -118,29 +118,38 @@ struct HomeView1: View {
             }
             .navigationBarBackButtonHidden(true)
             .onAppear {
-                // Call the calculatePersonalityType function when the view appears
-                let answers = [0, 0, 0, 0, 0] // Example values for selectedMCAnswer
-                self.personalityType = calculatePersonalityType(from: answers)
+                fetchCurrentUserPersonalityType()
                 calculateNeighborPercentage()
             }
         }
     }
-    
-    // Move the calculatePersonalityType function here
-    private func calculatePersonalityType(from answers: [Int]) -> String {
-        let answerCounts = answers.reduce(into: [:]) { counts, answer in
-            counts[answer, default: 0] += 1
+    private func fetchCurrentUserPersonalityType() {
+        guard let userID = viewModel.currentUser?.id else {
+            print("Error: Current user ID not available")
+            return
         }
         
-        guard let mostFrequentAnswer = answerCounts.max(by: { $0.value < $1.value })?.key else {
-            return "Undetermined" // Or handle this case as appropriate
-        }
+        let db = Firestore.firestore()
         
-        // Map the most frequent answer to a personality type
-        let personalityTypes = ["Outgoing Spirit", "Open-Minded Explorer", "Private Resident", "Engaged Citizen", "Easygoing Neighbor"]
-        print (personalityTypes[mostFrequentAnswer])
-        return personalityTypes[mostFrequentAnswer]
+        db.collection("survey_responses")
+            .whereField("userID", isEqualTo: userID)
+            .getDocuments { (snapshot, error) in
+                if let error = error {
+                    print("Error fetching documents: \(error)")
+                } else if let snapshot = snapshot, let document = snapshot.documents.first {
+                    if let personalityType = document.data()["personalityType"] as? String {
+                        // Assign the fetched personalityType to the local variable
+                        self.personalityType = personalityType
+                    } else {
+                        print("Personality type not found for user ID: \(userID)")
+                    }
+                } else {
+                    print("Document not found for user ID: \(userID)")
+                }
+            }
     }
+
+    
     
     private func calculateNeighborPercentage() {
         let db = Firestore.firestore()
@@ -159,6 +168,7 @@ struct HomeView1: View {
                         let currentUserCount = totalCount > 0 ? 1 : 0 // Exclude current user's document from count
                         let percentage = Int(Double(totalCount - currentUserCount) / Double(totalCount) * 100)
                         self.neighborPercentage = percentage
+                        print (percentage)
                     }
                 }
             }
@@ -186,9 +196,9 @@ struct StrengthsWeaknessesSection: View {
                 }
             }
             if isExpanded {
-                HStack {
-                    StrengthWeakness(label: "Strengths", bulletText1: "Enthusiastic, social, excellent organizer, builds strong relationships, promotes community spirit.", bulletText2: "Private Resident Strength 1", bulletText3: "Private Resident Strength 1")
-                    StrengthWeakness(label: "Weaknesses", bulletText1: "Private Resident Weakness 1", bulletText2: "Private Resident Weakness 1", bulletText3: "Private Resident Weakness 1")
+                VStack {
+                    StrengthWeakness(label: "Strengths", bulletText1: "Enthusiastic", bulletText2: "Social", bulletText3: "Builds strong relationships")
+                    StrengthWeakness(label: "Weaknesses", bulletText1: "Can be overly optimistic", bulletText2: "Might prioritize social activities over individual needs", bulletText3: "May struggle with solitude")
                 }
                 .padding(.vertical, 15)
             }
@@ -206,7 +216,7 @@ struct StrengthWeakness: View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
-                .frame(width: 170, height: 30)
+                .frame(width: UIScreen.main.bounds.width - 40, height: 30)
                 .overlay(
                     Text(label)
                         .font(.custom("Comfortaa-Regular", size: 15))
@@ -219,7 +229,7 @@ struct StrengthWeakness: View {
 
             Rectangle()
                 .fill(Color(red: 1.0, green: 0.996, blue: 0.953))
-                .frame(width: 170, height: 120)
+                .frame(width: UIScreen.main.bounds.width - 40, height: 120)
                 .overlay(
                     RoundedRectangle(cornerRadius: 0)
                         .stroke((Color(red: 88/255, green: 111/255, blue: 124/255)), lineWidth: 1)

@@ -12,6 +12,7 @@ class User: Identifiable, Codable {
     var email: String
     var timesLoggedIn: Int
     var initialSurvey: Bool
+    var personalityType: String
     var socialCurrentProgress: Int
     var surroundingsCurrentProgress: Int
     var convenienceCurrentProgress: Int
@@ -23,12 +24,13 @@ class User: Identifiable, Codable {
     var securityLvl: Int
     var engagementLvl: Int
     
-    init(id: String, name: String, email: String, timesLoggedIn: Int, initialSurvey: Bool, socialCurrentProgress: Int, surroundingsCurrentProgress: Int, convenienceCurrentProgress: Int, securityCurrentProgress: Int, engagementCurrentProgress: Int, socialLvl: Int, surroundingsLvl: Int, convenienceLvl: Int, securityLvl: Int, engagementLvl: Int) {
+    init(id: String, name: String, email: String, timesLoggedIn: Int, initialSurvey: Bool, personalityType: String, socialCurrentProgress: Int, surroundingsCurrentProgress: Int, convenienceCurrentProgress: Int, securityCurrentProgress: Int, engagementCurrentProgress: Int, socialLvl: Int, surroundingsLvl: Int, convenienceLvl: Int, securityLvl: Int, engagementLvl: Int) {
         self.id = id
         self.name = name
         self.email = email
         self.timesLoggedIn = timesLoggedIn
         self.initialSurvey = initialSurvey
+        self.personalityType = personalityType
         self.socialCurrentProgress = socialCurrentProgress
         self.surroundingsCurrentProgress = surroundingsCurrentProgress
         self.convenienceCurrentProgress = convenienceCurrentProgress
