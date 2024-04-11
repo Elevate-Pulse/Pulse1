@@ -84,7 +84,7 @@ struct GoalProgressTest: View {
                     data[goal] = currentProgress
                     
                     // Check if the goal has reached or exceeded 7
-                    if currentProgress >= 7 {
+                    if currentProgress >= 8 {
                         // Increase the level by 1
                         if (goal == "goal1Progress") {
                             if var level = data["lvl_ame"] as? Int {

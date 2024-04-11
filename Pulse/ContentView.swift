@@ -43,15 +43,15 @@ struct ContentView: View {
                         .tabItem {
                             Image(systemName: "chart.bar")
                         }
-                    /*
+                    
                     FriendsView()
                         .tabItem {
-                            Image(systemName: "person.3")
+                            Image(systemName: "person.2")
                         }
-                     */
+                     
                     ProfileView()
                         .tabItem {
-                            Image(systemName: "person")
+                            Image(systemName: "person.circle")
                         }
                 }
                 .onAppear {

@@ -144,7 +144,7 @@ struct HomeView1: View {
                                 await calculateNeighborPercentage()
                             }
                         }
-            .onChange(of: neighborPercentage) {
+            .onChange(of: personalityType) {
                 Task {
                     await fetchCurrentUserPersonalityType()
                     await calculateNeighborPercentage()
