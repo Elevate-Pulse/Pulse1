@@ -86,9 +86,31 @@ struct GoalProgressTest: View {
                     // Check if the goal has reached or exceeded 7
                     if currentProgress >= 7 {
                         // Increase the level by 1
-                        if var level = data["lvl_ame"] as? Int {
-                            level += 1
-                            data["lvl_ame"] = level
+                        if (goal == "goal1Progress") {
+                            if var level = data["lvl_ame"] as? Int {
+                                level += 1
+                                data["lvl_ame"] = level
+                            }
+                        } else if (goal == "goal2Progress") {
+                            if var level = data["lvl_eng"] as? Int {
+                                level += 1
+                                data["lvl_eng"] = level
+                            }
+                        } else if (goal == "goal3Progress") {
+                            if var level = data["lvl_phys"] as? Int {
+                                level += 1
+                                data["lvl_phys"] = level
+                            }
+                        } else if (goal == "goal4Progress") {
+                            if var level = data["lvl_safe"] as? Int {
+                                level += 1
+                                data["lvl_safe"] = level
+                            }
+                        } else if (goal == "goal5Progress") {
+                            if var level = data["lvl_soc"] as? Int {
+                                level += 1
+                                data["lvl_soc"] = level
+                            }
                         }
                         
                         // Reset the goal progress
@@ -167,7 +189,6 @@ struct GoalProgressTest: View {
             return goalProgress
         }
         
-        
         let goalProgressCollection = fs.collection("goal_progress")
         do {
             // Create a query to get documents with matching userID
@@ -179,7 +200,7 @@ struct GoalProgressTest: View {
                 
                 let data = document.data()
                 
-                // Retrieve the values for "goal1", "goal2", "goal3", and "level"
+                // Retrieve the values for "goal1Progress", "goal2Progress", and "goal3Progress"
                 if let goal1Progress = data["goal1Progress"] as? Int {
                     goalProgress.append(goal1Progress)
                 }
@@ -187,17 +208,16 @@ struct GoalProgressTest: View {
                 if let goal2Progress = data["goal2Progress"] as? Int {
                     goalProgress.append(goal2Progress)
                 }
+                
                 if let goal3Progress = data["goal3Progress"] as? Int {
                     goalProgress.append(goal3Progress)
                 }
-                
             }
         } catch {
             print("Error fetching goal progress: \(error.localizedDescription)")
         }
         return goalProgress
     }
-    
 }
 
 

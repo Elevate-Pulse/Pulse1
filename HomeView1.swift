@@ -138,11 +138,18 @@ struct HomeView1: View {
             }
             .navigationBarBackButtonHidden(true)
             .onAppear {
+                
                             Task {
                                 await fetchCurrentUserPersonalityType()
                                 await calculateNeighborPercentage()
                             }
                         }
+            .onChange(of: neighborPercentage) {
+                Task {
+                    await fetchCurrentUserPersonalityType()
+                    await calculateNeighborPercentage()
+                }
+            }
                     }
                 }
     private func fetchCurrentUserPersonalityType() async {
@@ -239,7 +246,7 @@ struct StrengthWeakness: View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(Color(red: 35/255, green: 109/255, blue: 97/255))
-                .frame(width: UIScreen.main.bounds.width - 40, height: 30)
+                .frame(width: UIScreen.main.bounds.width - 45, height: 30)
                 .overlay(
                     Text(label)
                         .font(.custom("Comfortaa-Regular", size: 15))
@@ -252,7 +259,7 @@ struct StrengthWeakness: View {
             
             Rectangle()
                 .fill(Color(red: 1.0, green: 0.996, blue: 0.953))
-                .frame(width: UIScreen.main.bounds.width - 40, height: CGFloat(bulletTexts.count * 40) + 20) // Adjust height dynamically based on the number of bullet points
+                .frame(width: UIScreen.main.bounds.width - 45, height: CGFloat(bulletTexts.count * 40) + 20) // Adjust height dynamically based on the number of bullet points
                 .overlay(
                     RoundedRectangle(cornerRadius: 0)
                         .stroke((Color(red: 88/255, green: 111/255, blue: 124/255)), lineWidth: 1)
@@ -273,103 +280,6 @@ struct StrengthWeakness: View {
                     .padding(.horizontal, 10)
                 )
         }
-    }
-}
-
-
-struct Goal: View {
-    var progress: Double
-    var goalText: String
-    var goalIdentifier: String // Add goal identifier property
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text(goalText)
-                .font(.custom("Comfortaa-Regular", size: 15))
-                .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
-            ProgressBar(progress: progress, goalIdentifier: goalIdentifier) // Pass goal identifier to ProgressBar
-        }
-    }
-}
-
-
-struct ProgressBar: View {
-    @State private var progress: Double
-    @State private var showWaitMessage = false
-    let goalIdentifier: String
-    let goalProgressTest = GoalProgressTest()
-
-    init(progress: Double, goalIdentifier: String) {
-        self._progress = State(initialValue: progress)
-        self.goalIdentifier = goalIdentifier
-    }
-
-    var body: some View {
-        let screenWidth = UIScreen.main.bounds.width
-        let progressBarWidth = screenWidth - 50
-
-        return Button(action: {
-            // Only increment progress if it's less than 1.0 (7/7)
-            if self.progress < 1.0 {
-                self.progress += 1.0 / 6.5
-            } else {
-                // Show the wait message if progress is already complete
-                self.showWaitMessage = true
-            }
-
-            // Cap the progress to maximum 1.0 (7/7)
-            if self.progress > 1.0 {
-                self.progress = 1.0
-            }
-
-            // Call updateGoalProgress only if progress is not complete
-            if self.progress < 1.0 {
-                goalProgressTest.updateGoalProgress(progressNum: 1, goal: self.goalIdentifier)
-            }
-        }) {
-            HStack(spacing: 30) {
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 25)
-                        .frame(width: progressBarWidth - 50, height: 35)
-                        .foregroundColor(Color(red: 0.9255, green: 0.9294, blue: 0.9451))
-
-                    RoundedRectangle(cornerRadius: 25)
-                        .frame(width: CGFloat(self.progress) * (progressBarWidth - 50), height: 35)
-                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-
-                    Text(String(format: "%.0f/7", self.progress * 7))
-                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-                        .font(.custom("Comfortaa-Regular", size: 15))
-                        .padding(.horizontal, 8)
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .offset(x: CGFloat(self.progress) * (progressBarWidth - 50) - 15, y: -18)
-                }
-
-                if progress >= 1.0 && progress <= 7.0 {
-                    // Checkmark image indicating progress complete
-                    Image(systemName: "checkmark.seal.fill")
-                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-                        .font(.system(size: 24))
-                } else {
-                    // Plus image indicating progress can be incremented
-                    Image(systemName: "plus.app")
-                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
-                        .font(.system(size: 27))
-                }
-            }
-        }
-        .overlay(
-            Group {
-                if showWaitMessage {
-                    MessageBubble()
-                }
-            }
-        )
-        .onAppear {
-              // Fetch progress for the specific goal on appear
-             
-              }
     }
 }
 
@@ -404,17 +314,203 @@ struct MessageBubble: View {
     }
 }
 
-
 struct GoalsView: View {
+    // Define state variables to hold goal progress data
+    @State private var goal1Progress: Int = 0
+    @State private var goal2Progress: Int = 0
+    @State private var goal3Progress: Int = 0
+    let goalProgressTest = GoalProgressTest()
     var body: some View {
         VStack(spacing: 15) {
-            Goal(progress: 0/7, goalText: "Greet a neighbor", goalIdentifier: "goal1Progress") // Pass goal identifier
-            Goal(progress: 0/7, goalText: "Go to your local library", goalIdentifier: "goal2Progress") // Pass goal identifier
-            Goal(progress: 0/7, goalText: "Pick up a piece of trash", goalIdentifier: "goal3Progress") // Pass goal identifier
+            Goal(progress: Double(goal1Progress) / 7, goalText: "Greet a neighbor", goalIdentifier: "goal1Progress")
+            Goal(progress: Double(goal2Progress) / 7, goalText: "Go to your local library", goalIdentifier: "goal2Progress")
+            Goal(progress: Double(goal3Progress) / 7, goalText: "Pick up a piece of trash", goalIdentifier: "goal3Progress")
+        }
+        .onAppear {
+            // Call getGoalProgress to fetch the progress data
+            Task {
+                let progressArray = await goalProgressTest.getGoalProgress()
+                // Update state variables with fetched progress data
+                if progressArray.count >= 3 {
+                    goal1Progress = progressArray[0]
+                    goal2Progress = progressArray[1]
+                    goal3Progress = progressArray[2]
+                }
+                // Print the progress values
+                print("Goal 1 Progress: \(goal1Progress)")
+                print("Goal 2 Progress: \(goal2Progress)")
+                print("Goal 3 Progress: \(goal3Progress)")
+            }
         }
     }
 }
 
+struct Goal: View {
+    var progress: Double
+    var goalText: String
+    var goalIdentifier: String // Add goal identifier property
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 15) {
+            Text(goalText)
+                .font(.custom("Comfortaa-Regular", size: 15))
+                .foregroundColor(Color(red: 28/255, green: 21/255, blue: 21/255))
+            ProgressBar(progress: progress, goalIdentifier: goalIdentifier) // Pass the progress value to ProgressBar
+        }
+    }
+}
+
+struct ProgressBar: View {
+    @State private var progress: Double
+    @State private var showWaitMessage = false
+    let goalIdentifier: String
+    let goalProgressTest = GoalProgressTest()
+    
+    init(progress: Double, goalIdentifier: String) {
+        self._progress = State(initialValue: progress)
+        self.goalIdentifier = goalIdentifier
+    }
+    
+    var body: some View {
+        let screenWidth = UIScreen.main.bounds.width
+        let progressBarWidth = screenWidth - 50
+        return Button(action: {
+            // Only increment progress if it's less than 1.0 (7/7)
+            if self.progress < 1.0 {
+                self.progress += 1.0 / 6.5
+            } else {
+                // Show the wait message if progress is already complete
+                self.showWaitMessage = true
+            }
+            
+            // Cap the progress to maximum 1.0 (7/7)
+            if self.progress > 1.0 {
+                self.progress = 1.0
+            }
+            
+            // Call updateGoalProgress only if progress is not complete
+            if self.progress <= 1.0 {
+                goalProgressTest.updateGoalProgress(progressNum: 1, goal: self.goalIdentifier)
+            }
+        }) {
+            HStack(spacing: 25) { // Add spacing between the progress bar and the checkmark/plus button
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 30)
+                        .frame(width: progressBarWidth - 50, height: 35)
+                        .foregroundColor(Color(red: 0.9255, green: 0.9294, blue: 0.9451))
+                    
+                    RoundedRectangle(cornerRadius: 25)
+                        .frame(width: CGFloat(progress) * (progressBarWidth - 50), height: 35)
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                    
+                    Text(String(format: "%.0f/7", progress * 7))
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                        .font(.custom("Comfortaa-Regular", size: 15))
+                        .padding(.horizontal, 8)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .offset(x: CGFloat(progress) * (progressBarWidth - 50) - 15, y: -18)
+                }
+                
+                if progress >= 1.0 && progress <= 7.0 {
+                    // Checkmark image indicating progress complete
+                    Image(systemName: "checkmark.seal.fill")
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                        .font(.system(size: 24))
+                } else {
+                    // Plus image indicating progress can be incremented
+                    Image(systemName: "plus.app")
+                        .foregroundColor(Color(red: 35/255, green: 109/255, blue: 97/255))
+                        .font(.system(size: 27))
+                }
+            }
+        }
+        .onAppear {
+            // Fetch the progress for the specified goal on appearance
+            Task {
+                do {
+                    let goalProgress = try await goalProgressTest.getGoalProgress()
+                    // Update the progress based on the goal identifier
+                    switch self.goalIdentifier {
+                    case "goal1Progress":
+                        if let goal1Progress = goalProgress.first {
+                            self.progress = Double(goal1Progress) / 7
+                        }
+                    case "goal2Progress":
+                        if goalProgress.count > 1 {
+                            self.progress = Double(goalProgress[1]) / 7
+                        }
+                    case "goal3Progress":
+                        if goalProgress.count > 2 {
+                            self.progress = Double(goalProgress[2]) / 7
+                        }
+                    default:
+                        break
+                    }
+                } catch {
+                    print("Error fetching goal progress: \(error)")
+                }
+                await resetGoalProgress()
+            }
+            
+        }
+        
+    }
+    func resetGoalProgress() async {
+        let fs = Firestore.firestore()
+        
+        guard let userID = Auth.auth().currentUser?.uid else {
+            print("User not logged in")
+            return
+        }
+        
+        let goalProgressCollection = fs.collection("goal_progress")
+        
+        // Create a query to get documents with matching userID
+        let goalProgressQuery = goalProgressCollection.whereField("userID", isEqualTo: userID)
+        
+        goalProgressQuery.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching goal progress: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("No documents found")
+                return
+            }
+            
+            // Get the current date and time
+            let now = Date()
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second, .weekday], from: now)
+            
+            // Check if it's Sunday 11:59pm
+            if components.weekday == 1 && components.hour == 23 && components.minute == 59 && components.second == 59 {
+                // Loop through the documents
+                for document in documents {
+                    var data = document.data()
+                    
+                    // Reset the progress for goal1, goal2, and goal3
+                    data["goal1Progress"] = 0
+                    data["goal2Progress"] = 0
+                    data["goal3Progress"] = 0
+                    
+                    // Update the document
+                    document.reference.setData(data) { error in
+                        if let error = error {
+                            print("Error updating document: \(error.localizedDescription)")
+                        } else {
+                            print("Document updated successfully")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}
 
 struct Circles: View {
     @State var data: [DataItem] = [
@@ -563,6 +659,7 @@ struct Circles: View {
         return CGSize(width: 2 * x, height: 0.25 * y)
     }
 }
+    
 
 
 

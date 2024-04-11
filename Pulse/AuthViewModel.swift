@@ -54,14 +54,37 @@ class AuthViewModel: ObservableObject {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: pw)
             self.userSession = result.user
-            let user = User(id: result.user.uid, name: name, email: email, timesLoggedIn: 0, initialSurvey: false, personalityType: "Undetermined", socialCurrentProgress: 0, surroundingsCurrentProgress: 0, convenienceCurrentProgress: 0, securityCurrentProgress: 0, engagementCurrentProgress: 0, socialLvl: 1, surroundingsLvl: 1, convenienceLvl: 1, securityLvl: 1, engagementLvl: 1)
+            let user = User(id: result.user.uid, name: name, email: email, timesLoggedIn: 0, initialSurvey: false, personalityType: "Undetermined")
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+            
+            // Create a new document in the goal_progress collection
+            let goalProgressData: [String: Any] = [
+                "userID": user.id,
+                "goal1Cat": "👥 Social Environment",
+                "goal1Progress": 0,
+                "goal2Cat": "🛠️ Amenities and Resources",
+                "goal2Progress": 0,
+                "goal3Cat": "🌳 Physical Environment",
+                "goal3Progress": 0,
+                "goal4Cat": "🔒 Safety and Security",
+                "goal4Progress": 0,
+                "goal5Cat": "📢 Community Engagement",
+                "goal5Progress": 0,
+                "lvl_ame": 1,
+                "lvl_eng": 1,
+                "lvl_phys": 1,
+                "lvl_safe": 1,
+                "lvl_soc": 1
+            ]
+            try await Firestore.firestore().collection("goal_progress").document(user.id).setData(goalProgressData)
+            
             await pullUserData()
         } catch {
             print("error regstering user")
         }
     }
+
     
     func logout() {
         do {
