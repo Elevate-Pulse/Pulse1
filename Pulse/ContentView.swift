@@ -1,14 +1,6 @@
 /*
--Retaking survey should automatically update personality type, strengths/weaknesses, and summary
- -Store goals locally
- -Make friends screen look sexy
- -Circle size update
- 
- -Randomize goals every wk
- -Apple login
  -Remove back button from login/signup screen
  -Having to scroll down to see next button on survey
-
  */
 
 import SwiftUI
@@ -51,6 +43,12 @@ struct ContentView: View {
                         .tabItem {
                             Image(systemName: "chart.bar")
                         }
+                    /*
+                    FriendsView()
+                        .tabItem {
+                            Image(systemName: "person.3")
+                        }
+                     */
                     ProfileView()
                         .tabItem {
                             Image(systemName: "person")
